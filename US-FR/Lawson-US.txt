@@ -1,0 +1,3 @@
+ As a student, I want to be able to view a list of tutors, so I can get the academic help I need.
+ As an avid hiker, I want to join a community of hikers, so I can go hiking with others.
+ As a musician, I want to find other musicians, so I have people to jam with.

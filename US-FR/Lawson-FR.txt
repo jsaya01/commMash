@@ -1,0 +1,3 @@
+The system shall provide an interface for the user to join local groups made up of other users or be the first to make a new group if one does not exist. 
+The system shall filter a group of users by a set of user given interests and display subgroups that share these interests.
+The system shall provide the user a medium for communication between other users in their subgroup.
