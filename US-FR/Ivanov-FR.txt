@@ -1,0 +1,13 @@
+﻿Joulien Ivanov
+
+
+Functional Requirements
+
+
+1. The system shall provide communities filterable by tags which relate to activities or locations.
+
+
+1. The system shall provide users with an initial set-up process of uploading profile pictures.
+
+
+1. The system shall provide users with a choice to match with another individual and chat with the matched individual.

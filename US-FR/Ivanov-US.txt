@@ -1,0 +1,13 @@
+﻿Joulien Ivanov
+
+
+User Stories
+
+
+1. As an athlete, I want to find a workout partner by looking at their pictures and a small biography, so that I make my workouts more interesting.
+
+
+1. As a math student, I want to search for tutors and view their rates, so I save time in my search.
+
+
+1. As a professional Smash Ultimate gamer, I want to join a community where I can find new people, so that we can train together.
