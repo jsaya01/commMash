@@ -1,0 +1,4 @@
+1. As a new user, I want to be able to select my interests, so I can be matched with relevant comminutes.
+2. As a tutor, I want to be able to display my hourly fee, so I know students are aware of my cost when they contact me.
+3. As an admin, I want to have access to communities, so I can ensure that all members are acting appropriately.
+
