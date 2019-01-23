@@ -1,0 +1,3 @@
+1) The system shall provide a record of messages between users for 6 months from the day the message was sent.
+2) The system shall suggest communities to the user based on the user’s interests.
+3) The system shall notify the user when someone contacts them within 5 minutes of the contactor sending a message.
