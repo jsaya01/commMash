@@ -1,0 +1,17 @@
+
+The system shall provide an option for users to sign up for an account through Facebook on the startup screen.
+
+
+The system shall provide a notification to the user's device in response to another user mutually *liking their profile.
+
+
+The system shall allow the user to modify their notification preferences.
+
+
+
+
+" * " means check the dictionary
+
+
+Dictionary:
+"liking": A core feature of the system is the ability to connect with other users within a community. This core feature requires that two users mutually show interest in connecting and they show this interest by tapping a button on the other user's profile that represents "liking" it.
