@@ -1,0 +1,31 @@
+CREATE TABLE user (
+	uid BIGINT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30) NOT NULL DEFAULT '',
+	username VARCHAR(30) NOT NULL DEFAULT '',
+	password VARCHAR(30) NOT NULL DEFAULT '',
+	PRIMARY KEY (uid)
+);
+
+CREATE TABLE matches (
+	uid1 BIGINT NOT NULL AUTO_INCREMENT,
+	uid2 BIGINT NOT NULL,
+	dt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (uid1) REFERENCES user (uid),
+	FOREIGN KEY (uid2) REFERENCES user (uid),	
+);
+
+CREATE TABLE message_instance (
+	uidfrom BIGINT NOT NULL,
+	uidto BIGINT NOT NULL,
+	FOREIGN KEY (uidfrom) REFERENCES user (uid),
+	FOREIGN KEY (uidto) REFERENCES user (uid),	
+);
+
+CREATE TABLE community (
+);
+
+CREATE TABLE community_post (
+);
+
+CREATE TABLE community_user_profile (
+);
