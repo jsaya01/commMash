@@ -8,7 +8,7 @@ CREATE TABLE user (
 	PRIMARY KEY (uid)
 );
 
-CREATE TABLE user_interest_tag (
+CREATE TABLE userInterestTag (
 	tid BIGINT NOT NULL AUTO_INCREMENT
 	uid BIGINT NOT NULL,
 	tag VARCHAR(10),
@@ -26,7 +26,7 @@ CREATE TABLE matches (
 	PRIMARY KEY (mid)
 );
 
-CREATE TABLE message_instance (
+CREATE TABLE messageInstance (
 	iid BIGINT NOT NULL AUTO_INCREMENT,
 	uidfrom BIGINT NOT NULL,
 	uidto BIGINT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE community (
 	PRIMARY KEY (cid)
 );
 
-CREATE TABLE community_tags (
+CREATE TABLE communityTags (
 	tid BIGINT NOT NULL AUTO_INCREMENT,
 	cid BIGINT NOT NULL,
 	tag VARCHAR(10),
@@ -52,7 +52,7 @@ CREATE TABLE community_tags (
 	PRIMARY KEY (tid)
 );
 
-CREATE TABLE community_post (
+CREATE TABLE communityPost (
 	pid BIGINT NOT NULL AUTO_INCREMENT,
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE community_post (
 	PRIMARY KEY (pid)
 );
 
-CREATE TABLE community_user_profile (
+CREATE TABLE communityUserProfile (
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
 	description VARCHAR(50),
@@ -71,12 +71,12 @@ CREATE TABLE community_user_profile (
 	FOREIGN KEY (cid) REFERENCES community (cid)
 );
 
-CREATE TABLE user_community_profile_image (
-	pid BIGINT NOT NULL AUTO_INCREMENT,
-	uid BIGINT NOT NULL,
-	cid BIGINT NOT NULL,
-	imagepath VARCHAR(50),
-	FOREIGN KEY (uid) REFERENCES user (uid),
-	FOREIGN KEY (cid) REFERENCES community (cid),
-	PRIMARY KEY (pid)
-);
+-- CREATE TABLE userCommunityProfileImage (
+-- 	pid BIGINT NOT NULL AUTO_INCREMENT,
+-- 	uid BIGINT NOT NULL,
+-- 	cid BIGINT NOT NULL,
+-- 	imagepath VARCHAR(50),
+-- 	FOREIGN KEY (uid) REFERENCES user (uid),
+-- 	FOREIGN KEY (cid) REFERENCES community (cid),
+-- 	PRIMARY KEY (pid)
+-- );
