@@ -9,25 +9,31 @@ CREATE TABLE user (
 );
 
 CREATE TABLE user_interest_tag (
-	uid BIGINT NOT NULL AUTO_INCREMENT,
+	tid BIGINT NOT NULL AUTO_INCREMENT
+	uid BIGINT NOT NULL,
 	tag VARCHAR(10),
-	FOREIGN KEY (uid) REFERENCES user (uid)
+	FOREIGN KEY (uid) REFERENCES user (uid),
+	PRIMARY KEY (tid)
 );
 
 CREATE TABLE matches (
+	mid BIGINT NOT NULL AUTO_INCREMENT,
 	uid1 BIGINT NOT NULL,
 	uid2 BIGINT NOT NULL,
 	tstamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	FOREIGN KEY (uid1) REFERENCES user (uid),
-	FOREIGN KEY (uid2) REFERENCES user (uid)
+	FOREIGN KEY (uid2) REFERENCES user (uid),
+	PRIMARY KEY (mid)
 );
 
 CREATE TABLE message_instance (
+	iid BIGINT NOT NULL AUTO_INCREMENT,
 	uidfrom BIGINT NOT NULL,
 	uidto BIGINT NOT NULL,
 	content VARCHAR(50),
 	FOREIGN KEY (uidfrom) REFERENCES user (uid),
-	FOREIGN KEY (uidto) REFERENCES user (uid)
+	FOREIGN KEY (uidto) REFERENCES user (uid),
+	PRIMARY KEY (iid)
 );
 
 CREATE TABLE community (
@@ -39,18 +45,22 @@ CREATE TABLE community (
 );
 
 CREATE TABLE community_tags (
+	tid BIGINT NOT NULL AUTO_INCREMENT,
 	cid BIGINT NOT NULL,
 	tag VARCHAR(10),
-	FOREIGN KEY (cid) REFERENCES community (cid)
+	FOREIGN KEY (cid) REFERENCES community (cid),
+	PRIMARY KEY (tid)
 );
 
 CREATE TABLE community_post (
+	pid BIGINT NOT NULL AUTO_INCREMENT,
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
 	tstamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	content VARCHAR(100),
 	FOREIGN KEY (uid) REFERENCES user (uid),
-	FOREIGN KEY (cid) REFERENCES community (cid)
+	FOREIGN KEY (cid) REFERENCES community (cid),
+	PRIMARY KEY (pid)
 );
 
 CREATE TABLE community_user_profile (
@@ -62,9 +72,11 @@ CREATE TABLE community_user_profile (
 );
 
 CREATE TABLE user_community_profile_image (
+	pid BIGINT NOT NULL AUTO_INCREMENT,
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
 	imagepath VARCHAR(50),
 	FOREIGN KEY (uid) REFERENCES user (uid),
-	FOREIGN KEY (cid) REFERENCES community (cid)	
+	FOREIGN KEY (cid) REFERENCES community (cid),
+	PRIMARY KEY (pid)
 );
