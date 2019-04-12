@@ -1,17 +1,18 @@
 
 CREATE TABLE user (
 	uid BIGINT NOT NULL AUTO_INCREMENT,
-	fname VARCHAR(15) NOT NULL,
-	lname VARCHAR(15) NOT NULL,
-	username VARCHAR(10) NOT NULL UNIQUE,
-	password VARCHAR(10) NOT NULL,
+	fname VARCHAR(20) NOT NULL,
+	lname VARCHAR(20) NOT NULL,
+	username VARCHAR(20) NOT NULL UNIQUE,
+	password VARCHAR(100) NOT NULL,
+	description VARCHAR(244),
 	PRIMARY KEY (uid)
 );
 
 CREATE TABLE userInterestTag (
 	tid BIGINT NOT NULL AUTO_INCREMENT
 	uid BIGINT NOT NULL,
-	tag VARCHAR(10),
+	tag VARCHAR(20),
 	FOREIGN KEY (uid) REFERENCES user (uid),
 	PRIMARY KEY (tid)
 );
@@ -30,7 +31,7 @@ CREATE TABLE messageInstance (
 	iid BIGINT NOT NULL AUTO_INCREMENT,
 	uidfrom BIGINT NOT NULL,
 	uidto BIGINT NOT NULL,
-	content VARCHAR(50),
+	content VARCHAR(300),
 	FOREIGN KEY (uidfrom) REFERENCES user (uid),
 	FOREIGN KEY (uidto) REFERENCES user (uid),
 	PRIMARY KEY (iid)
@@ -38,7 +39,7 @@ CREATE TABLE messageInstance (
 
 CREATE TABLE community (
 	cid BIGINT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(10),
+	name VARCHAR(20),
 	imagepath VARCHAR(50),
 	description VARCHAR(50),
 	PRIMARY KEY (cid)
@@ -47,7 +48,7 @@ CREATE TABLE community (
 CREATE TABLE communityTags (
 	tid BIGINT NOT NULL AUTO_INCREMENT,
 	cid BIGINT NOT NULL,
-	tag VARCHAR(10),
+	tag VARCHAR(20),
 	FOREIGN KEY (cid) REFERENCES community (cid),
 	PRIMARY KEY (tid)
 );
@@ -57,7 +58,7 @@ CREATE TABLE communityPost (
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
 	tstamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	content VARCHAR(100),
+	content VARCHAR(250),
 	FOREIGN KEY (uid) REFERENCES user (uid),
 	FOREIGN KEY (cid) REFERENCES community (cid),
 	PRIMARY KEY (pid)
@@ -66,7 +67,7 @@ CREATE TABLE communityPost (
 CREATE TABLE communityUserProfile (
 	uid BIGINT NOT NULL,
 	cid BIGINT NOT NULL,
-	description VARCHAR(50),
+	description VARCHAR(250),
 	FOREIGN KEY (uid) REFERENCES user (uid),
 	FOREIGN KEY (cid) REFERENCES community (cid)
 );
