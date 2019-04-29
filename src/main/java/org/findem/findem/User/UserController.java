@@ -17,7 +17,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public Optional<User> get(@RequestParam String uid) {
-        return null;
+    	return userRepository.getOne(uid);
     }
 
     @RequestMapping(method = RequestMethod.POST)
