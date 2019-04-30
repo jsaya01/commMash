@@ -1,11 +1,11 @@
 package org.findem.findem.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
 import java.util.concurrent.Future;
 
 @RestController
@@ -17,15 +17,15 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity get(@RequestParam String email) {
-    	Future<User> user = userRepository.findUserByUsername(email);
+    public ResponseEntity get(@RequestParam String username) {
+    	Future<User> user = userRepository.findUserByUsername(username);
     	
     	try {
     		user.get().getName();
             return ResponseEntity.status(HttpStatus.OK).body(user.get());
     	}
     	catch(Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Could not be found");
     	}
     }
 
