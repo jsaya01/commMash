@@ -5,9 +5,9 @@ addons:
     organization: "jsaya01-github"
     token:
       secure: 90156ff9697d02d0401d93ded1d96e876eaeb466
-jdk:
-- oraclejdk8
-script: ant build
 script:
   # other script steps might be done before running the actual analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+jdk:
+- oraclejdk8
+script: ant build
