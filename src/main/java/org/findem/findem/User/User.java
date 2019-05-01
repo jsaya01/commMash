@@ -12,34 +12,41 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long uid;
     
-    private String name;
+    private String fname;
+    private String lname;
     private String username;
     private String password;
+    private String description;
 
     // need a test to check if user name and password are unique
-    public User(long uid, String name, String username, String password) {
-		this.uid = uid;
-		this.name = name;
-		this.setUsername(username);
+    public User(String fname, String lname, String username, String password, String description) {
+		this.fname = fname;
+		this.lname = lname;
+		this.username = username;
 		this.password = password;	
+		this.description = description;
 	}
     
     public User() {}
+    
+    public String getDescription() {
+		return description;
+	}
+    
+    public String getFname() {
+		return fname;
+	}
+    
+    public String getLname() {
+		return lname;
+	}
     
     public long getUid() {
     	return uid;
     }
     
-    public String getName() {
-    	return name;
-    }
-    
     public String getPassword() {
     	return password;
-    }
-    
-    public void changeName(String name) {
-    	this.name = name;
     }
     
     public void updateUsername(String userName) {

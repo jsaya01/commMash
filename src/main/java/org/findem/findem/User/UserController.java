@@ -21,19 +21,40 @@ public class UserController {
     	Future<User> user = userRepository.findUserByUsername(username);
     	
     	try {
-    		user.get().getName();
+    		user.get().getUsername();
             return ResponseEntity.status(HttpStatus.OK).body(user.get());
     	}
     	catch(Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Could not be found");
     	}
     }
+    
+    
 
     @RequestMapping(method = RequestMethod.POST)
-    public void post(@RequestBody User user) {
+    public ResponseEntity post(@RequestBody User user) {
+    	userRepository.save(user);
+    	
+        return ResponseEntity.status(HttpStatus.OK).body("Posted");
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public void put(@RequestBody User user) {
+    public ResponseEntity put(@RequestBody User user) {
+    	userRepository.save(user);
+    	
+        return ResponseEntity.status(HttpStatus.OK).body("Edited");
+    }
+    
+    @RequestMapping(method = RequestMethod.DELETE)
+    public ResponseEntity delete(@RequestBody User user) {
+    	ResponseEntity res = get(user.getUsername());
+    	
+    	if(res.getStatusCodeValue() == 200) {
+    		User temp = (User) res.getBody();
+    		userRepository.deleteById(temp.getUid());
+            return ResponseEntity.status(HttpStatus.OK).body("Deleted");
+    	}
+    	
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Could not find user to delete");
     }
 }
