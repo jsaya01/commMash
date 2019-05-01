@@ -1,4 +1,4 @@
-package org.findem.findem.User;
+package user;
 
 
 import javax.persistence.Entity;

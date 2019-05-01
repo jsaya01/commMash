@@ -1,4 +1,4 @@
-package org.findem.findem.User;
+package user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,8 +29,6 @@ public class UserController {
     	}
     }
     
-    
-
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity post(@RequestBody User user) {
     	userRepository.save(user);
