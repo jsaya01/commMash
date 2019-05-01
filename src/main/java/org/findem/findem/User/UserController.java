@@ -17,7 +17,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity get(@RequestParam String username) {
+    public ResponseEntity getUserWithUsername(@RequestParam String username) {
     	Future<User> user = userRepository.findUserByUsername(username);
     	
     	try {
@@ -47,9 +47,9 @@ public class UserController {
     
     @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity delete(@RequestBody User user) {
-    	ResponseEntity res = get(user.getUsername());
+    	ResponseEntity res = getUserWithUsername(user.getUsername());
     	
-    	if(res.getStatusCodeValue() == 200) {
+    	if(res.getStatusCode() == HttpStatus.OK) {
     		User temp = (User) res.getBody();
     		userRepository.deleteById(temp.getUid());
             return ResponseEntity.status(HttpStatus.OK).body("Deleted");
