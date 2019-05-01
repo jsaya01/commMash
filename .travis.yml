@@ -10,5 +10,4 @@ jdk:
 script: ant build
 script:
   # other script steps might be done before running the actual analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
   - sonar-scanner
