@@ -18,7 +18,7 @@ public class CommunityPost {
     private Date tstamp;
     private String content;
     
-    public CommunityPost(Long uid, long cid, Date tstamp, String content) {
+    public CommunityPost(long uid, long cid, Date tstamp, String content) {
     	
     	this.uid = uid;
     	this.cid = cid;
