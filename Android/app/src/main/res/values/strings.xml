@@ -3,4 +3,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="community_name">%s Community</string>
+    <string name="match_name">%s</string>
+    <string name="match_bio">%s</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>

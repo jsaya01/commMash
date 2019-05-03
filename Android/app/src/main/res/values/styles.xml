@@ -1,11 +1,50 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:button">@style/MaterialButton</item>
+        <item name="android:textViewStyle">@style/TextView</item>
+        <item name="android:editTextStyle">@style/EditText</item>
+        <item name="android:buttonStyle">@style/TextButton</item>
     </style>
+
+    <!-- Button theme -->
+    <style name="MaterialButton" parent="android:style/Widget.Button">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="rippleColor">@color/colorPrimaryDark</item>
+        <item name="strokeColor">@android:color/white</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- TextView theme -->
+    <style name="TextView" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <!-- EditText theme -->
+    <style name="EditText" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textColorHint">@android:color/red</item>
+        <item name="backgroundTint">@android:color/darker_gray</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <!-- TextButton theme -->
+    <style name="TextButton" parent="android:style/Widget.TextView">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:layout_height">40dp</item>
+
+    </style>
+
 
 </resources>
