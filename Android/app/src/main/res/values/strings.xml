@@ -3,4 +3,23 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="community_name">%s Community</string>
+    <string name="match_name">%s</string>
+    <string name="match_bio">%s</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="add_a_picture_signup">Add a picture!</string>
+    <string name="home_trending_communities">Trending Communities</string>
+    <string name="home_your_communities">Your Communities</string>
+    <string name="home_find_your_new_crowd">Find your new crowd.</string>
+    <string name="home_create_community">Create Community</string>
+    <string name="home_search_communities">Search Communities</string>
+    <string name="signup_find_your_new_crowd">Find your new crowd.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="signup_confirm_password">Confirm Password</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_username">Username</string>
+    <string name="signup_last_name">Last Name</string>
+    <string name="signup_first_name">First Name</string>
+    <string name="signup_full_name">Full Name</string>
 </resources>
