@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">findem</string>
+    <string name="app_name">Findem</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
@@ -22,4 +22,6 @@
     <string name="signup_last_name">Last Name</string>
     <string name="signup_first_name">First Name</string>
     <string name="signup_full_name">Full Name</string>
+    <string name="title_messages">Messages</string>
+    <string name="title_settings">Settings</string>
 </resources>

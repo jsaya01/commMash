@@ -1,4 +1,6 @@
 package com.example.android.findem.UI.MainContent;
 
-public class EditProfileFragment {
+import android.support.v4.app.Fragment;
+
+public class EditProfileFragment extends Fragment {
 }

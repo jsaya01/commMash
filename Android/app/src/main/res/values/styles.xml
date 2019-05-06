@@ -32,7 +32,6 @@
     <!-- EditText theme -->
     <style name="EditText" parent="android:style/Widget.TextView">
         <item name="android:textColor">@android:color/darker_gray</item>
-        <item name="android:textColorHint">@android:color/red</item>
         <item name="backgroundTint">@android:color/darker_gray</item>
         <item name="android:textSize">16dp</item>
     </style>
