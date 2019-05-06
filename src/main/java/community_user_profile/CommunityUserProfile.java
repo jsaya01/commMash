@@ -1,4 +1,4 @@
-package communityUserProfile;
+package community_user_profile;
 
 import javax.persistence.Entity;
 

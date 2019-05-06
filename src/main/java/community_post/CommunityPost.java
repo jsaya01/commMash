@@ -1,4 +1,4 @@
-package communityPost;
+package community_post;
 
 import java.sql.Date;
 

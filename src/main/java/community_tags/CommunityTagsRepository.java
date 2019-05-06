@@ -1,4 +1,4 @@
-package communityUserProfile;
+package community_tags;
 
 import java.util.concurrent.Future;
 
@@ -10,10 +10,9 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-
-public interface CommunityUserProfileRepository extends JpaRepository<CommunityUserProfile, Long> {
+public interface CommunityTagsRepository extends JpaRepository<CommunityTags, Long>  {
 
 	@Async
-    @Query("SELECT cup FROM CommunityUserProfile cup where cup.uid = :uid and cup.cid = :cid")
-    Future<CommunityUserProfile> findCommunityUserProfile(@Param("uid") Long uid, @Param("cid") Long cid);
+    @Query("SELECT ct FROM CommunityTags ct where ct.tid = :tid")
+    Future<CommunityTags> findCommunityTagsByTID(@Param("tid") Long tid);
 }

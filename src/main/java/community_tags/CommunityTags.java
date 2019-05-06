@@ -1,4 +1,4 @@
-package communityTags;
+package community_tags;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

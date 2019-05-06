@@ -1,4 +1,4 @@
-package communityPost;
+package community_tags;
 
 import java.util.concurrent.Future;
 
@@ -14,20 +14,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(value = "/communityPost", produces = "application/json")
-public class CommunityPostController {
+@RequestMapping(value = "/communityTags", produces = "application/json")
+public class CommunityTagsController {
 
 	@Autowired
-    CommunityPostRepository communityPostRepository;
+    CommunityTagsRepository communityTagsRepository;
     
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getCommunityPostWithPID(@RequestParam long pid) {
-    	Future<CommunityPost> communityPost = communityPostRepository.findCommunityPostByPID(pid);
+    public ResponseEntity getCommunityTagsWithTID(@RequestParam long tid) {
+    	Future<CommunityTags> communityTags = communityTagsRepository.findCommunityTagsByTID(tid);
     	
     	try {
-    		communityPost.get().getPid();
-            return ResponseEntity.status(HttpStatus.OK).body(communityPost.get());
+    		communityTags.get().getTid();
+            return ResponseEntity.status(HttpStatus.OK).body(communityTags.get());
     	}
     	catch(Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Could not be found");
@@ -35,26 +35,26 @@ public class CommunityPostController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity post(@RequestBody CommunityPost communityPost) {
-    	communityPostRepository.save(communityPost);
+    public ResponseEntity post(@RequestBody CommunityTags communityTags) {
+    	communityTagsRepository.save(communityTags);
     	
         return ResponseEntity.status(HttpStatus.OK).body("Posted");
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity put(@RequestBody CommunityPost communityPost) {
-    	communityPostRepository.save(communityPost);
+    public ResponseEntity put(@RequestBody CommunityTags communityTags) {
+    	communityTagsRepository.save(communityTags);
     	
         return ResponseEntity.status(HttpStatus.OK).body("Edited");
     }
     
     @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity delete(@RequestBody CommunityPost communityPost) {
-    	ResponseEntity res = getCommunityPostWithPID(communityPost.getPid());
+    public ResponseEntity delete(@RequestBody CommunityTags communityTags) {
+    	ResponseEntity res = getCommunityTagsWithTID(communityTags.getTid());
     	
     	if(res.getStatusCode() == HttpStatus.OK) {
-    		CommunityPost temp = (CommunityPost) res.getBody();
-    		communityPostRepository.deleteById(temp.getPid());
+    		CommunityTags temp = (CommunityTags) res.getBody();
+    		communityTagsRepository.deleteById(temp.getTid());
             return ResponseEntity.status(HttpStatus.OK).body("Deleted");
     	}
     	
