@@ -24,4 +24,12 @@
     <string name="signup_full_name">Full Name</string>
     <string name="title_messages">Messages</string>
     <string name="title_settings">Settings</string>
+    <string name="community_name_placeholder">Community Name</string>
+    <string name="create_community">Create\nCommunity!</string>
+    <string name="san_luis_obispo">San Luis Obispo</string>
+    <string name="filter">Filter</string>
+    <string name="community_description_placeholder">Community Description (255 character limit)</string>
+    <string name="add_picture">Add a picture!</string>
+    <string name="let_world_find_you">Let the world find you.</string>
+    <string name="add_tags">Add tags</string>
 </resources>

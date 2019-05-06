@@ -1,4 +1,4 @@
-package community;
+package community_tags;
 
 import java.util.concurrent.Future;
 
@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CommunityRepository extends JpaRepository<Community, Long> {
 
-    @Async
-    @Query("SELECT c FROM Community c where c.name = :name")
-    Future<Community> findCommunityByName(@Param("name") String name);
+@Repository
+public interface CommunityTagsRepository extends JpaRepository<CommunityTags, Long>  {
+
+	@Async
+    @Query("SELECT ct FROM CommunityTags ct where ct.tid = :tid")
+    Future<CommunityTags> findCommunityTagsByTID(@Param("tid") Long tid);
 }
