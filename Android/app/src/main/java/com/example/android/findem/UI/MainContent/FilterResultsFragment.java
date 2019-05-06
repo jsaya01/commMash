@@ -1,4 +1,6 @@
 package com.example.android.findem.UI.MainContent;
 
-public class FilterResultsFragment {
+import android.support.v4.app.Fragment;
+
+public class FilterResultsFragment extends Fragment {
 }

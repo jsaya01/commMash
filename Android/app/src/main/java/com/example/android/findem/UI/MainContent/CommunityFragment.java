@@ -1,4 +1,6 @@
 package com.example.android.findem.UI.MainContent;
 
-public class CommunityFragment {
+import android.support.v4.app.Fragment;
+
+public class CommunityFragment extends Fragment {
 }
