@@ -16,7 +16,7 @@ public class MessageInstance {
 	 private long uidto;
 	 private String content;
 	 
-	 public MessageInstance(long uidfrom, long uidto, String context) {
+	 public MessageInstance(long uidfrom, long uidto, String content) {
 		 this.uidfrom = uidfrom;
 		 this.uidto = uidto;
 		 this.content = content;
