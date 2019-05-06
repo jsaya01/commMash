@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface CommunityTagsRepository extends JpaRepository<CommunityTags, Long>  {
 
 	@Async
-    @Query("SELECT u FROM User u where u.tid = :tid")
-    Future<CommunityTags> findCommunityTagsByTID(@Param("tid") long tid);
+    @Query("SELECT ct FROM CommunityTags ct where ct.tid = :tid")
+    Future<CommunityTags> findCommunityTagsByTID(@Param("tid") Long tid);
 }

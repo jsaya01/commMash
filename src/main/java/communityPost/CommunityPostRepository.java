@@ -15,8 +15,8 @@ import community.Community;
 public interface CommunityPostRepository extends JpaRepository<CommunityPost, Long> {
 
     @Async
-    @Query("SELECT u FROM User u where u.pid = :pid")
-    Future<CommunityPost> findCommunityPostByPID(@Param("pid") long pid);
+    @Query("SELECT cp FROM CommunityPost cp where cp.pid = :pid")
+    Future<CommunityPost> findCommunityPostByPID(@Param("pid") Long pid);
 }
 
 
