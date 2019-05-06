@@ -1,4 +1,4 @@
-package userInterestTag;
+package user_interest_tag;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

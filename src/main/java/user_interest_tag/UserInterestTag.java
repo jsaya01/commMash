@@ -1,4 +1,4 @@
-package userInterestTag;
+package user_interest_tag;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

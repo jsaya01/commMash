@@ -1,4 +1,4 @@
-package messageInstance;
+package user_interest_tag;
 
 import matches.Matches;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,31 +10,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/messaging", produces = "application/json")
-public class MessageController {
+@RequestMapping(value = "/interest", produces = "application/json")
+public class UserInterestTagController {
 
     @Autowired
-    MessageRepository messageRepository;
+    UserInterestTagRepository userInterestTagRepository;
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity post(@RequestBody MessageInstance message) {
-        messageRepository.save(message);
+    public ResponseEntity post(@RequestBody UserInterestTag userInterestTag) {
+        userInterestTagRepository.save(userInterestTag);
 
         return ResponseEntity.status(HttpStatus.OK).body("Posted");
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity put(@RequestBody MessageInstance message) {
-        messageRepository.save(message);
-
+    public ResponseEntity put(@RequestBody UserInterestTag userInterestTag) {
+        userInterestTagRepository.save(userInterestTag);
         return ResponseEntity.status(HttpStatus.OK).body("Edited");
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity delete(@RequestBody MessageInstance message) {
-        messageRepository.delete(message);
+    public ResponseEntity delete(@RequestBody UserInterestTag userInterestTag) {
+        userInterestTagRepository.delete(userInterestTag);
 
-        return ResponseEntity.status(HttpStatus.OK).body("Deleted");
+        return  ResponseEntity.status(HttpStatus.OK).body("Deleted");
     }
 
 }
