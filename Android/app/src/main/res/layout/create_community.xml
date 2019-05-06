@@ -65,7 +65,8 @@
         app:layout_constraintBottom_toTopOf="@+id/addPictureLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/camera" />
+        android:src="@drawable/camera"
+        android:tint="@android:color/white"/>
 
     <TextView
         android:id="@+id/addPictureLabel"
