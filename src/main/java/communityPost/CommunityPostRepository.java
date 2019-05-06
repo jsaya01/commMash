@@ -12,7 +12,7 @@ import community.Community;
 
 	
 @Repository
-public interface CommunityPostRepository extends JpaRepository<Community, Long> {
+public interface CommunityPostRepository extends JpaRepository<CommunityPost, Long> {
 
     @Async
     @Query("SELECT u FROM User u where u.pid = :pid")
