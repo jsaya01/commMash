@@ -25,10 +25,10 @@
         android:layout_marginTop="2dp"
         android:background="@android:color/darker_gray"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/signup_add_picture_text"
-        app:layout_constraintEnd_toEndOf="@+id/signup_add_picture_pic"
-        app:layout_constraintStart_toStartOf="@+id/signup_add_picture_pic"
-        app:layout_constraintTop_toBottomOf="@+id/signup_add_picture_pic" />
+        app:layout_constraintBottom_toTopOf="@id/signup_add_picture_text"
+        app:layout_constraintEnd_toEndOf="@id/signup_add_picture_pic"
+        app:layout_constraintStart_toStartOf="@id/signup_add_picture_pic"
+        app:layout_constraintTop_toBottomOf="@id/signup_add_picture_pic" />
 
     <TextView
         android:id="@+id/signup_add_picture_text"
@@ -36,9 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/add_a_picture_signup"
-        app:layout_constraintEnd_toEndOf="@+id/signup_add_picture_pic"
-        app:layout_constraintStart_toStartOf="@+id/signup_add_picture_pic"
-        app:layout_constraintTop_toBottomOf="@+id/signup_add_picture_pic" />
+        app:layout_constraintEnd_toEndOf="@id/signup_add_picture_pic"
+        app:layout_constraintStart_toStartOf="@id/signup_add_picture_pic"
+        app:layout_constraintTop_toBottomOf="@id/signup_add_picture_pic" />
 
     <TextView
         android:id="@+id/signup_fullname_text"
@@ -47,9 +47,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
-        android:text="Full Name"
+        android:text="@string/signup_full_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_add_picture_text" />
+        app:layout_constraintTop_toBottomOf="@id/signup_add_picture_text" />
 
 
     <EditText
@@ -59,19 +59,19 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/rounded_edittext"
         android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/signup_fullname_text"
-        app:layout_constraintTop_toBottomOf="@+id/signup_fullname_text" />
+        app:layout_constraintStart_toStartOf="@id/signup_fullname_text"
+        app:layout_constraintTop_toBottomOf="@id/signup_fullname_text" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/signup_first_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name"
+        android:text="@string/signup_first_name"
         android:textColor="@color/colorLightGray"
-        app:layout_constraintBottom_toBottomOf="@+id/signup_first_name_et"
-        app:layout_constraintEnd_toEndOf="@+id/signup_first_name_et"
-        app:layout_constraintStart_toStartOf="@+id/signup_first_name_et"
-        app:layout_constraintTop_toTopOf="@+id/signup_first_name_et" />
+        app:layout_constraintBottom_toBottomOf="@id/signup_first_name_et"
+        app:layout_constraintEnd_toEndOf="@id/signup_first_name_et"
+        app:layout_constraintStart_toStartOf="@id/signup_first_name_et"
+        app:layout_constraintTop_toTopOf="@id/signup_first_name_et" />
 
 
     <EditText
@@ -83,27 +83,27 @@
         android:background="@drawable/rounded_edittext"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="@id/signup_first_name_tv" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Last Name"
+        android:text="@string/signup_last_name"
         android:textColor="@color/colorLightGray"
-        app:layout_constraintBottom_toBottomOf="@+id/signup_last_name_et"
-        app:layout_constraintEnd_toEndOf="@+id/signup_last_name_et"
-        app:layout_constraintStart_toStartOf="@+id/signup_last_name_et"
-        app:layout_constraintTop_toTopOf="@+id/signup_last_name_et" />
+        app:layout_constraintBottom_toBottomOf="@id/signup_last_name_et"
+        app:layout_constraintEnd_toEndOf="@id/signup_last_name_et"
+        app:layout_constraintStart_toStartOf="@id/signup_last_name_et"
+        app:layout_constraintTop_toTopOf="@id/signup_last_name_et" />
 
     <TextView
         android:id="@+id/sign_up_username_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Username"
-        app:layout_constraintEnd_toEndOf="@+id/signup_fullname_text"
-        app:layout_constraintStart_toStartOf="@+id/signup_fullname_text"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:text="@string/signup_username"
+        app:layout_constraintEnd_toEndOf="@id/signup_fullname_text"
+        app:layout_constraintStart_toStartOf="@id/signup_fullname_text"
+        app:layout_constraintTop_toBottomOf="@id/signup_first_name_tv" />
 
     <EditText
         android:id="@+id/sign_up_username_et"
@@ -116,17 +116,17 @@
         android:layout_marginRight="32dp"
         android:background="@drawable/rounded_edittext"
         android:textColor="@android:color/white"
-        app:layout_constraintStart_toStartOf="@+id/sign_up_username_tv"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_username_tv" />
+        app:layout_constraintStart_toStartOf="@id/sign_up_username_tv"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_username_tv" />
 
     <TextView
         android:id="@+id/sign_up_password_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Password"
-        app:layout_constraintStart_toStartOf="@+id/sign_up_username_tv"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_username_et" />
+        android:text="@string/signup_password"
+        app:layout_constraintStart_toStartOf="@id/sign_up_username_tv"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_username_et" />
 
     <EditText
         android:id="@+id/sign_up_password_et"
@@ -140,16 +140,16 @@
         android:background="@drawable/rounded_edittext"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_password_tv" />
+        app:layout_constraintTop_toBottomOf="@id/sign_up_password_tv" />
 
     <TextView
         android:id="@+id/sign_up_confirm_password_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Confirm Password"
-        app:layout_constraintStart_toStartOf="@+id/sign_up_password_tv"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_password_et" />
+        android:text="@string/signup_confirm_password"
+        app:layout_constraintStart_toStartOf="@id/sign_up_password_tv"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_password_et" />
 
     <EditText
         android:id="@+id/sign_up_confirm_password_et"
@@ -163,30 +163,29 @@
         android:background="@drawable/rounded_edittext"
         android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_confirm_password_tv" />
+        app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password_tv" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/sign_up_find_new_crowd_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="Find your new crowd."
+        android:text="@string/signup_find_your_new_crowd"
         android:textColor="@color/colorLightGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_confirm_password_et" />
+        app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password_et" />
 
     <Button
+        style="@style/MaterialButton"
         android:id="@+id/sign_up_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:background="@android:color/white"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Sign Up"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        android:text="@string/sign_up"
+        app:layout_constraintEnd_toEndOf="@id/sign_up_find_new_crowd_tv"
+        app:layout_constraintStart_toStartOf="@id/sign_up_find_new_crowd_tv"
+        app:layout_constraintTop_toBottomOf="@id/sign_up_find_new_crowd_tv" />
 
 
 </android.support.constraint.ConstraintLayout>

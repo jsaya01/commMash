@@ -1,6 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/home_trending_communities_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="32dp"
+            android:text="@string/home_trending_communities"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/home_trending_divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="32dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/home_trending_communities_tv" />
+
+        <!-- Uses community_rv -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_trending_communities_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            app:layout_constraintStart_toStartOf="@+id/home_trending_communities_tv"
+            app:layout_constraintTop_toBottomOf="@+id/home_trending_divider" />
+
+        <TextView
+            android:id="@+id/home_your_communities_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/home_your_communities"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="@+id/home_trending_communities_rv"
+            app:layout_constraintTop_toBottomOf="@+id/home_trending_communities_rv" />
+
+        <LinearLayout
+            android:id="@+id/home_your_communities_divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/home_your_communities_tv" />
+
+        <!-- Uses community_rv -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_your_communities_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintStart_toStartOf="@id/home_your_communities_divider"
+            app:layout_constraintTop_toBottomOf="@id/home_your_communities_divider" />
+
+        <TextView
+            android:id="@+id/home_find_new_crowd_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/home_find_your_new_crowd"
+            android:textColor="@color/colorLightGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_your_communities_rv" />
+
+        <Button
+            android:id="@+id/home_create_community_btn"
+            style="@style/MaterialButton"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/home_create_community"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_find_new_crowd_tv" />
+
+        <Button
+            android:id="@+id/home_search_community_btn"
+            style="@style/MaterialButton"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginRight="48dp"
+            android:text="@string/home_search_communities"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_find_new_crowd_tv" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
