@@ -14,6 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface CommunityUserProfileRepository extends JpaRepository<CommunityUserProfile, Long> {
 
 	@Async
-    @Query("SELECT u FROM User u where u.username = :username")
-    Future<CommunityUserProfile> findCommunityUserProfile(@Param("username") String username);
+    @Query("SELECT cup FROM CommunityUserProfile cup where cup.uid = :uid and cup.cid = :cid")
+    Future<CommunityUserProfile> findCommunityUserProfile(@Param("uid") Long uid, @Param("cid") Long cid);
 }
