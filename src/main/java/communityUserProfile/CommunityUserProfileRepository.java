@@ -15,5 +15,5 @@ public interface CommunityUserProfileRepository extends JpaRepository<CommunityU
 
 	@Async
     @Query("SELECT u FROM User u where u.username = :username")
-    Future<User> findCommunityUserProfile(@Param("username") String username);
+    Future<CommunityUserProfile> findCommunityUserProfile(@Param("username") String username);
 }
