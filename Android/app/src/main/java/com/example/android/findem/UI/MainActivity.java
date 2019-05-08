@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.message_overview_rv);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        mOnNavigationItemSelectedListener = createNavigationBar(this);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        // default to launch home screen, will need to fix this once we handle state changes
-        setUpHomeFragment();
+//        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+//        mOnNavigationItemSelectedListener = createNavigationBar(this);
+//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+//
+//        // default to launch home screen, will need to fix this once we handle state changes
+//        setUpHomeFragment();
     }
 
     public BottomNavigationView.OnNavigationItemSelectedListener createNavigationBar(final Context context) {
