@@ -19,7 +19,6 @@
         android:layout_marginRight="40dp"
         android:drawableStart="@drawable/ic_search"
         android:drawableLeft="@drawable/ic_search"
-        android:ems="10"
         android:hint="@string/san_luis_obispo"
         android:inputType="textPersonName"
         android:textSize="18sp"

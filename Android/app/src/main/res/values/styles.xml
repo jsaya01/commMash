@@ -27,7 +27,6 @@
 
     <!-- EditText theme -->
     <style name="EditText" parent="android:style/Widget.TextView">
-        <item name="backgroundTint">@android:color/darker_gray</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:background">@color/textBg</item>
         <item name="android:textSize">16sp</item>
