@@ -8,9 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class CommunityUserProfile {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long upid;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long upid;
     
 	private long uid;
 	private long cid;
@@ -22,9 +22,9 @@ public class CommunityUserProfile {
 		this.description = description;
 	}
 
-//	public long getUpid() {
-//		return upid;
-//	}
+	public long getUpid() {
+		return upid;
+	}
 	
 	public long getUid() {
 		return uid;
