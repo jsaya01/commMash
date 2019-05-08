@@ -17,7 +17,4 @@ public interface CommunityUserProfileRepository extends JpaRepository<CommunityU
     @Query("SELECT cup FROM CommunityUserProfile cup where cup.uid = :uid and cup.cid = :cid")
     Future<CommunityUserProfile> findCommunityUserProfile(@Param("uid") Long uid, @Param("cid") Long cid);
 
-	@Async
-    @Query("SELECT cup FROM CommunityUserProfile cup where cup.upid = :upid")
-    Future<CommunityUserProfile> findCommunityUserProfile(@Param("upid") Long upid);
 }
