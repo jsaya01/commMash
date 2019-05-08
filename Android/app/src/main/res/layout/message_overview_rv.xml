@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/first_name"
+        android:id="@+id/last_name_field"
         android:layout_width="55dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
@@ -64,7 +64,7 @@
         android:textColor="@color/textColor"
         tools:text="5:42 PM"
         android:text="5:42 PM"
-        app:layout_constraintBottom_toBottomOf="@+id/first_name"
+        app:layout_constraintBottom_toBottomOf="@+id/last_name_field"
         app:layout_constraintEnd_toStartOf="@+id/view_message"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />

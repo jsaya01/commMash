@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/AppTheme">
@@ -39,7 +40,6 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="40dp"
         android:ems="10"
         android:gravity="top"
         android:hint="@string/community_description_placeholder"
@@ -47,7 +47,6 @@
         android:padding="10dp"
         android:singleLine="false"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/add_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,14 +58,14 @@
         android:layout_height="36dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/addPictureLabel"
+        android:src="@drawable/camera"
+        android:tint="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/camera"
-        android:tint="@android:color/white"/>
+        app:layout_constraintTop_toBottomOf="@+id/community_description" />
 
     <TextView
         android:id="@+id/addPictureLabel"
@@ -75,13 +74,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="25dp"
         android:text="@string/add_picture"
-        app:layout_constraintBottom_toTopOf="@+id/addTags"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_photo" />
 
     <EditText
         android:id="@+id/addTags"
@@ -90,9 +89,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="60dp"
         android:layout_marginRight="60dp"
-        android:layout_marginBottom="100dp"
         android:background="@drawable/rounded_edittext"
         android:drawableStart="@drawable/ic_search"
         android:drawableLeft="@drawable/ic_search"
@@ -100,9 +99,9 @@
         android:gravity="start"
         android:hint="@string/add_tags"
         android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@+id/create_community_helper"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPictureLabel" />
 
     <TextView
         android:id="@+id/create_community_helper"
@@ -131,10 +130,10 @@
         android:layout_marginBottom="40dp"
         android:text="@string/create_community"
         android:textAllCaps="false"
-        app:strokeColor="@color/textColor"
-        app:strokeWidth="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/textColor"
+        app:strokeWidth="2dp" />
 
 </android.support.constraint.ConstraintLayout>
