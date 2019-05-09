@@ -1,43 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/AppTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/AppTheme">
+    android:layout_height="match_parent">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/community_search"
-        style="@style/EditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        android:drawableStart="@drawable/ic_search"
-        android:drawableLeft="@drawable/ic_search"
-        android:hint="@string/san_luis_obispo"
-        android:inputType="textPersonName"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/community_search"
+            style="@style/EditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            android:drawableStart="@drawable/ic_search"
+            android:drawableLeft="@drawable/ic_search"
+            android:hint="@string/san_luis_obispo"
+            android:inputType="textPersonName"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/filter_communities"
-        style="@style/TextView"
-        android:textSize="18sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/filter"
-        android:drawableLeft="@drawable/ic_filter_list"
-        android:drawableStart="@drawable/ic_filter_list"
-        android:drawablePadding="10dp"
-        app:layout_constraintStart_toStartOf="@+id/community_search"
-        app:layout_constraintTop_toBottomOf="@+id/community_search" />
+        <TextView
+            android:id="@+id/filter_communities"
+            style="@style/TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_filter_list"
+            android:drawableLeft="@drawable/ic_filter_list"
+            android:drawablePadding="10dp"
+            android:text="@string/filter"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="@+id/community_search"
+            app:layout_constraintTop_toBottomOf="@+id/community_search" />
+    </android.support.constraint.ConstraintLayout>
 
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

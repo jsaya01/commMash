@@ -6,6 +6,12 @@
         <item name="android:button">@style/MaterialButton</item>
     </style>
 
+    <!-- Base application theme. -->
+    <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:button">@style/MaterialButton</item>
+    </style>
+
     <!-- Button theme -->
     <style name="MaterialButton" parent="android:style/Widget.Button">
         <item name="android:textSize">15sp</item>
@@ -19,7 +25,6 @@
 
     <!-- TextView theme -->
     <style name="TextView" parent="android:style/Widget.TextView">
-        <item name="app:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">16sp</item>
     </style>

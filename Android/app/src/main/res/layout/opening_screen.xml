@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/AppTheme">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/backgroundProfileImage"
@@ -29,7 +28,6 @@
         android:text="FINDEM"
         android:textColor="#FFFFFF"
         android:textSize="64sp"
-        android:background="color/transparent"
         app:fontFamily="@font/tenor_sans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,11 +41,10 @@
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="355dp"
+        android:layout_marginTop="300dp"
         android:text="Find a community."
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:background="color/transparent"
         app:fontFamily="@font/roboto"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -59,12 +56,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="80dp"
         android:text="Match with people like you."
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:background="color/transparent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:fontFamily="@font/roboto"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -74,5 +71,38 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="70dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/opening_sign_up"
+            style="@style/MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:onClick="signUp"
+            android:text="@string/opening_sign_up" />
+
+        <Button
+            android:id="@+id/opening_login"
+            style="@style/MaterialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:onClick="signIn"
+            android:text="@string/opening_login" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

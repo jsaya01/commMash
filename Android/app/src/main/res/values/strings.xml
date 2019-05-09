@@ -37,5 +37,7 @@
     <string name="age">Age</string>
     <string name="location">Location</string>
     <string name="description">Description</string>
+    <string name="opening_sign_up">Sign Up</string>
+    <string name="opening_login">Login</string>
 
 </resources>
