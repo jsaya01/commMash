@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/AppTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/profile_image_ep"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginStart="8dp"
@@ -26,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/description"
+            android:id="@+id/description_ep"
             style="@style/EditText"
             android:layout_width="0dp"
             android:layout_height="153dp"
@@ -38,7 +40,7 @@
             android:padding="10dp"
             android:singleLine="false"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="@+id/age_field_ep3"
+            app:layout_constraintEnd_toEndOf="@+id/location_field_ep"
             app:layout_constraintStart_toStartOf="@+id/age_field_ep"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -52,7 +54,7 @@
             android:drawablePadding="8dp"
             android:text="@string/age"
             app:layout_constraintStart_toStartOf="@+id/first_name_ep2"
-            app:layout_constraintTop_toBottomOf="@+id/first_name_field_ep2" />
+            app:layout_constraintTop_toBottomOf="@+id/first_name_field_ep" />
 
         <TextView
             android:id="@+id/location_ep"
@@ -64,7 +66,7 @@
             android:drawableEnd="@drawable/ic_edit_scaled"
             android:drawablePadding="8dp"
             android:text="@string/location"
-            app:layout_constraintStart_toStartOf="@+id/last_name_field"
+            app:layout_constraintStart_toStartOf="@+id/last_name_field_ep"
             app:layout_constraintTop_toTopOf="@+id/age_ep" />
 
         <TextView
@@ -79,59 +81,59 @@
             android:drawablePadding="8dp"
             android:text="@string/signup_full_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_ep" />
 
         <EditText
-            android:id="@+id/last_name_field"
+            android:id="@+id/last_name_field_ep"
             style="@style/EditText"
             android:layout_width="0dp"
-            android:layout_height="19dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
-            android:text="@string/let_world_find_you"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/first_name_field_ep2"
-            app:layout_constraintTop_toTopOf="@+id/first_name_field_ep2" />
+            app:layout_constraintStart_toEndOf="@+id/first_name_field_ep"
+            app:layout_constraintTop_toTopOf="@+id/first_name_field_ep" />
 
         <EditText
             android:id="@+id/age_field_ep"
             style="@style/EditText"
             android:layout_width="0dp"
-            android:layout_height="17dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/let_world_find_you"
-            app:layout_constraintEnd_toEndOf="@+id/first_name_field_ep2"
-            app:layout_constraintStart_toStartOf="@+id/first_name_field_ep2"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@+id/first_name_field_ep"
+            app:layout_constraintStart_toStartOf="@+id/first_name_field_ep"
             app:layout_constraintTop_toBottomOf="@+id/age_ep" />
 
         <EditText
-            android:id="@+id/age_field_ep3"
+            android:id="@+id/location_field_ep"
             style="@style/EditText"
             android:layout_width="0dp"
-            android:layout_height="14dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/let_world_find_you"
-            app:layout_constraintEnd_toEndOf="@+id/last_name_field"
-            app:layout_constraintStart_toStartOf="@+id/last_name_field"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="@+id/last_name_field_ep"
+            app:layout_constraintStart_toStartOf="@+id/last_name_field_ep"
             app:layout_constraintTop_toBottomOf="@+id/location_ep" />
 
         <EditText
-            android:id="@+id/first_name_field_ep2"
+            android:id="@+id/first_name_field_ep"
             style="@style/EditText"
             android:layout_width="0dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginRight="10dp"
-            android:text="@string/let_world_find_you"
-            app:layout_constraintEnd_toStartOf="@+id/last_name_field"
+            android:singleLine="true"
+            app:layout_constraintEnd_toStartOf="@+id/last_name_field_ep"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="@+id/first_name_ep2"
             app:layout_constraintTop_toBottomOf="@+id/first_name_ep2" />
 
         <android.support.design.button.MaterialButton
-            android:id="@+id/save_changes"
+            android:id="@+id/save_changes_ep"
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,15 +144,15 @@
             android:text="Save Changes"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/discard_changes"
+            app:layout_constraintEnd_toStartOf="@+id/discard_changes_ep"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/description"
+            app:layout_constraintTop_toBottomOf="@+id/description_ep"
             app:strokeColor="@color/textColor"
             app:strokeWidth="2dp" />
 
         <android.support.design.button.MaterialButton
-            android:id="@+id/discard_changes"
+            android:id="@+id/discard_changes_ep"
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -158,11 +160,11 @@
             android:layout_marginRight="20dp"
             android:text="Discard Changes"
             android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="@+id/save_changes"
+            app:layout_constraintBottom_toBottomOf="@+id/save_changes_ep"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/save_changes"
-            app:layout_constraintTop_toTopOf="@+id/save_changes"
+            app:layout_constraintStart_toEndOf="@+id/save_changes_ep"
+            app:layout_constraintTop_toTopOf="@+id/save_changes_ep"
             app:strokeColor="@color/textColor"
             app:strokeWidth="2dp" />
 
@@ -180,4 +182,4 @@
             app:layout_constraintTop_toBottomOf="@+id/age_field_ep" />
     </android.support.constraint.ConstraintLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>

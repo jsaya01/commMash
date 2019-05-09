@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/profile_image_ep"
         android:layout_width="49dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/last_name_field"
+        android:id="@+id/last_name_field_ep"
         android:layout_width="55dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
@@ -30,8 +30,8 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/last_message"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
-        app:layout_constraintTop_toTopOf="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@+id/profile_image_ep"
+        app:layout_constraintTop_toTopOf="@+id/profile_image_ep"
         app:layout_constraintVertical_bias="0.0"
         tools:text="Jane"
         android:text="Jane" />
@@ -48,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintStart_toEndOf="@+id/profile_image_ep"
         tools:text="Hey are we still on for our Saturday n..."
         android:text="Hey are we still on for our Saturday n..." />
 
@@ -64,7 +64,7 @@
         android:textColor="@color/textColor"
         tools:text="5:42 PM"
         android:text="5:42 PM"
-        app:layout_constraintBottom_toBottomOf="@+id/last_name_field"
+        app:layout_constraintBottom_toBottomOf="@+id/last_name_field_ep"
         app:layout_constraintEnd_toStartOf="@+id/view_message"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
