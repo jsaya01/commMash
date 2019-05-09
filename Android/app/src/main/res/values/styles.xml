@@ -21,6 +21,7 @@
 
     <!-- TextView theme -->
     <style name="TextView" parent="android:style/Widget.TextView">
+        <item name="app:fontFamily">@font/roboto</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textSize">16sp</item>
     </style>

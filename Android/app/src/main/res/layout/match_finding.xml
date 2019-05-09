@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/black">
+    android:background="@android:color/black"
+    style="@style/AppTheme">
 
     <Button
         android:id="@+id/button"
@@ -51,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="70dp" />
+        app:layout_constraintGuide_begin="16dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -84,24 +85,34 @@
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <Button
+
+    <TextView
         android:id="@+id/button2"
-        style="@style/MaterialButton"
+        style="@style/TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="meh"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        tools:layout_editor_absoluteX="76dp" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline8"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <Button
+    <TextView
         android:id="@+id/button3"
         style="@style/MaterialButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="101dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:src="@drawable/ic_match_checkmark"
         android:text="found em!"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:layout_editor_absoluteX="244dp" />
+        android:textColor="@color/colorMatch"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline9"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <android.support.constraint.Barrier
         android:id="@+id/barrier2"
@@ -125,6 +136,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="80dp"
         android:layout_marginRight="80dp"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
         app:srcCompat="@drawable/ic_match_checkmark" />
@@ -135,9 +147,24 @@
         android:layout_height="70dp"
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_match_deny"
         tools:layout_editor_absoluteY="585dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="119dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="119dp" />
 
 
 </android.support.constraint.ConstraintLayout>
