@@ -25,6 +25,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:background="#00FFFFFF"
         android:text="FINDEM"
         android:textColor="#FFFFFF"
         android:textSize="64sp"
@@ -41,7 +42,8 @@
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="350dp"
+        android:background="#00FFFFFF"
         android:text="Find a community."
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -55,15 +57,17 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="40dp"
+        android:background="#00FFFFFF"
         android:text="Match with people like you."
+
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:fontFamily="@font/roboto"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintStart_toStartOf="@+id/guideline10"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline10"

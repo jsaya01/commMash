@@ -32,13 +32,13 @@
     <!-- EditText theme -->
     <style name="EditText" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:background">@color/textBg</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColorHint">#C4C4C4</item>
         <item name="android:drawablePadding">15dp</item>
         <item name="android:lineSpacingExtra">10dp</item>
         <item name="android:padding">5dp</item>
         <item name="android:includeFontPadding">true</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
     </style>
 
     <!-- TextButton theme -->

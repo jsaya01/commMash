@@ -12,10 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:tint="@android:color/white"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="centerInside"
+        android:scaleX=".15"
+        android:scaleY=".15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/camera" />
+        tools:src="@drawable/mountain_biking" />
 
     <TextView
         android:id="@+id/community_rv_name"

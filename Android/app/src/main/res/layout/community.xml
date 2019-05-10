@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/AppTheme"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,12 +19,12 @@
             android:clickable="false"
             android:cropToPadding="false"
             android:scaleType="fitStart"
-            android:tint="#5B000000"
+            android:src="@drawable/mountain_biking"
+            android:tint="#88000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tintMode="src_over"
-            tools:srcCompat="@tools:sample/backgrounds/scenic[4]" />
+            app:tintMode="src_over" />
 
         <TextView
             android:id="@+id/textView8"
