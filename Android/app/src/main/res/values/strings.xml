@@ -29,8 +29,15 @@
     <string name="san_luis_obispo">San Luis Obispo</string>
     <string name="filter">Filter</string>
     <string name="community_description_placeholder">Community Description (255 character limit)</string>
+    <string name="profile_description_placeholder">Profile Description (255 character limit)</string>
     <string name="add_picture">Add a picture!</string>
     <string name="let_world_find_you">Let the world find you.</string>
     <string name="add_tags">Add tags</string>
     <string name="search">Search</string>
+    <string name="age">Age</string>
+    <string name="location">Location</string>
+    <string name="description">Description</string>
+    <string name="opening_sign_up">Sign Up</string>
+    <string name="opening_login">Login</string>
+
 </resources>

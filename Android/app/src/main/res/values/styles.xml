@@ -4,8 +4,12 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="android:button">@style/MaterialButton</item>
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="android:background">@android:color/black</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.NoActionBar" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:button">@style/MaterialButton</item>
     </style>
 
     <!-- Button theme -->
@@ -28,13 +32,13 @@
     <!-- EditText theme -->
     <style name="EditText" parent="android:style/Widget.TextView">
         <item name="android:textColor">@color/textColor</item>
-        <item name="android:background">@color/textBg</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColorHint">#C4C4C4</item>
         <item name="android:drawablePadding">15dp</item>
         <item name="android:lineSpacingExtra">10dp</item>
         <item name="android:padding">5dp</item>
         <item name="android:includeFontPadding">true</item>
+        <item name="android:background">@drawable/rounded_edittext</item>
     </style>
 
     <!-- TextButton theme -->
