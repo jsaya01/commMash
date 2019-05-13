@@ -46,8 +46,8 @@ public class CommunityUserProfileController {
     
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getCommunityUserProfile(@RequestParam long upid) {
-        Future<CommunityUserProfile> communityUserProfile = communityUserProfileRepository.findCommunityUserProfile(upid);
+    public ResponseEntity getCommunityUserProfile(@RequestParam long uid, @RequestParam long cid) {
+        Future<CommunityUserProfile> communityUserProfile = communityUserProfileRepository.findCommunityUserProfile(uid, cid);
 
         try{
             communityUserProfile.get().getDescription();
@@ -74,11 +74,11 @@ public class CommunityUserProfileController {
     
     @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity delete(@RequestBody CommunityUserProfile communityUserProfile) {
-    	ResponseEntity res = getCommunityUserProfile(communityUserProfile.getUpid());
+    	ResponseEntity res = getCommunityUserProfile(communityUserProfile.getUid(), communityUserProfile.getCid());
     	
     	if(res.getStatusCode() == HttpStatus.OK) {
     		CommunityUserProfile temp = (CommunityUserProfile) res.getBody();
-    		communityUserProfileRepository.deleteById(temp.getUpid());
+    		communityUserProfileRepository.delete(temp);
             return ResponseEntity.status(HttpStatus.OK).body("Deleted");
     	}
     	
