@@ -9,11 +9,12 @@
     android:background="@android:color/black">
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/linear_redBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/community_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -28,7 +29,7 @@
             app:tintMode="src_over" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/profile_edit_button"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/community_description"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,11 +56,11 @@
             android:text="This community is about..."
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintBottom_toBottomOf="@+id/community_image"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/communityMatches"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -69,7 +70,7 @@
             android:textColor="#FFFFFF"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/community_image" />
 
         <LinearLayout
             android:id="@+id/community_matches_divider"
@@ -84,7 +85,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/communityMatches" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/community_matches_rv"
@@ -98,11 +99,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/add_matches_image"
             app:layout_constraintVertical_bias="0.788" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/add_matches_image"
             android:layout_width="63dp"
             android:layout_height="57dp"
             android:layout_marginStart="24dp"
@@ -114,7 +115,7 @@
             app:srcCompat="@drawable/ic_add_match" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/find_people_text"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,9 +125,9 @@
             android:text="Find some more people?"
             android:textColor="#FCFCFC"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5" />
+            app:layout_constraintBottom_toBottomOf="@+id/add_matches_image"
+            app:layout_constraintStart_toEndOf="@+id/add_matches_image"
+            app:layout_constraintTop_toTopOf="@+id/add_matches_image" />
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

@@ -7,31 +7,33 @@
     android:background="@android:color/black"
     style="@style/AppTheme">
 
-    <Button
+    <TextView
         android:id="@+id/button"
-        style="@style/TextButton"
+        style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
+        android:textColor="#D2FFFFFF"
+        android:textSize="16sp"
         android:text="@string/community_name"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView"
         android:layout_width="260dp"
-        android:layout_height="250dp"
+        android:layout_height="260dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        tools:srcCompat="@tools:sample/avatars[3]" />
+        android:src="@drawable/mountain_biking" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline4"
