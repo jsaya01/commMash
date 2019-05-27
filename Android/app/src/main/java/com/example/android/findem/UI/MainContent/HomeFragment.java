@@ -1,7 +1,6 @@
 package com.example.android.findem.UI.MainContent;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -58,14 +57,14 @@ public class HomeFragment extends Fragment {
         trendingCommunitiesRv.setLayoutManager(linearLayoutManager);
         trendingCommunitiesRv.setHasFixedSize(true);
         trendingCommunitiesAdapter = new CommunityListAdapter();
-        trendingCommunitiesAdapter.setCommunities(trendingCommunities);
+        trendingCommunitiesAdapter.setState(trendingCommunities, getContext(), uid, getFragmentManager());
         trendingCommunitiesRv.setAdapter(trendingCommunitiesAdapter);
 
         yourCommunitiesRv = root.findViewById(R.id.home_your_communities_rv);
         yourCommunitiesRv.setLayoutManager(linearLayoutManager);
         yourCommunitiesRv.setHasFixedSize(true);
         yourCommunitiesAdapter = new CommunityListAdapter();
-        yourCommunitiesAdapter.setCommunities(yourCommunities);
+        yourCommunitiesAdapter.setState(yourCommunities, getContext(), uid, getFragmentManager());
         yourCommunitiesRv.setAdapter(yourCommunitiesAdapter);
 
         createCommunityBtn = root.findViewById(R.id.home_create_community_btn);
