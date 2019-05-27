@@ -58,4 +58,6 @@ public class SearchCommunitiesFragment extends Fragment {
         communityListAdapter = new CommunityListAdapter();
         communityListAdapter.setState(communities, getContext(), uid, getFragmentManager());
     }
+
+    //TODO need to use the model from the homepage to populate the community rv
 }
