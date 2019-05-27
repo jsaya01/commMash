@@ -1,14 +1,5 @@
 package com.example.android.findem.utils;
 
-import android.net.Uri;
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.net.URL;
-import java.util.ArrayList;
-
 public class WeatherExtrasLoader {
     /*
     private static class JsonParsing {

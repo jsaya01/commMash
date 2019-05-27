@@ -16,9 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.findem.R;
 import com.example.android.findem.adapters.CommunityListAdapter;
 import com.example.android.findem.models.Community;
-import com.example.android.findem.R;
 import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
