@@ -1,5 +1,6 @@
 package cm.community;
 
+import java.util.List;
 import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,7 @@ public interface CommunityRepository extends JpaRepository<Community, Long> {
     @Async
     @Query("SELECT c FROM Community c where c.name = :name")
     Future<Community> findCommunityByName(@Param("name") String name);
+    
+    @Query("SELECT c FROM Community c where c.cid = :cid")
+    Community findCommunityByCid(@Param("cid") Long cid);
 }
