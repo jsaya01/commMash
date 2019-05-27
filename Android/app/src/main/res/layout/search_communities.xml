@@ -44,6 +44,16 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="@+id/community_search"
             app:layout_constraintTop_toBottomOf="@+id/community_search" />
+
+        <!-- Uses community_rv -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/search_communities_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintStart_toStartOf="@id/filter_communities"
+            app:layout_constraintTop_toBottomOf="@id/filter_communities" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.v4.widget.NestedScrollView>
