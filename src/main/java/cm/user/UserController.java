@@ -22,7 +22,7 @@ public class UserController {
     public List<User> getUserProfiles(List<Long> uids){
     	List <User> users = new ArrayList<>();
     	for(Long uid: uids) {
-    		User user = userRepository.findById(uid).get();
+    		User user = userRepository.findUserByUid(uid);
     		users.add(user);
     	}
     	return users;

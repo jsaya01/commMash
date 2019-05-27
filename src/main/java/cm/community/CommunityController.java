@@ -24,7 +24,7 @@ public class CommunityController {
     public List<Community> getCommunityProfiles(List<Long> cids){
     	List <Community> comms = new ArrayList<>();
     	for(Long cid: cids) {
-    		Community comm = communityRepository.findById(cid).get();
+    		Community comm = communityRepository.findCommunityByCid(cid);
     		comms.add(comm);
     	}
     	return comms;

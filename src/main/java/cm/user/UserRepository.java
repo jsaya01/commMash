@@ -14,4 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Async
     @Query("SELECT u FROM User u where u.username = :username")
     Future<User> findUserByUsername(@Param("username") String username);
+    
+    @Query("SELECT u FROM User u where u.uid = :uid")
+    User findUserByUid(@Param("uid") Long uid);
 }
