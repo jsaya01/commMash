@@ -1,11 +1,14 @@
 package com.example.android.findem.UI.MainContent;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.findem.Adapters.CommunityListAdapter;
 import com.example.android.findem.Models.Community;
 import com.example.android.findem.R;
 import com.example.android.findem.UI.ActiveFragments;
@@ -22,12 +26,16 @@ import com.example.android.findem.Utils.CommunityLoader;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView trendingCommunities;
-    private RecyclerView yourCommunitiies;
+    private RecyclerView trendingCommunitiesRv;
+    CommunityListAdapter trendingCommunitiesAdapter;
+    private RecyclerView yourCommunitiesRv;
+    CommunityListAdapter yourCommunitiesAdapter;
     private Button createCommunityBtn;
     private Button searchCommunityBtn;
 
     private int uid;
+    private ArrayList<Community> yourCommunities = new ArrayList<>();
+    private ArrayList<Community> trendingCommunities = new ArrayList<>();
 
     private static final String LOG_TAG = "HomeFragment";
 
@@ -44,8 +52,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpWorld(View root) {
-        trendingCommunities = root.findViewById(R.id.home_trending_communities_rv);
-        yourCommunitiies = root.findViewById(R.id.home_your_communities_rv);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+
+        trendingCommunitiesRv = root.findViewById(R.id.home_trending_communities_rv);
+        trendingCommunitiesRv.setLayoutManager(linearLayoutManager);
+        trendingCommunitiesRv.setHasFixedSize(true);
+        trendingCommunitiesAdapter = new CommunityListAdapter();
+        trendingCommunitiesAdapter.setCommunities(trendingCommunities);
+        trendingCommunitiesRv.setAdapter(trendingCommunitiesAdapter);
+
+        yourCommunitiesRv = root.findViewById(R.id.home_your_communities_rv);
+        yourCommunitiesRv.setLayoutManager(linearLayoutManager);
+        yourCommunitiesRv.setHasFixedSize(true);
+        yourCommunitiesAdapter = new CommunityListAdapter();
+        yourCommunitiesAdapter.setCommunities(yourCommunities);
+        yourCommunitiesRv.setAdapter(yourCommunitiesAdapter);
+
         createCommunityBtn = root.findViewById(R.id.home_create_community_btn);
         searchCommunityBtn = root.findViewById(R.id.home_search_community_btn);
 
@@ -82,7 +104,8 @@ public class HomeFragment extends Fragment {
         });
     }
 
-    private static class HomeASyncTask extends AsyncTask<Integer, Void, ArrayList<Community>> {
+    @SuppressLint("StaticFieldLeak")
+    private class HomeASyncTask extends AsyncTask<Integer, Void, ArrayList<Community>> {
 
         @Override
         protected ArrayList<Community> doInBackground(Integer... integers) {
@@ -98,6 +121,7 @@ public class HomeFragment extends Fragment {
             super.onPostExecute(community);
 
             Log.d(LOG_TAG, "Community size returning is " + community.size());
+            yourCommunities.addAll(community);
         }
     }
 }
