@@ -12,6 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.findem.R;
+import com.example.android.findem.Utils.Connection;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -43,12 +47,17 @@ public class CreateCommunityFragment extends Fragment {
         tags = root.findViewById(R.id.addTags);
 
         createCommunityBtn.setOnClickListener((v) -> {
-            HashMap<String, String> data = new HashMap<>();
-            data.put("name", communityName.getText().toString());
-            data.put("imagepath", null);
-            data.put("description", communityDesc.getText().toString());
 
-            new CreateCommunityAsync().execute(data.toString());
+            JSONObject data = new JSONObject();
+            try {
+                data.put("imagepath", null);
+                data.put("description", communityDesc.getText().toString());
+                data.put("name", communityName.getText().toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            new CreateCommunityAsync().execute(data);
 
             System.out.println(communityName.getText().toString());
             System.out.println(communityDesc.getText().toString());
@@ -59,26 +68,12 @@ public class CreateCommunityFragment extends Fragment {
         return root;
     }
 
-    private static class CreateCommunityAsync extends AsyncTask<String, Void, Void> {
+    private static class CreateCommunityAsync extends AsyncTask<JSONObject, Void, Void> {
 
         @Override
-        protected Void doInBackground(String... strings) {
+        protected Void doInBackground(JSONObject... jsonObjects) {
 
-            try {
-                URL url = new URL("https://findem-back.herokuapp.com/cm.community");
-                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("POST");
-                OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-                writer.write(strings[0]);
-                writer.flush();
-                writer.close();
-                out.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Connection.postRequest("/community", jsonObjects[0]);
 
             return null;
         }
