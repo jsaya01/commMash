@@ -15,7 +15,7 @@
         android:layout_marginLeft="8dp"
         android:textColor="#D2FFFFFF"
         android:textSize="16sp"
-        android:text="@string/community_name"
+        android:text="@string/match_finding_community_name"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
 
@@ -66,7 +66,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/match_name"
+        android:text="@string/match_finding_name"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -82,7 +82,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="@string/match_bio"
+        android:text="@string/match_finding_bio"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/match_finding_user_name_txt" />
@@ -96,7 +96,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="meh"
+        android:text="@string/match_finding_meh"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/match_finding_meh_img" />
@@ -109,8 +109,8 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:src="@drawable/ic_match_checkmark"
-        android:text="found em!"
+        app:srcCompat="@drawable/ic_match_checkmark"
+        android:text="@string/match_finding_foundem"
         android:textColor="@color/colorMatch"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
@@ -141,7 +141,8 @@
         android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        app:srcCompat="@drawable/ic_match_checkmark" />
+        app:srcCompat="@drawable/ic_match_checkmark"
+        android:focusable="true" />
 
     <ImageView
         android:id="@+id/match_finding_meh_img"
@@ -152,7 +153,8 @@
         android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_match_deny"
-        tools:layout_editor_absoluteY="585dp" />
+        tools:layout_editor_absoluteY="585dp"
+        android:focusable="true" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline8"
