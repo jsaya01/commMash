@@ -149,6 +149,7 @@ public class HomeFragment extends Fragment {
             } else {
                 Log.d(LOG_TAG, "Community size returning is " + community.size());
                 yourCommunities.addAll(community);
+                yourCommunitiesAdapter.notifyDataSetChanged();
             }
         }
     }

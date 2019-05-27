@@ -27,7 +27,7 @@ public class CommunityLoader {
         public static final String DESCRIPTION = "description";
     }
 
-    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcoms";
+    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
     private static final String LOG_TAG = "CommunityLoader";
 
     public static ArrayList<Community> getAllCommunities(int id) {
