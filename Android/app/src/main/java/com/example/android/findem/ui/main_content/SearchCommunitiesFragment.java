@@ -38,7 +38,7 @@ public class SearchCommunitiesFragment extends Fragment {
 
         setUpWorld(root);
 
-        communities = CommunityLoader.getAllCommunities(uid);
+        communities = CommunityLoader.getCommunitiesOfUid(uid);
 
         filterTv.setOnClickListener(v -> {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();

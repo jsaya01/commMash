@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                 return null;
             }
 
-            return CommunityLoader.getAllCommunities(integers[0]);
+            return CommunityLoader.getCommunitiesOfUid(integers[0]);
         }
 
         @Override

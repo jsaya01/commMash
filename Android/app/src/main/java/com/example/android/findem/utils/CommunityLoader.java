@@ -29,8 +29,9 @@ public class CommunityLoader {
     private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
     private static final String LOG_TAG = "CommunityLoader";
 
-    public static ArrayList<Community> getAllCommunities(int id) {
-        String response = getCommunitiesWithUid(id);
+    public static ArrayList<Community> getCommunitiesOfUid(int id) {
+        Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
+        String response = getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
@@ -72,11 +73,7 @@ public class CommunityLoader {
         }
     }
 
-    private static String getCommunitiesWithUid(int id) {
-        Uri requesting;
-
-        requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
-
+    private static String getStream(Uri requesting) {
         Log.d(LOG_TAG, "Uri is " + requesting.toString());
         URL url = Connection.getURL(requesting);
 
