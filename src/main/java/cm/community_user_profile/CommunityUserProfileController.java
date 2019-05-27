@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @RestController
-@RequestMapping(value = "/community_user_profile", produces = "application/json")
+@RequestMapping(value = "/communityuserprofile", produces = "application/json")
 public class CommunityUserProfileController {
 
     @Autowired
