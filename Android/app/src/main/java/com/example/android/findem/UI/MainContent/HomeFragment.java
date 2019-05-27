@@ -130,8 +130,12 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(ArrayList<Community> community) {
             super.onPostExecute(community);
 
-            Log.d(LOG_TAG, "Community size returning is " + community.size());
-            yourCommunities.addAll(community);
+            if (community == null) {
+                Log.e(LOG_TAG, "Failed to retrieve communities");
+            } else {
+                Log.d(LOG_TAG, "Community size returning is " + community.size());
+                yourCommunities.addAll(community);
+            }
         }
     }
 }
