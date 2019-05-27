@@ -15,12 +15,15 @@ import com.example.android.findem.UI.Messaging.MessageOverviewFragment;
 public class MasterNavigator extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
     private int uid;
+    private Bundle dataForFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         uid = getIntent().getExtras().getInt("uid");
+        dataForFragments = new Bundle();
+        dataForFragments.putInt("uid", uid);
 
         setContentView(R.layout.master_navigator);
 
