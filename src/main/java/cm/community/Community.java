@@ -15,6 +15,10 @@ public class Community {
     private String imagepath;
     private String description;
     
+    public Community() {
+    	
+    }
+    
     public Community(String name, String imagepath, String description) {
     	this.name = name;
     	this.imagepath = imagepath;

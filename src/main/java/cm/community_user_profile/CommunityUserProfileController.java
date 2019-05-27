@@ -27,6 +27,12 @@ public class CommunityUserProfileController {
 
     @Autowired
     CommunityRepository communityRepository;
+    
+    @Autowired
+    CommunityController communityController;
+    
+    @Autowired
+    UserController userController;
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
@@ -62,27 +68,31 @@ public class CommunityUserProfileController {
     }
 //_________________________________________________
     
-    @RequestMapping(value = "/getcids", method = RequestMethod.GET)
+    @RequestMapping(value = "/getcomms", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity getCommunityIds(@RequestParam long uid) {
         List<Long> communityIds = communityUserProfileRepository.findCommunityFromUser(uid);
-        CommunityController commController = new CommunityController();
+        if(communityIds == null || communityIds.size() == 0) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
         
-        List<Community> comms = commController.getCommunityProfiles(communityIds);
+        List<Community> comms = communityController.getCommunityProfiles(communityIds);
+        
+        if(comms == null || comms.size() == 0) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
         
         return ResponseEntity.status(HttpStatus.OK).body(comms);
     }
     
-    @RequestMapping(value = "/getuids", method = RequestMethod.GET)
+    @RequestMapping(value = "/getusers", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity getUserIds(@RequestParam long cid) {
         List<Long> userIds = communityUserProfileRepository.findUserFromCommunity(cid);
-        UserController userController = new UserController();
         
         List<User> users = userController.getUserProfiles(userIds);
         
-        return ResponseEntity.status(HttpStatus.OK).body(userIds);
-    }
+        return ResponseEntity.status(HttpStatus.OK).body(users);    }
     
 //___________________________________________________________________
     

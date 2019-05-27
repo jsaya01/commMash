@@ -18,7 +18,7 @@ public class User {
     private String password;
     private String description;
 
-    // need a test to check if cm.user name and password are unique
+
     public User(String fname, String lname, String username, String password, String description) {
 		this.fname = fname;
 		this.lname = lname;
