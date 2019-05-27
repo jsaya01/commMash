@@ -53,7 +53,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="24dp"
             android:background="#00857878"
-            android:text="This community is about..."
+            android:text="This cm.community is about..."
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/community_image"

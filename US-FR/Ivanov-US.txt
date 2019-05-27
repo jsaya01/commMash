@@ -10,4 +10,4 @@ User Stories
 1. As a math student, I want to search for tutors and view their rates, so I save time in my search.
 
 
-1. As a professional Smash Ultimate gamer, I want to join a community where I can find new people, so that we can train together.
+1. As a professional Smash Ultimate gamer, I want to join a cm.community where I can find new people, so that we can train together.

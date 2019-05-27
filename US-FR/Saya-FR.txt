@@ -1,4 +1,4 @@
 1. The system shall provide another profile that has the same interests as you within 3 seconds of searching.
-2. The system shall provide all communities within a user specified radius.
-3. The system shall only match two profiles if they share a common user specified interest.
+2. The system shall provide all communities within a cm.user specified radius.
+3. The system shall only match two profiles if they share a common cm.user specified interest.
 

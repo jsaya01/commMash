@@ -1,3 +1,3 @@
-﻿1. As a user, I want to create a location-based community for my college, so that I can only find people who go to the same college as I do. 
-2. As a student user looking for a tutor, I don’t want to see a tutor who has a lower review than my prefered rating, so that I only get matched with the best person for the job.
-3. As a user, I want to see common interests that exist in my community, so that I can find others who share my interest.
+﻿1. As a cm.user, I want to create a location-based cm.community for my college, so that I can only find people who go to the same college as I do.
+2. As a student cm.user looking for a tutor, I don’t want to see a tutor who has a lower review than my prefered rating, so that I only get matched with the best person for the job.
+3. As a cm.user, I want to see common interests that exist in my cm.community, so that I can find others who share my interest.

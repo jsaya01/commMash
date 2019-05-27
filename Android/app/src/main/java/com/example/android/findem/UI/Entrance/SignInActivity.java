@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity {
     public void enterApplication(View view) {
         //TODO PROCESS LOGIN
 
-        // will need to pass in props too about the user information
+        // will need to pass in props too about the cm.user information
         Intent intent = new Intent(this, MasterNavigator.class);
         intent.putExtra("uid", -1);
         startActivity(intent);

@@ -1,5 +1,6 @@
 package com.example.android.findem.UI.MainContent;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +13,14 @@ import android.widget.EditText;
 
 import com.example.android.findem.R;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 
 public class CreateCommunityFragment extends Fragment {
@@ -40,7 +48,7 @@ public class CreateCommunityFragment extends Fragment {
             data.put("imagepath", null);
             data.put("description", communityDesc.getText().toString());
 
-            //TODO need to post to the DB here
+            new CreateCommunityAsync().execute(data.toString());
 
             System.out.println(communityName.getText().toString());
             System.out.println(communityDesc.getText().toString());
@@ -49,5 +57,30 @@ public class CreateCommunityFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private static class CreateCommunityAsync extends AsyncTask<String, Void, Void> {
+
+        @Override
+        protected Void doInBackground(String... strings) {
+
+            try {
+                URL url = new URL("https://findem-back.herokuapp.com/cm.community");
+                HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("POST");
+                OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
+
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+                writer.write(strings[0]);
+                writer.flush();
+                writer.close();
+                out.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
     }
 }

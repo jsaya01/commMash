@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.opening_screen);
     }
 
-    /** Called when the user taps the Send button */
+    /** Called when the cm.user taps the Send button */
     public void signUp(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
