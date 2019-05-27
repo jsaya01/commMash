@@ -11,6 +11,10 @@ public class CommunityUserProfile {
 	private long cid;
 	private String description;
 	
+	public CommunityUserProfile() {
+		
+	}
+	
 	public CommunityUserProfile(long uid, long cid, String description) {
 		this.uid = uid;
 		this.cid = cid;
