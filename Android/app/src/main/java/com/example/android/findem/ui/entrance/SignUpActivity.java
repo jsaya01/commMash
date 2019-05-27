@@ -6,18 +6,17 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
 
 import com.example.android.findem.R;
+import com.example.android.findem.models.User;
 import com.example.android.findem.ui.MasterNavigator;
 import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.UserLoader;
 
-import android.view.View;
-import android.widget.EditText;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.example.android.findem.models.User;
 
 
 public class SignUpActivity extends AppCompatActivity {
