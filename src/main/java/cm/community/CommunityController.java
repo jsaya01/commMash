@@ -1,5 +1,6 @@
 package cm.community;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -21,7 +22,7 @@ public class CommunityController {
     CommunityRepository communityRepository;
     
     public List<Community> getCommunityProfiles(List<Long> cids){
-    	List <Community> comms = null;
+    	List <Community> comms = new ArrayList<>();
     	for(Long cid: cids) {
     		Community comm = communityRepository.findById(cid).get();
     		comms.add(comm);
