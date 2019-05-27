@@ -21,6 +21,7 @@ public class SignInActivity extends AppCompatActivity {
 
         // will need to pass in props too about the user information
         Intent intent = new Intent(this, MasterNavigator.class);
+        intent.putExtra("uid", -1);
         startActivity(intent);
     }
 
