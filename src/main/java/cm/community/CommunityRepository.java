@@ -1,6 +1,5 @@
 package cm.community;
 
-import java.util.List;
 import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
