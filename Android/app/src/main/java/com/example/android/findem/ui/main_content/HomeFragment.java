@@ -148,7 +148,10 @@ public class HomeFragment extends Fragment {
                 Log.e(LOG_TAG, "Failed to retrieve communities");
             } else {
                 Log.d(LOG_TAG, "Community size returning is " + community.size());
+
+                yourCommunities.clear();
                 yourCommunities.addAll(community);
+
                 yourCommunitiesAdapter.notifyDataSetChanged();
             }
         }
