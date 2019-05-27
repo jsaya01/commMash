@@ -1,5 +1,6 @@
 package community_user_profile;
 
+import java.util.List;
 import java.util.concurrent.Future;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,10 @@ public interface CommunityUserProfileRepository extends JpaRepository<CommunityU
     @Query("SELECT cup FROM CommunityUserProfile cup where cup.uid = :uid and cup.cid = :cid")
     Future<CommunityUserProfile> findCommunityUserProfile(@Param("uid") Long uid, @Param("cid") Long cid);
 
-//	@Async
-//    @Query("SELECT cup FROM CommunityUserProfile cup where cup.upid = :upid")
-//    Future<CommunityUserProfile> findCommunityUserProfile(@Param("upid") Long upid);
+	@Query("SELECT cid FROM CommunityUserProfile cup where cup.uid = :uid")
+    List<Long> findCommunityFromUser(@Param("uid") Long uid);
+	
+	@Query("SELECT uid FROM CommunityUserProfile cup where cup.cid = :cid")
+    List<Long> findUserFromCommunity(@Param("cid") Long cid);
+
 }

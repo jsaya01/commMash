@@ -6,6 +6,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import community.Community;
+
+import java.util.List;
 import java.util.concurrent.Future;
 
 @RestController
@@ -15,6 +18,15 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    public List<User> getUserProfiles(List<Long> uids){
+    	List <User> users = null;
+    	for(Long uid: uids) {
+    		User user = userRepository.findById(uid).get();
+    		users.add(user);
+    	}
+    	return users;
+    }
+    
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity getUserWithUsername(@RequestParam String username) {

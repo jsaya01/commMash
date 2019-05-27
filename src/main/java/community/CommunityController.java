@@ -1,5 +1,6 @@
 package community;
 
+import java.util.List;
 import java.util.concurrent.Future;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,16 @@ public class CommunityController {
 
     @Autowired
     CommunityRepository communityRepository;
+    
+    public List<Community> getCommunityProfiles(List<Long> cids){
+    	List <Community> comms = null;
+    	for(Long cid: cids) {
+    		Community comm = communityRepository.findById(cid).get();
+    		comms.add(comm);
+    	}
+    	return comms;
+    }
+    
     
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
