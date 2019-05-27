@@ -98,10 +98,6 @@ public class Connection {
         }
     }
 
-
-    // creates the URL needed for getting the county URL
-    // takes in a String that is the county name and tries to return a correct URL
-    // if something fails then a log error message is printed with the attempted county
     public static URL getURL(Uri requesting) {
         try {
             return new URL(requesting.toString());

@@ -23,7 +23,7 @@ public class MasterNavigator extends AppCompatActivity {
 
         uid = getIntent().getExtras().getInt("uid");
         dataForFragments = new Bundle();
-        dataForFragments.putInt("uid", uid);
+        dataForFragments.putInt(getResources().getString(R.string.bundle_uid), uid);
 
         setContentView(R.layout.master_navigator);
 
@@ -58,19 +58,25 @@ public class MasterNavigator extends AppCompatActivity {
 
     public void setUpHomeFragment() {
         if (getSupportFragmentManager().findFragmentByTag(ActiveFragments.TAG_HOME_FRAGMENT) == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, new HomeFragment(), ActiveFragments.TAG_HOME_FRAGMENT).commit();
+            HomeFragment home = new HomeFragment();
+            home.setArguments(dataForFragments);
+            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, home, ActiveFragments.TAG_HOME_FRAGMENT).commit();
         }
     }
 
     public void setUpMessagesFragment() {
         if (getSupportFragmentManager().findFragmentByTag(ActiveFragments.TAG_MESSAGES_FRAGMENT) == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, new MessageOverviewFragment(), ActiveFragments.TAG_MESSAGES_FRAGMENT).commit();
+            MessageOverviewFragment messages = new MessageOverviewFragment();
+            messages.setArguments(dataForFragments);
+            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, messages, ActiveFragments.TAG_MESSAGES_FRAGMENT).commit();
         }
     }
 
     public void setUpSettingsFragment() {
         if (getSupportFragmentManager().findFragmentByTag(ActiveFragments.TAG_SETTINGS_FRAGMENT) == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, new EditProfileFragment(), ActiveFragments.TAG_SETTINGS_FRAGMENT).commit();
+            EditProfileFragment editProfile = new EditProfileFragment();
+            editProfile.setArguments(dataForFragments);
+            getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, editProfile, ActiveFragments.TAG_SETTINGS_FRAGMENT).commit();
         }
     }
 }

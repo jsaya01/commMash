@@ -1,31 +1,33 @@
 package com.example.android.findem.Models;
 
-public class Community {
+import java.io.Serializable;
+
+public class Community implements Serializable {
     private long cid;
-    
+
     private String name;
     private String imagepath;
     private String description;
-    
+
     public Community(String name, String imagepath, String description) {
-    	this.name = name;
-    	this.imagepath = imagepath;
-    	this.description = description;
+        this.name = name;
+        this.imagepath = imagepath;
+        this.description = description;
     }
-    
+
     public long getCid() {
-		return cid;
-	}
-    
+        return cid;
+    }
+
     public String getDescription() {
-		return description;
-	}
-    
+        return description;
+    }
+
     public String getImagepath() {
-		return imagepath;
-	}
-    
+        return imagepath;
+    }
+
     public String getName() {
-		return name;
-	}
+        return name;
+    }
 }

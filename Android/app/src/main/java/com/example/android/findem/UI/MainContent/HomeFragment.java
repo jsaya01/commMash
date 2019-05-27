@@ -83,11 +83,18 @@ public class HomeFragment extends Fragment {
     }
 
     private void setOnClickListeners() {
+        final Bundle bundle = new Bundle();
+        bundle.putInt(getResources().getString(R.string.bundle_uid), uid);
+
         createCommunityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.master_activity_fragment, new CreateCommunityFragment());
+
+                CreateCommunityFragment createCommunityFragment = new CreateCommunityFragment();
+                createCommunityFragment.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.master_activity_fragment, createCommunityFragment);
                 fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_COMM_FRAGMENT);
                 fragmentTransaction.commit();
             }
@@ -97,7 +104,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.master_activity_fragment, new CommunityFragment());
+
+                SearchCommunitiesFragment searchCommunitiesFragment = new SearchCommunitiesFragment();
+                searchCommunitiesFragment.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.master_activity_fragment, searchCommunitiesFragment);
                 fragmentTransaction.addToBackStack(ActiveFragments.TAG_SEARCH_COMM_FRAGMENT);
                 fragmentTransaction.commit();
             }
