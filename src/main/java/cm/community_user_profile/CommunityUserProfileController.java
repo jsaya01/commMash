@@ -16,7 +16,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 @RestController
-@RequestMapping(value = "/communityUserProfile", produces = "application/json")
+@RequestMapping(value = "/community_user_profile", produces = "application/json")
 public class CommunityUserProfileController {
 
     @Autowired
@@ -68,8 +68,7 @@ public class CommunityUserProfileController {
         List<Long> communityIds = communityUserProfileRepository.findCommunityFromUser(uid);
         CommunityController commController = new CommunityController();
         
-        List<Community> comms = null;
-        commController.getCommunityProfiles(communityIds);
+        List<Community> comms = commController.getCommunityProfiles(communityIds);
         
         return ResponseEntity.status(HttpStatus.OK).body(comms);
     }
@@ -80,8 +79,7 @@ public class CommunityUserProfileController {
         List<Long> userIds = communityUserProfileRepository.findUserFromCommunity(cid);
         UserController userController = new UserController();
         
-        List<User> users = null;
-        userController.getUserProfiles(userIds);
+        List<User> users = userController.getUserProfiles(userIds);
         
         return ResponseEntity.status(HttpStatus.OK).body(userIds);
     }
