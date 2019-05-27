@@ -1,13 +1,20 @@
 <resources>
     <string name="bundle_uid">uid</string>
     <string name="bundle_community">community</string>
+    <string name="bundle_match">msg_match</string>
     <string name="app_name">Findem</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="community_name">%s Community</string>
-    <string name="match_name">%s</string>
-    <string name="match_bio">%s</string>
+    <string name="match_finding_community_name">Community Name</string>
+    <string name="match_finding_name">John Doe</string>
+    <string name="match_finding_bio">I am very cool doe bro</string>
+    <string name="match_finding_meh">meh</string>
+    <string name="match_finding_foundem">found em!</string>
+    <string name="community_my_profile">My Profile</string>
+    <string name="community_com_description">This community is about…</string>
+    <string name="community_com_matches">Community Matches</string>
+    <string name="community_find_people">Find some more people?</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="add_a_picture_signup">Add a picture!</string>
@@ -21,8 +28,8 @@
     <string name="signup_confirm_password">Confirm Password</string>
     <string name="signup_password">Password</string>
     <string name="signup_username">Username</string>
-    <string name="signup_last_name">Last Name</string>
-    <string name="signup_first_name">First Name</string>
+    <string name="signup_last_name">Last</string>
+    <string name="signup_first_name">First</string>
     <string name="signup_full_name">Full Name</string>
     <string name="title_messages">Messages</string>
     <string name="title_settings">Settings</string>
@@ -41,4 +48,5 @@
     <string name="description">Description</string>
     <string name="opening_sign_up">Sign Up</string>
     <string name="opening_login">Login</string>
+    <string name="under_development_chat">Under Development</string>
 </resources>

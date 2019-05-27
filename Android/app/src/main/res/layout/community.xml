@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
     style="@style/AppTheme"
     android:layout_width="match_parent"
@@ -9,7 +8,7 @@
     android:background="@android:color/black">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/linear_redBar"
+        android:id="@+id/community_constraint_redBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -29,7 +28,7 @@
             app:tintMode="src_over" />
 
         <TextView
-            android:id="@+id/profile_edit_button"
+            android:id="@+id/community_my_profile_btn"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,11 +37,12 @@
             android:layout_marginRight="16dp"
             android:background="#00857878"
             android:clickable="true"
-            android:text="My Profile"
+            android:text="@string/community_my_profile"
             android:textColor="#D2FFFFFF"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/community_description"
@@ -53,20 +53,20 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="24dp"
             android:background="#00857878"
-            android:text="This cm.community is about..."
+            android:text="@string/community_com_description"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/community_image"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/communityMatches"
+            android:id="@+id/community_matches_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:text="Community Matches"
+            android:text="@string/community_com_matches"
             android:textColor="#FFFFFF"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +85,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/communityMatches" />
+            app:layout_constraintTop_toBottomOf="@+id/community_matches_txt" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/community_matches_rv"
@@ -99,11 +99,26 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/add_matches_image"
+            app:layout_constraintTop_toBottomOf="@+id/community_add_matches_img"
             app:layout_constraintVertical_bias="0.788" />
 
+        <android.support.constraint.Group
+            android:id="@+id/community_add_matches_grp"
+            android:layout_width="372dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:visibility="visible"
+            app:constraint_referenced_ids="community_add_matches_img,community_find_people_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/community_matches_divider" />
+
         <ImageView
-            android:id="@+id/add_matches_image"
+            android:id="@+id/community_add_matches_img"
             android:layout_width="63dp"
             android:layout_height="57dp"
             android:layout_marginStart="24dp"
@@ -112,22 +127,24 @@
             android:clickable="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/community_matches_divider"
-            app:srcCompat="@drawable/ic_add_match" />
+            app:srcCompat="@drawable/ic_add_match"
+            android:focusable="true" />
 
         <TextView
-            android:id="@+id/find_people_text"
+            android:id="@+id/community_find_people_txt"
             style="@style/TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:clickable="true"
-            android:text="Find some more people?"
+            android:text="@string/community_find_people"
             android:textColor="#FCFCFC"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/add_matches_image"
-            app:layout_constraintStart_toEndOf="@+id/add_matches_image"
-            app:layout_constraintTop_toTopOf="@+id/add_matches_image" />
+            app:layout_constraintBottom_toBottomOf="@+id/community_add_matches_img"
+            app:layout_constraintStart_toEndOf="@+id/community_add_matches_img"
+            app:layout_constraintTop_toTopOf="@+id/community_add_matches_img"
+            android:focusable="true" />
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

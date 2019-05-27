@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/message_rv_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/black">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image_ep"
+        android:id="@+id/message_rv_profile_image_ep"
         android:layout_width="49dp"
         android:layout_height="46dp"
         android:layout_marginStart="16dp"
@@ -22,23 +22,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/last_name_field_ep"
+        android:id="@+id/message_rv_first_name_field_ep"
         android:layout_width="55dp"
         android:layout_height="27dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="5dp"
+        android:text="Jane"
         android:textColor="@android:color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/last_message"
-        app:layout_constraintStart_toEndOf="@+id/profile_image_ep"
-        app:layout_constraintTop_toTopOf="@+id/profile_image_ep"
+        app:layout_constraintBottom_toTopOf="@+id/message_rv_last_message"
+        app:layout_constraintStart_toEndOf="@+id/message_rv_profile_image_ep"
+        app:layout_constraintTop_toTopOf="@+id/message_rv_profile_image_ep"
         app:layout_constraintVertical_bias="0.0"
-        tools:text="Jane"
-        android:text="Jane" />
+        tools:text="Jane" />
 
     <TextView
-        android:id="@+id/last_message"
+        android:id="@+id/message_rv_last_message"
         style="@style/TextView"
         android:layout_width="334dp"
         android:layout_height="24dp"
@@ -46,15 +46,15 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
+        android:text="Hey are we still on for our Saturday n..."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/profile_image_ep"
-        tools:text="Hey are we still on for our Saturday n..."
-        android:text="Hey are we still on for our Saturday n..." />
+        app:layout_constraintStart_toEndOf="@+id/message_rv_profile_image_ep"
+        tools:text="Hey are we still on for our Saturday n..." />
 
     <TextView
-        android:id="@+id/dt_last_sent"
+        android:id="@+id/message_rv_dt_last_sent"
         style="@style/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,23 +62,23 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="2dp"
-        android:textColor="@color/textColor"
-        tools:text="5:42 PM"
         android:text="5:42 PM"
-        app:layout_constraintBottom_toBottomOf="@+id/last_name_field_ep"
-        app:layout_constraintEnd_toStartOf="@+id/view_message"
+        android:textColor="@color/textColor"
+        app:layout_constraintBottom_toBottomOf="@+id/message_rv_first_name_field_ep"
+        app:layout_constraintEnd_toStartOf="@+id/message_rv_view_message"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:text="5:42 PM" />
 
     <ImageView
-        android:id="@+id/view_message"
+        android:id="@+id/message_rv_view_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
         android:src="@drawable/ic_right_arrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dt_last_sent" />
+        app:layout_constraintTop_toTopOf="@+id/message_rv_dt_last_sent" />
 
 
 </android.support.constraint.ConstraintLayout>

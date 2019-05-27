@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import com.example.android.findem.R;
 
 public class MatchingFragment extends Fragment {
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, savedInstanceState);
-
-        View root = inflater.inflate(R.layout.match_finding, container, false);
-
-        return root;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        super.onCreateView(inflater, container, savedInstanceState);
+//
+//        View root = inflater.inflate(R.layout.match_finding, container, false);
+//
+//        return root;
+//    }
 }

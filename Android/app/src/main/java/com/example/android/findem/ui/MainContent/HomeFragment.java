@@ -41,13 +41,27 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
     }
 
+    private void setTitle() {
+        if (getActivity() != null) {
+            getActivity().setTitle("Home");
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.home, container, false);
+        setTitle();
         setUpWorld(root);
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        setTitle();
     }
 
     private void setUpWorld(View root) {
