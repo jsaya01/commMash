@@ -51,17 +51,17 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpWorld(View root) {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-
+        LinearLayoutManager linearManagerTrending = new LinearLayoutManager(getContext());
         trendingCommunitiesRv = root.findViewById(R.id.home_trending_communities_rv);
-        trendingCommunitiesRv.setLayoutManager(linearLayoutManager);
+        trendingCommunitiesRv.setLayoutManager(linearManagerTrending);
         trendingCommunitiesRv.setHasFixedSize(true);
         trendingCommunitiesAdapter = new CommunityListAdapter();
         trendingCommunitiesAdapter.setState(trendingCommunities, getContext(), uid, getFragmentManager());
         trendingCommunitiesRv.setAdapter(trendingCommunitiesAdapter);
 
+        LinearLayoutManager linearManagerYour = new LinearLayoutManager(getContext());
         yourCommunitiesRv = root.findViewById(R.id.home_your_communities_rv);
-        yourCommunitiesRv.setLayoutManager(linearLayoutManager);
+        yourCommunitiesRv.setLayoutManager(linearManagerYour);
         yourCommunitiesRv.setHasFixedSize(true);
         yourCommunitiesAdapter = new CommunityListAdapter();
         yourCommunitiesAdapter.setState(yourCommunities, getContext(), uid, getFragmentManager());
