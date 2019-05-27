@@ -1,4 +1,4 @@
-package com.example.android.findem.Utils;
+package com.example.android.findem.utils;
 
 import android.net.Uri;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package com.example.android.findem.UI;
+package com.example.android.findem.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -8,9 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.android.findem.R;
-import com.example.android.findem.UI.MainContent.EditProfileFragment;
-import com.example.android.findem.UI.MainContent.HomeFragment;
-import com.example.android.findem.UI.Messaging.MessageOverviewFragment;
+import com.example.android.findem.ui.main_content.EditProfileFragment;
+import com.example.android.findem.ui.main_content.HomeFragment;
+import com.example.android.findem.ui.messaging.MessageOverviewFragment;
 
 public class MasterNavigator extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;

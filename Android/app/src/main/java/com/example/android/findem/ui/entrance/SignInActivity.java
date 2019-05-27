@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.Entrance;
+package com.example.android.findem.ui.entrance;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.android.findem.R;
-import com.example.android.findem.UI.MasterNavigator;
+import com.example.android.findem.ui.MasterNavigator;
 
 public class SignInActivity extends AppCompatActivity {
     @Override
@@ -21,7 +21,7 @@ public class SignInActivity extends AppCompatActivity {
 
         // will need to pass in props too about the cm.user information
         Intent intent = new Intent(this, MasterNavigator.class);
-        intent.putExtra(getResources().getString(R.string.bundle_uid), -1);
+        intent.putExtra(getResources().getString(R.string.bundle_uid), 3);
         startActivity(intent);
     }
 

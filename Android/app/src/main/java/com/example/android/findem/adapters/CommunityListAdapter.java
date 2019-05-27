@@ -1,10 +1,9 @@
-package com.example.android.findem.Adapters;
+package com.example.android.findem.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.findem.Models.Community;
+import com.example.android.findem.models.Community;
 import com.example.android.findem.R;
-import com.example.android.findem.UI.ActiveFragments;
-import com.example.android.findem.UI.MainContent.CommunityFragment;
+import com.example.android.findem.ui.ActiveFragments;
+import com.example.android.findem.ui.main_content.CommunityFragment;
 
 import java.util.ArrayList;
 
@@ -47,22 +46,19 @@ public class CommunityListAdapter extends RecyclerView.Adapter<CommunityListAdap
         holder.communityName.setText(communities.get(position).getName());
         holder.communityImage.setImageResource(R.drawable.profile_pic);
 
-        holder.viewHolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
-                bundle.putSerializable(context.getResources().getString(R.string.bundle_community),
-                        communities.get(holder.getAdapterPosition()));
+        holder.viewHolder.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
+            bundle.putSerializable(context.getResources().getString(R.string.bundle_community),
+                    communities.get(holder.getAdapterPosition()));
 
-                CommunityFragment communityFragment = new CommunityFragment();
-                communityFragment.setArguments(bundle);
+            CommunityFragment communityFragment = new CommunityFragment();
+            communityFragment.setArguments(bundle);
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.master_activity_fragment, communityFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
-                fragmentTransaction.commit();
-            }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.master_activity_fragment, communityFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
+            fragmentTransaction.commit();
         });
     }
 

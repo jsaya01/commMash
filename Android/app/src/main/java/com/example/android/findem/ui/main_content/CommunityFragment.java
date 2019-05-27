@@ -1,30 +1,8 @@
-package com.example.android.findem.UI.MainContent;
+package com.example.android.findem.ui.main_content;
 
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.constraint.Group;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.android.findem.Models.User;
-import com.example.android.findem.Models.Community;
-import com.example.android.findem.R;
-import com.example.android.findem.UI.ActiveFragments;
-import com.example.android.findem.Utils.Connection;
-
-import java.util.ArrayList;
+import com.example.android.findem.utils.Connection;
 
 
 public class CommunityFragment extends Fragment {

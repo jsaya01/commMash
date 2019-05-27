@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.Entrance;
+package com.example.android.findem.ui.entrance;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -8,19 +8,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.findem.R;
-import com.example.android.findem.UI.MainContent.CreateCommunityFragment;
-import com.example.android.findem.UI.MainContent.HomeFragment;
-import com.example.android.findem.UI.MasterNavigator;
-import com.example.android.findem.Utils.Connection;
-import com.example.android.findem.Utils.UserLoader;
+import com.example.android.findem.ui.MasterNavigator;
+import com.example.android.findem.utils.Connection;
+import com.example.android.findem.utils.UserLoader;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.example.android.findem.Models.User;
+import com.example.android.findem.models.User;
 
 
 public class SignUpActivity extends AppCompatActivity {
