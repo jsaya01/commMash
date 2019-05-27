@@ -1,9 +1,9 @@
-package com.example.android.findem.Utils;
+package com.example.android.findem.utils;
 
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.android.findem.Models.Community;
+import com.example.android.findem.models.Community;
 
 import org.json.JSONArray;
 import org.json.JSONException;

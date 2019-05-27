@@ -1,4 +1,4 @@
-package com.example.android.findem.Models;
+package com.example.android.findem.models;
 
 public class User {
     private long uid;

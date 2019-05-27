@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.Messaging;
+package com.example.android.findem.ui.messaging;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

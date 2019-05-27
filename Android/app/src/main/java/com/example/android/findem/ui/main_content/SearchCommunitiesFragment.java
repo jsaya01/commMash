@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.MainContent;
+package com.example.android.findem.ui.main_content;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,14 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.android.findem.Adapters.CommunityListAdapter;
-import com.example.android.findem.Models.Community;
+import com.example.android.findem.adapters.CommunityListAdapter;
+import com.example.android.findem.models.Community;
 import com.example.android.findem.R;
-import com.example.android.findem.UI.ActiveFragments;
-import com.example.android.findem.Utils.CommunityLoader;
+import com.example.android.findem.ui.ActiveFragments;
+import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
 
@@ -41,14 +40,11 @@ public class SearchCommunitiesFragment extends Fragment {
 
         communities = CommunityLoader.getAllCommunities(uid);
 
-        filterTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.master_activity_fragment, new FilterResultsFragment());
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_FILTER_RESULTS_FRAGMENT);
-                fragmentTransaction.commit();
-            }
+        filterTv.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.master_activity_fragment, new FilterResultsFragment());
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_FILTER_RESULTS_FRAGMENT);
+            fragmentTransaction.commit();
         });
 
         return root;

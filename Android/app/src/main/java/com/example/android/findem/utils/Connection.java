@@ -1,4 +1,4 @@
-package com.example.android.findem.Utils;
+package com.example.android.findem.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

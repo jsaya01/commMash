@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.MainContent;
+package com.example.android.findem.ui.main_content;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

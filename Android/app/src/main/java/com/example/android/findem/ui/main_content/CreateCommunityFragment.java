@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.MainContent;
+package com.example.android.findem.ui.main_content;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,20 +12,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.findem.R;
-import com.example.android.findem.Utils.Connection;
+import com.example.android.findem.utils.Connection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.HashMap;
 
 public class CreateCommunityFragment extends Fragment {
 

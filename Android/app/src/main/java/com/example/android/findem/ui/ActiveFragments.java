@@ -1,4 +1,4 @@
-package com.example.android.findem.UI;
+package com.example.android.findem.ui;
 
 public class ActiveFragments {
     public static String TAG_HOME_FRAGMENT = "tag-home-fragment";

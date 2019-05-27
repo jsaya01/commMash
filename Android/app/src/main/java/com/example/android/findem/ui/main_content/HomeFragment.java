@@ -1,4 +1,4 @@
-package com.example.android.findem.UI.MainContent;
+package com.example.android.findem.ui.main_content;
 
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.android.findem.Adapters.CommunityListAdapter;
-import com.example.android.findem.Models.Community;
+import com.example.android.findem.adapters.CommunityListAdapter;
+import com.example.android.findem.models.Community;
 import com.example.android.findem.R;
-import com.example.android.findem.UI.ActiveFragments;
-import com.example.android.findem.Utils.CommunityLoader;
+import com.example.android.findem.ui.ActiveFragments;
+import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
 

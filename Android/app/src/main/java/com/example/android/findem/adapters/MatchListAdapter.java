@@ -1,4 +1,4 @@
-package com.example.android.findem.Adapters;
+package com.example.android.findem.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,12 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.findem.Models.Community;
-import com.example.android.findem.Models.Match;
+import com.example.android.findem.models.Match;
 import com.example.android.findem.R;
-import com.example.android.findem.UI.ActiveFragments;
-import com.example.android.findem.UI.MainContent.CommunityFragment;
-import com.example.android.findem.UI.Messaging.MessageChatFragment;
+import com.example.android.findem.ui.ActiveFragments;
+import com.example.android.findem.ui.messaging.MessageChatFragment;
 
 import java.util.ArrayList;
 
@@ -50,22 +48,19 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Adap
         holder.lastMessage.setText(matches.get(position).getLastMessage());
         holder.profilePicture.setImageResource(R.drawable.profile_pic);
 
-        holder.viewHolder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
-                bundle.putSerializable(context.getResources().getString(R.string.bundle_match),
-                        matches.get(holder.getAdapterPosition()));
+        holder.viewHolder.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
+            bundle.putSerializable(context.getResources().getString(R.string.bundle_match),
+                    matches.get(holder.getAdapterPosition()));
 
-                MessageChatFragment chatFragment = new MessageChatFragment();
-                chatFragment.setArguments(bundle);
+            MessageChatFragment chatFragment = new MessageChatFragment();
+            chatFragment.setArguments(bundle);
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.add(R.id.master_activity_fragment, chatFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
-                fragmentTransaction.commit();
-            }
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.add(R.id.master_activity_fragment, chatFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
+            fragmentTransaction.commit();
         });
     }
 
