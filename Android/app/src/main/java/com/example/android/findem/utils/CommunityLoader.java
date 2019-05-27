@@ -27,25 +27,11 @@ public class CommunityLoader {
         public static final String DESCRIPTION = "description";
     }
 
-    private static final String COMMUNITY_BASE_URL = "https://findem-back.herokuapp.com/cm.community";
-    private static final String COMMUNITY_PROFILE_BASE_URL = "https://findem-back.herokuapp.com/communityUserProfile";
+    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcoms";
     private static final String LOG_TAG = "CommunityLoader";
 
     public static ArrayList<Community> getAllCommunities(int id) {
-        String response = getCidResponse(String.valueOf(id));
-
-        if (response == null) {
-            Log.e(LOG_TAG, "Error retrieving cid response for communities");
-            return null;
-        }
-
-        ArrayList<Integer> cids = parseCids(response);
-        if (cids == null) {
-            Log.e(LOG_TAG, "Error parsing cids");
-            return null;
-        }
-
-        response = getCommunitiesWithCidsResponse(cids);
+        String response = getCommunitiesWithUid(id);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
@@ -59,26 +45,6 @@ public class CommunityLoader {
         }
 
         return communities;
-    }
-
-    private static ArrayList<Integer> parseCids(String response) {
-        JSONArray jsonArray;
-
-        try {
-            jsonArray = new JSONArray(response);
-
-            ArrayList<Integer> cids = new ArrayList<>();
-            for (int x = 0; x < jsonArray.length(); x++) {
-                JSONObject object = jsonArray.getJSONObject(x);
-
-                cids.add(object.getInt(CommunityProfileParsing.CID));
-            }
-
-            return cids;
-        } catch (JSONException e) {
-            Log.e(LOG_TAG, "Could not parse response into JSONArray");
-            return null;
-        }
     }
 
     private static ArrayList<Community> parseCommunities(String response) {
@@ -107,28 +73,10 @@ public class CommunityLoader {
         }
     }
 
-    // URL string is what will be appended, needs to have ? and other format stuff
-    private static String getCidResponse(String id) {
+    private static String getCommunitiesWithUid(int id) {
         Uri requesting;
 
-        requesting = Uri.parse(COMMUNITY_PROFILE_BASE_URL).buildUpon().appendQueryParameter("uid", id).build();
-
-        Log.d(LOG_TAG, "Uri is " + requesting.toString());
-        URL url = Connection.getURL(requesting);
-
-        if (url == null) {
-            Log.d(LOG_TAG, "Url is null! Investigate now!");
-            return null;
-        }
-
-        Log.d(LOG_TAG, "Url is " + url.toString());
-        return Connection.getRequest(url);
-    }
-
-    private static String getCommunitiesWithCidsResponse(ArrayList<Integer> cids) {
-        Uri requesting;
-
-        requesting = Uri.parse(COMMUNITY_BASE_URL).buildUpon().build();
+        requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
 
         Log.d(LOG_TAG, "Uri is " + requesting.toString());
         URL url = Connection.getURL(requesting);
