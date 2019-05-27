@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import cm.community.Community;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -19,7 +20,7 @@ public class UserController {
     UserRepository userRepository;
 
     public List<User> getUserProfiles(List<Long> uids){
-    	List <User> users = null;
+    	List <User> users = new ArrayList<>();
     	for(Long uid: uids) {
     		User user = userRepository.findById(uid).get();
     		users.add(user);
