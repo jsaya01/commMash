@@ -1,6 +1,7 @@
 <resources>
     <string name="bundle_uid">uid</string>
     <string name="bundle_community">community</string>
+    <string name="bundle_match">msg_match</string>
     <string name="app_name">Findem</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -41,4 +42,5 @@
     <string name="description">Description</string>
     <string name="opening_sign_up">Sign Up</string>
     <string name="opening_login">Login</string>
+    <string name="under_development_chat">Under Development</string>
 </resources>

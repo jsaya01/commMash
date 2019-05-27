@@ -32,7 +32,7 @@ public class CommunityLoader {
     private static final String LOG_TAG = "CommunityLoader";
 
     public static ArrayList<Community> getAllCommunities(int id) {
-        String response = getCidResponse("?uid=" + id);
+        String response = getCidResponse(String.valueOf(id));
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving cid response for communities");
@@ -108,10 +108,10 @@ public class CommunityLoader {
     }
 
     // URL string is what will be appended, needs to have ? and other format stuff
-    private static String getCidResponse(String URL) {
+    private static String getCidResponse(String id) {
         Uri requesting;
 
-        requesting = Uri.parse(COMMUNITY_PROFILE_BASE_URL).buildUpon().appendPath(URL).build();
+        requesting = Uri.parse(COMMUNITY_PROFILE_BASE_URL).buildUpon().appendQueryParameter("uid", id).build();
 
         Log.d(LOG_TAG, "Uri is " + requesting.toString());
         URL url = Connection.getURL(requesting);
