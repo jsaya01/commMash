@@ -46,6 +46,40 @@ public class Connection {
         }
     }
 
+    protected static String getRequest(URL url, Object body) {
+        System.out.println("URL " + url.toString());
+        try {
+            String jsonResponse = null;
+            InputStream inputStream = null;
+            HttpURLConnection urlConnection = null;
+            try {
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.connect();
+                System.out.println("RESPONSE CODE " + urlConnection.getResponseCode());
+                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                    System.out.println("CONNECTION WORKED");
+                    inputStream = urlConnection.getInputStream();
+                    jsonResponse = readStream(inputStream);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            } finally {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+                if (urlConnection != null) {
+                    urlConnection.disconnect();
+                }
+            }
+            return jsonResponse;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     private static String readStream(InputStream inputStream) {
         StringBuilder builder = new StringBuilder();
         try {
