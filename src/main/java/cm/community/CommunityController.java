@@ -30,6 +30,16 @@ public class CommunityController {
     	}
     	return comms;
     }
+
+    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity getAllCommunities(){
+        List<Community> communities = communityRepository.findAll();
+        if (communities.isEmpty()){
+            return ResponseEntity.status(404).body("No communities");
+        }
+        return ResponseEntity.status(200).body(communities);
+    }
     
     
     @RequestMapping(method = RequestMethod.GET)

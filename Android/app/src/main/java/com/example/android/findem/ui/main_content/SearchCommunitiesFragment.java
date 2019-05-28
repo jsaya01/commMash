@@ -1,5 +1,7 @@
 package com.example.android.findem.ui.main_content;
 
+import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.findem.R;
 import com.example.android.findem.adapters.CommunityListAdapter;
@@ -19,6 +23,7 @@ import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchCommunitiesFragment extends Fragment {
     private TextView filterTv;
@@ -27,6 +32,7 @@ public class SearchCommunitiesFragment extends Fragment {
 
     private int uid = 1;
     private ArrayList<Community> communities = new ArrayList<>();
+    private static final String LOG_TAG = "SearchCommunitiesFrag";
 
     @Nullable
     @Override
@@ -37,8 +43,6 @@ public class SearchCommunitiesFragment extends Fragment {
         filterTv = root.findViewById(R.id.filter_communities);
 
         setUpWorld(root);
-
-        communities = CommunityLoader.getCommunitiesOfUid(uid);
 
         filterTv.setOnClickListener(v -> {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
@@ -57,5 +61,34 @@ public class SearchCommunitiesFragment extends Fragment {
         communitiesRv.setHasFixedSize(true);
         communityListAdapter = new CommunityListAdapter();
         communityListAdapter.setState(communities, getContext(), uid, getFragmentManager());
+        communitiesRv.setAdapter(communityListAdapter);
+
+        new SearchASyncTask().execute();
+    }
+
+    //TODO need to use the model from the homepage to populate the community rv
+
+    @SuppressLint("StaticFieldLeak")
+    private class SearchASyncTask extends AsyncTask<Void, Void, ArrayList<Community>> {
+
+        @Override
+        protected ArrayList<Community> doInBackground(Void... voids) {
+            return CommunityLoader.getAllCommunities();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Community> community) {
+            super.onPostExecute(community);
+            
+            if (community == null) {
+                Log.e(LOG_TAG, "Failed to retrieve communities");
+            } else {
+                Log.d(LOG_TAG, "Community size returning is " + community.size());
+
+                communities.clear();
+                communities.addAll(community);
+                communityListAdapter.notifyDataSetChanged();
+            }
+        }
     }
 }
