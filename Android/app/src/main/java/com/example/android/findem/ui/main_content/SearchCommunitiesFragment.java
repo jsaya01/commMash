@@ -79,9 +79,7 @@ public class SearchCommunitiesFragment extends Fragment {
         @Override
         protected void onPostExecute(ArrayList<Community> community) {
             super.onPostExecute(community);
-
-            System.out.println("Communities: " + communities);
-
+            
             if (community == null) {
                 Log.e(LOG_TAG, "Failed to retrieve communities");
             } else {
