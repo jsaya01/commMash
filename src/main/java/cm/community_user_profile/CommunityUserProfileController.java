@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -33,6 +35,16 @@ public class CommunityUserProfileController {
     
     @Autowired
     UserController userController;
+
+    @RequestMapping(value = "/trending", method = RequestMethod.GET)
+    public ResponseEntity getTrending(@RequestParam Long num) {
+        List<BigInteger> cids = communityUserProfileRepository.findTrendingCommunities(num);
+        List<Community> communities = new ArrayList<>();
+        for (BigInteger cid : cids) {
+            communities.add(communityRepository.findCommunityByCid(cid.longValue()));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(communities);
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody

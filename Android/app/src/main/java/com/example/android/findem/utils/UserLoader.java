@@ -38,10 +38,10 @@ public class UserLoader {
 
         Log.d(LOG_TAG, "Url is " + url.toString());
 
-        String response = Connection.getRequest(url);
-        Log.d(LOG_TAG, response);
-        JSONObject json;
         try {
+            String response = Connection.getRequest(url);
+            Log.d(LOG_TAG, response);
+            JSONObject json;
             json = new JSONObject(response);
             return new User(
                     json.getString(UserParsing.FNAME),

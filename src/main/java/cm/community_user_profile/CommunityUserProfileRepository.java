@@ -1,8 +1,10 @@
 package cm.community_user_profile;
 
+import java.math.BigInteger;
 import java.util.List;
 import java.util.concurrent.Future;
 
+import cm.community.Community;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -24,4 +26,9 @@ public interface CommunityUserProfileRepository extends JpaRepository<CommunityU
 	@Query("SELECT uid FROM CommunityUserProfile cup where cup.cid = :cid")
     List<Long> findUserFromCommunity(@Param("cid") Long cid);
 
+    @Query(value = "SELECT cid " +
+            "FROM (SELECT cid, COUNT(*) as cnt FROM community_user_profile cup GROUP BY cid) as cnts " +
+            "ORDER BY cnts.cnt DESC " +
+            "LIMIT :num", nativeQuery = true)
+    List<BigInteger> findTrendingCommunities(@Param("num") Long cid);
 }

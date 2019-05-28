@@ -1,6 +1,7 @@
 package cm.matches;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +18,9 @@ public class Matches {
     private long uid1;
     private long uid2;
     
-    private Date tstamp;
+    private Timestamp tstamp;
     
-    public Matches(long uid1, long uid2, Date tstamp) {
+    public Matches(long uid1, long uid2, Timestamp tstamp) {
     	
     	this.uid1 = uid1;
     	this.uid2 = uid2;
@@ -38,7 +39,7 @@ public class Matches {
 		return uid2;
 	}
 
-	public Date getTstamp() {
+	public Timestamp getTstamp() {
 		return tstamp;
 	}
 
