@@ -17,14 +17,16 @@ public class User {
     private String username;
     private String password;
     private String description;
+    private String imagepath;
 
 
-    public User(String fname, String lname, String username, String password, String description) {
+    public User(String fname, String lname, String username, String password, String description, String imagepath) {
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
 		this.password = password;	
 		this.description = description;
+		this.imagepath = imagepath;
 	}
     
     public User() {}
@@ -63,6 +65,10 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	
+	public String getImagepath() {
+		return this.imagepath;
 	}
 
 }

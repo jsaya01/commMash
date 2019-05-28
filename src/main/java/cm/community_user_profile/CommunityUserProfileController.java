@@ -92,7 +92,8 @@ public class CommunityUserProfileController {
         
         List<User> users = userController.getUserProfiles(userIds);
         
-        return ResponseEntity.status(HttpStatus.OK).body(users);    }
+        return ResponseEntity.status(HttpStatus.OK).body(users);    
+    }
     
 //___________________________________________________________________
     
