@@ -2,8 +2,6 @@ package com.example.android.findem.ui.main_content;
 
 import android.support.v4.app.Fragment;
 
-import com.example.android.findem.utils.Connection;
-
 
 public class CommunityFragment extends Fragment {
 //    private RecyclerView matchesOverviewRv;

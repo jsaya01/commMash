@@ -13,8 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.findem.models.Match;
 import com.example.android.findem.R;
+import com.example.android.findem.models.Match;
 import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.ui.messaging.MessageChatFragment;
 

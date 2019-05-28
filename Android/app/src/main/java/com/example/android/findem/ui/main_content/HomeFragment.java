@@ -16,9 +16,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.android.findem.R;
 import com.example.android.findem.adapters.CommunityListAdapter;
 import com.example.android.findem.models.Community;
-import com.example.android.findem.R;
 import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                 return null;
             }
 
-            return CommunityLoader.getAllCommunities(integers[0]);
+            return CommunityLoader.getCommunitiesOfUid(integers[0]);
         }
 
         @Override
@@ -148,7 +148,11 @@ public class HomeFragment extends Fragment {
                 Log.e(LOG_TAG, "Failed to retrieve communities");
             } else {
                 Log.d(LOG_TAG, "Community size returning is " + community.size());
+
+                yourCommunities.clear();
                 yourCommunities.addAll(community);
+
+                yourCommunitiesAdapter.notifyDataSetChanged();
             }
         }
     }

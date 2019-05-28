@@ -8,19 +8,25 @@ public class User {
     private String username;
     private String password;
     private String description;
+    private String imagepath;
 
     // need a test to check if cm.user name and password are unique
-    public User(String fname, String lname, String username, String password, String description) {
+    public User(String fname, String lname, String username, String password, String description, String imagepath) {
 		this.fname = fname;
 		this.lname = lname;
 		this.username = username;
 		this.password = password;	
 		this.description = description;
+		this.imagepath = imagepath;
 	}
     
     public User() {}
-    
-    public String getDescription() {
+
+	public String getImagepath() {
+		return imagepath;
+	}
+
+	public String getDescription() {
 		return description;
 	}
     

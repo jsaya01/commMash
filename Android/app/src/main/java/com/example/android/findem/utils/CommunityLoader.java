@@ -9,17 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Console;
 import java.net.URL;
 import java.util.ArrayList;
 
 public class CommunityLoader {
-    private static class CommunityProfileParsing {
-        public static final String CID = "cid";
-        public static final String UID = "uid";
-        public static final String DESCRIPTION = "description";
-    }
-
     private static class CommunityParsing {
         public static final String CID = "cid";
         public static final String NAME = "name";
@@ -27,11 +20,31 @@ public class CommunityLoader {
         public static final String DESCRIPTION = "description";
     }
 
-    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcoms";
+    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
+    private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
     private static final String LOG_TAG = "CommunityLoader";
 
-    public static ArrayList<Community> getAllCommunities(int id) {
-        String response = getCommunitiesWithUid(id);
+    public static ArrayList<Community> getAllCommunities() {
+        Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
+        String response = getStream(requesting);
+
+        if (response == null) {
+            Log.e(LOG_TAG, "Error retrieving response for communities");
+            return null;
+        }
+
+        ArrayList<Community> communities = parseCommunities(response);
+        if (communities == null) {
+            Log.e(LOG_TAG, "Error parsing communities");
+            return null;
+        }
+
+        return communities;
+    }
+
+    public static ArrayList<Community> getCommunitiesOfUid(int id) {
+        Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
+        String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
@@ -71,22 +84,5 @@ public class CommunityLoader {
             Log.e(LOG_TAG, "Error parsing communities!");
             return null;
         }
-    }
-
-    private static String getCommunitiesWithUid(int id) {
-        Uri requesting;
-
-        requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
-
-        Log.d(LOG_TAG, "Uri is " + requesting.toString());
-        URL url = Connection.getURL(requesting);
-
-        if (url == null) {
-            Log.d(LOG_TAG, "Url is null! Investigate now!");
-            return null;
-        }
-
-        Log.d(LOG_TAG, "Url is " + url.toString());
-        return Connection.getRequest(url);
     }
 }

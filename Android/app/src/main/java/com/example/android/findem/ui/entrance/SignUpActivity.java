@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.android.findem.R;
+import com.example.android.findem.models.User;
 import com.example.android.findem.ui.MasterNavigator;
 import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.UserLoader;
 
-import android.view.View;
-import android.widget.EditText;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.example.android.findem.models.User;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -38,7 +38,10 @@ public class SignUpActivity extends AppCompatActivity {
         String password = ((EditText)findViewById(R.id.sign_up_password_et)).getText().toString();
         String confirmPassword = ((EditText)findViewById(R.id.sign_up_confirm_password_et)).getText().toString();
 
-        // Add validation here...
+        if (!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Create User From EditTexts
         JSONObject data = new JSONObject();
@@ -74,11 +77,12 @@ public class SignUpActivity extends AppCompatActivity {
             this.username = username;
             this.context = context;
         }
+
         @Override
         protected Void doInBackground(JSONObject... jsonObjects) {
             // Get the uid for starting the home activity
-             user = UserLoader.getUserByUserName(username);
-             return null;
+            user = UserLoader.getUserByUserName(username);
+            return null;
         }
 
         @Override

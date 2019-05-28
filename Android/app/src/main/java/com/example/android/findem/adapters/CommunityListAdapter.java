@@ -7,14 +7,15 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.findem.models.Community;
 import com.example.android.findem.R;
+import com.example.android.findem.models.Community;
 import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.ui.main_content.CommunityFragment;
 
@@ -47,6 +48,7 @@ public class CommunityListAdapter extends RecyclerView.Adapter<CommunityListAdap
         holder.communityImage.setImageResource(R.drawable.profile_pic);
 
         holder.viewHolder.setOnClickListener(v -> {
+            Log.d("ADAPTER", "CLICKED");
             Bundle bundle = new Bundle();
             bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
             bundle.putSerializable(context.getResources().getString(R.string.bundle_community),
