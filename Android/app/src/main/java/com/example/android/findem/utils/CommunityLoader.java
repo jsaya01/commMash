@@ -30,7 +30,7 @@ public class CommunityLoader {
     private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
     private static final String LOG_TAG = "CommunityLoader";
 
-    public static ArrayList<Community> getAllCommunitiesOfUid() {
+    public static ArrayList<Community> getAllCommunities() {
         Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
         String response = getStream(requesting);
 
