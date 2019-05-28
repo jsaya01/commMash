@@ -20,14 +20,15 @@ import java.net.URL;
 import java.nio.charset.Charset;
 
 public class Connection {
+    private static final String LOG_TAG = "Connection";
 
-    public static void postRequest(String route, JSONObject data){
+    public static void postRequest(String route, JSONObject data) {
         try {
             URL url = new URL("https://findem-back.herokuapp.com" + route);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-            conn.setRequestProperty("Accept","application/json");
+            conn.setRequestProperty("Accept", "application/json");
             conn.setDoOutput(true);
             conn.setDoInput(true);
             OutputStream out = new BufferedOutputStream(conn.getOutputStream());
@@ -155,6 +156,19 @@ public class Connection {
             e.printStackTrace();
         }
         return image;
+    }
+
+    public static String getStream(Uri requesting) {
+        Log.d(LOG_TAG, "Uri is " + requesting.toString());
+        URL url = Connection.getURL(requesting);
+
+        if (url == null) {
+            Log.d(LOG_TAG, "Url is null! Investigate now!");
+            return null;
+        }
+
+        Log.d(LOG_TAG, "Url is " + url.toString());
+        return Connection.getRequest(url);
     }
 
 }

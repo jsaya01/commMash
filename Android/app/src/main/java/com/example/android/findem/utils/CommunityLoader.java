@@ -13,12 +13,6 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class CommunityLoader {
-    private static class CommunityProfileParsing {
-        public static final String CID = "cid";
-        public static final String UID = "uid";
-        public static final String DESCRIPTION = "description";
-    }
-
     private static class CommunityParsing {
         public static final String CID = "cid";
         public static final String NAME = "name";
@@ -31,7 +25,7 @@ public class CommunityLoader {
 
     public static ArrayList<Community> getCommunitiesOfUid(int id) {
         Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
-        String response = getStream(requesting);
+        String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
@@ -71,18 +65,5 @@ public class CommunityLoader {
             Log.e(LOG_TAG, "Error parsing communities!");
             return null;
         }
-    }
-
-    private static String getStream(Uri requesting) {
-        Log.d(LOG_TAG, "Uri is " + requesting.toString());
-        URL url = Connection.getURL(requesting);
-
-        if (url == null) {
-            Log.d(LOG_TAG, "Url is null! Investigate now!");
-            return null;
-        }
-
-        Log.d(LOG_TAG, "Url is " + url.toString());
-        return Connection.getRequest(url);
     }
 }
