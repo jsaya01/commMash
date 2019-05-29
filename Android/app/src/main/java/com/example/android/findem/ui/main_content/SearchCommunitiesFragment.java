@@ -24,11 +24,8 @@ import com.example.android.findem.utils.CommunityLoader;
 import java.util.ArrayList;
 
 public class SearchCommunitiesFragment extends Fragment {
-    private TextView filterTv;
-    private RecyclerView communitiesRv;
     CommunityListAdapter communityListAdapter;
 
-    private int uid = 1;
     private ArrayList<Community> communities = new ArrayList<>();
     private static final String LOG_TAG = "SearchCommunitiesFrag";
 
@@ -38,7 +35,7 @@ public class SearchCommunitiesFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View root = inflater.inflate(R.layout.search_communities, container, false);
-        filterTv = root.findViewById(R.id.filter_communities);
+        TextView filterTv = root.findViewById(R.id.filter_communities);
 
         setUpWorld(root);
 
@@ -54,17 +51,16 @@ public class SearchCommunitiesFragment extends Fragment {
 
     private void setUpWorld(View root){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        communitiesRv = root.findViewById(R.id.search_communities_rv);
+        RecyclerView communitiesRv = root.findViewById(R.id.search_communities_rv);
         communitiesRv.setLayoutManager(linearLayoutManager);
         communitiesRv.setHasFixedSize(true);
         communityListAdapter = new CommunityListAdapter();
+        int uid = 1;
         communityListAdapter.setState(communities, getContext(), uid, getFragmentManager());
         communitiesRv.setAdapter(communityListAdapter);
 
         new SearchASyncTask().execute();
     }
-
-    //TODO need to use the model from the homepage to populate the community rv
 
     @SuppressLint("StaticFieldLeak")
     private class SearchASyncTask extends AsyncTask<Void, Void, ArrayList<Community>> {
