@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -26,7 +25,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="#00FFFFFF"
-        android:text="FINDEM"
+        android:text="@string/opening_findem"
         android:textColor="#FFFFFF"
         android:textSize="64sp"
         app:fontFamily="@font/tenor_sans"
@@ -44,7 +43,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="350dp"
         android:background="#00FFFFFF"
-        android:text="Find a cm.community."
+        android:text="@string/opening_find_community"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:fontFamily="@font/roboto"
@@ -59,7 +58,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="40dp"
         android:background="#00FFFFFF"
-        android:text="Match with people like you."
+        android:text="@string/opening_match"
 
         android:textColor="#FFFFFF"
         android:textSize="18sp"

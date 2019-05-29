@@ -15,6 +15,9 @@
     <string name="community_com_description">This community is about…</string>
     <string name="community_com_matches">Community Matches</string>
     <string name="community_find_people">Find some more people?</string>
+    <string name="opening_findem">FINDEM</string>
+    <string name="opening_find_community">Find a community.</string>
+    <string name="opening_match">Match with people like you.</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="add_a_picture_signup">Add a picture!</string>

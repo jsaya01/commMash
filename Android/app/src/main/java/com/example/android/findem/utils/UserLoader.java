@@ -21,6 +21,7 @@ public class UserLoader {
         static final String USERNAME = "username";
         static final String PASSWORD = "password";
         static final String DESCRIPTION = "description";
+        static final String IMAGEPATH = "imagePath";
     }
 
     public static User getUserByUserName(String username) {
@@ -48,7 +49,8 @@ public class UserLoader {
                     json.getString(UserParsing.LNAME),
                     json.getString(UserParsing.USERNAME),
                     json.getString(UserParsing.PASSWORD),
-                    json.getString(UserLoader.UserParsing.DESCRIPTION));
+                    json.getString(UserLoader.UserParsing.DESCRIPTION),
+                    json.getString(UserParsing.IMAGEPATH));
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error parsing user!");
             return null;
