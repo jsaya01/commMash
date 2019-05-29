@@ -149,18 +149,22 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(ArrayList<ArrayList<Community>> communities) {
             super.onPostExecute(communities);
 
-            if (communities == null || communities.get(0) == null || communities.get(1) == null) {
+            if (communities == null) {
                 Log.e(LOG_TAG, "Failed to retrieve communities");
             } else {
                 Log.d(LOG_TAG, "Community size returning is " + communities.size());
 
-                yourCommunities.clear();
-                yourCommunities.addAll(communities.get(0));
-                yourCommunitiesAdapter.notifyDataSetChanged();
+                if (communities.get(0) != null) {
+                    yourCommunities.clear();
+                    yourCommunities.addAll(communities.get(0));
+                    yourCommunitiesAdapter.notifyDataSetChanged();
+                }
 
-                trendingCommunities.clear();
-                trendingCommunities.addAll(communities.get(1));
-                trendingCommunitiesAdapter.notifyDataSetChanged();
+                if (communities.get(1) != null) {
+                    trendingCommunities.clear();
+                    trendingCommunities.addAll(communities.get(1));
+                    trendingCommunitiesAdapter.notifyDataSetChanged();
+                }
             }
         }
     }

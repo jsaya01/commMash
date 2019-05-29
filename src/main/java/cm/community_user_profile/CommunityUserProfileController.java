@@ -99,7 +99,7 @@ public class CommunityUserProfileController {
     
     @RequestMapping(value = "/getusers", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getUserIds(@RequestParam long cid) {
+    public ResponseEntity getUsersInCommunity(@RequestParam long cid) {
         List<Long> userIds = communityUserProfileRepository.findUserFromCommunity(cid);
         
         List<User> users = userController.getUserProfiles(userIds);
