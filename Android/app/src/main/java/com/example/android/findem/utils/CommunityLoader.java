@@ -20,13 +20,14 @@ public class CommunityLoader {
         public static final String DESCRIPTION = "description";
     }
 
-    private static final String GET_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
+    private static final String GET_YOUR_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
+    private static final String GET_TRENDING_URL = "https://findem-back.herokuapp.com/communityuserprofile/trending";
     private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
     private static final String LOG_TAG = "CommunityLoader";
 
     public static ArrayList<Community> getAllCommunities() {
         Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
-        String response = getStream(requesting);
+        String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
@@ -42,12 +43,30 @@ public class CommunityLoader {
         return communities;
     }
 
-    public static ArrayList<Community> getCommunitiesOfUid(int id) {
-        Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
+    public static ArrayList<Community> getCommunitiesOfUid(long id) {
+        Uri requesting = Uri.parse(GET_YOUR_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for communities");
+            return null;
+        }
+
+        ArrayList<Community> communities = parseCommunities(response);
+        if (communities == null) {
+            Log.e(LOG_TAG, "Error parsing communities");
+            return null;
+        }
+
+        return communities;
+    }
+
+    public static ArrayList<Community> getTrendingCommunities() {
+        Uri requesting = Uri.parse(GET_TRENDING_URL).buildUpon().appendQueryParameter("num", String.valueOf(3)).build();
+        String response = Connection.getStream(requesting);
+
+        if (response == null) {
+            Log.e(LOG_TAG, "Error retrieving response for trending communities");
             return null;
         }
 

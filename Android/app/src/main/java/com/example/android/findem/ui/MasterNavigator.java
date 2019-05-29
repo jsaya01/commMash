@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.android.findem.R;
@@ -14,16 +15,18 @@ import com.example.android.findem.ui.messaging.MessageOverviewFragment;
 
 public class MasterNavigator extends AppCompatActivity {
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
-    private int uid;
+    private long uid;
     private Bundle dataForFragments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        uid = getIntent().getExtras().getInt("uid");
+        uid = getIntent().getExtras().getLong(getResources().getString(R.string.bundle_uid));
+        Log.d("MASTER", String.valueOf(uid));
+        
         dataForFragments = new Bundle();
-        dataForFragments.putInt(getResources().getString(R.string.bundle_uid), uid);
+        dataForFragments.putLong(getResources().getString(R.string.bundle_uid), uid);
 
         setContentView(R.layout.master_navigator);
 

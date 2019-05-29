@@ -36,24 +36,13 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void signinClicked(View view) {
-        String username = ((EditText)findViewById(R.id.signin_username)).getText().toString();
-        String password = ((EditText)findViewById(R.id.signin_password)).getText().toString();
-        try {
-            new SigninAsync(username, password, getApplicationContext()).execute();
-        } catch (Exception e) {
-            Log.e(SIGNIN_ID, e.getClass().toString());
-            Toast.makeText(this, "Invalid Username", Toast.LENGTH_SHORT).show();
-        }
-
-//        if (!password.equals(user.getPassword())) {
-//            Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
+        String username = ((EditText) findViewById(R.id.signin_username)).getText().toString();
+        String password = ((EditText) findViewById(R.id.signin_password)).getText().toString();
         new SigninAsync(username, password, getApplicationContext()).execute();
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class SigninAsync extends AsyncTask<JSONObject, Void, Void> {
+    private class SigninAsync extends AsyncTask<Void, Void, User> {
         private String username;
         private String password;
         private Context context;
@@ -65,19 +54,28 @@ public class SignInActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(JSONObject... jsonObjects) {
+        protected User doInBackground(Void... a) {
             // Get the uid for starting the home activity
-            user = UserLoader.getUserByUserName(username);
-            return null;
+            return UserLoader.getUserByUserName(username);
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(User u) {
+            super.onPostExecute(u);
 
             // Transition to Home
+            if (u == null) {
+                Toast.makeText(context, "Invalid username.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            else if(!u.getPassword().equals(password)) {
+                Toast.makeText(context, "Invalid password.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Intent intent = new Intent(context, MasterNavigator.class);
-            intent.putExtra("uid", user.getUid());
+            intent.putExtra(context.getResources().getString(R.string.bundle_uid), u.getUid());
+            Log.e("SIGNIN", String.valueOf(u.getUid()));
             startActivity(intent);
         }
     }

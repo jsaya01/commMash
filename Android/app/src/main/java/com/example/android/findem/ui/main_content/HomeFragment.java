@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
     private Button createCommunityBtn;
     private Button searchCommunityBtn;
 
-    private int uid;
+    private long uid;
     private ArrayList<Community> yourCommunities = new ArrayList<>();
     private ArrayList<Community> trendingCommunities = new ArrayList<>();
 
@@ -51,6 +51,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.home, container, false);
+        uid = this.getArguments().getLong("uid", -1);
         setTitle();
         setUpWorld(root);
 
@@ -87,7 +88,7 @@ public class HomeFragment extends Fragment {
         setOnClickListeners();
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            uid = bundle.getInt("uid", -1);
+            uid = bundle.getLong("uid", -1);
             new HomeASyncTask().execute(uid);
         } else {
             Log.e(LOG_TAG, "Error retrieving uid from bundle");
@@ -97,7 +98,7 @@ public class HomeFragment extends Fragment {
 
     private void setOnClickListeners() {
         final Bundle bundle = new Bundle();
-        bundle.putInt(getResources().getString(R.string.bundle_uid), uid);
+        bundle.putLong(getResources().getString(R.string.bundle_uid), uid);
 
         createCommunityBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,30 +130,37 @@ public class HomeFragment extends Fragment {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class HomeASyncTask extends AsyncTask<Integer, Void, ArrayList<Community>> {
+    private class HomeASyncTask extends AsyncTask<Long, Void, ArrayList<ArrayList<Community>>> {
 
         @Override
-        protected ArrayList<Community> doInBackground(Integer... integers) {
-            if (integers.length < 1 || integers[0] == null) {
+        protected ArrayList<ArrayList<Community>> doInBackground(Long... longs) {
+            if (longs.length < 1 || longs[0] == null) {
                 return null;
             }
 
-            return CommunityLoader.getCommunitiesOfUid(integers[0]);
+            ArrayList<ArrayList<Community>> results = new ArrayList<>();
+            results.add(CommunityLoader.getCommunitiesOfUid(longs[0]));
+            results.add(CommunityLoader.getTrendingCommunities());
+
+            return results;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Community> community) {
-            super.onPostExecute(community);
+        protected void onPostExecute(ArrayList<ArrayList<Community>> communities) {
+            super.onPostExecute(communities);
 
-            if (community == null) {
+            if (communities == null || communities.get(0) == null || communities.get(1) == null) {
                 Log.e(LOG_TAG, "Failed to retrieve communities");
             } else {
-                Log.d(LOG_TAG, "Community size returning is " + community.size());
+                Log.d(LOG_TAG, "Community size returning is " + communities.size());
 
                 yourCommunities.clear();
-                yourCommunities.addAll(community);
-
+                yourCommunities.addAll(communities.get(0));
                 yourCommunitiesAdapter.notifyDataSetChanged();
+
+                trendingCommunities.clear();
+                trendingCommunities.addAll(communities.get(1));
+                trendingCommunitiesAdapter.notifyDataSetChanged();
             }
         }
     }

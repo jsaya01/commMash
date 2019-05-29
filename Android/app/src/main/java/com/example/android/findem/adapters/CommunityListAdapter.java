@@ -24,10 +24,10 @@ import java.util.ArrayList;
 public class CommunityListAdapter extends RecyclerView.Adapter<CommunityListAdapter.AdapterViewHolder> {
     private ArrayList<Community> communities;
     private Context context;
-    private int uid;
+    private long uid;
     private FragmentManager fragmentManager;
 
-    public void setState(ArrayList<Community> communities, Context context, int uid, FragmentManager fragmentManager) {
+    public void setState(ArrayList<Community> communities, Context context, long uid, FragmentManager fragmentManager) {
         this.communities = communities;
         this.context = context;
         this.uid = uid;
@@ -50,7 +50,7 @@ public class CommunityListAdapter extends RecyclerView.Adapter<CommunityListAdap
         holder.viewHolder.setOnClickListener(v -> {
             Log.d("ADAPTER", "CLICKED");
             Bundle bundle = new Bundle();
-            bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
+            bundle.putLong(context.getResources().getString(R.string.bundle_uid), uid);
             bundle.putSerializable(context.getResources().getString(R.string.bundle_community),
                     communities.get(holder.getAdapterPosition()));
 

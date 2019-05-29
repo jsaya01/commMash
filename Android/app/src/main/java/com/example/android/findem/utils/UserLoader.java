@@ -16,6 +16,7 @@ public class UserLoader {
     private static final String LOG_TAG = "UserLoader";
 
     private static class UserParsing {
+        static final String UID = "uid";
         static final String FNAME = "fname";
         static final String LNAME = "lname";
         static final String USERNAME = "username";
@@ -41,16 +42,23 @@ public class UserLoader {
 
         try {
             String response = Connection.getRequest(url);
+
+            if (response == null) {
+                return null;
+            }
+
             Log.d(LOG_TAG, response);
             JSONObject json;
             json = new JSONObject(response);
-            return new User(
+            User u = new User(
                     json.getString(UserParsing.FNAME),
                     json.getString(UserParsing.LNAME),
                     json.getString(UserParsing.USERNAME),
                     json.getString(UserParsing.PASSWORD),
-                    json.getString(UserLoader.UserParsing.DESCRIPTION),
-                    json.getString(UserParsing.IMAGEPATH));
+                    json.getString(UserLoader.UserParsing.DESCRIPTION)
+            );
+            u.setUid(json.getLong(UserParsing.UID));
+            return u;
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error parsing user!");
             return null;

@@ -10,6 +10,16 @@ public class User {
     private String description;
     private String imagepath;
 
+	// need a test to check if cm.user name and password are unique
+	public User(String fname, String lname, String username, String password, String description) {
+		this.fname = fname;
+		this.lname = lname;
+		this.username = username;
+		this.password = password;
+		this.description = description;
+		this.imagepath = "remove";
+	}
+
     // need a test to check if cm.user name and password are unique
     public User(String fname, String lname, String username, String password, String description, String imagepath) {
 		this.fname = fname;
@@ -21,6 +31,10 @@ public class User {
 	}
     
     public User() {}
+
+	public void setUid(long uid) {
+		this.uid = uid;
+	}
 
 	public String getImagepath() {
 		return imagepath;
