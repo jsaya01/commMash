@@ -102,7 +102,7 @@ public class CommunityFragment extends Fragment {
         profileEditButton.setOnClickListener(v -> {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.master_activity_fragment, new EditProfileFragment());
-            fragmentTransaction.addToBackStack(ActiveFragments.TAG_EDIT_PROFILE_FRAGMENT);
+            fragmentTransaction.addToBackStack(ActiveFragments.tagEditProfileFragment);
             fragmentTransaction.commit();
         });
 
@@ -111,7 +111,7 @@ public class CommunityFragment extends Fragment {
 //            fragmentTransaction.replace(R.id.master_activity_fragment, new MatchingFragment());
             fragmentTransaction.replace(R.id.master_activity_fragment, new MatchingFragmentCards());
 
-            fragmentTransaction.addToBackStack(ActiveFragments.TAG_MATCHING_FRAGMENT);
+            fragmentTransaction.addToBackStack(ActiveFragments.tagMatchingFragment);
             fragmentTransaction.commit();
         });
     }

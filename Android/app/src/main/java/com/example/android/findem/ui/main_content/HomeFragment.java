@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment {
                 createCommunityFragment.setArguments(bundle);
 
                 fragmentTransaction.replace(R.id.master_activity_fragment, createCommunityFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_COMM_FRAGMENT);
+                fragmentTransaction.addToBackStack(ActiveFragments.tagCreateCommFragment);
                 fragmentTransaction.commit();
             }
         });
@@ -122,7 +122,7 @@ public class HomeFragment extends Fragment {
                 searchCommunitiesFragment.setArguments(bundle);
 
                 fragmentTransaction.replace(R.id.master_activity_fragment, searchCommunitiesFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_SEARCH_COMM_FRAGMENT);
+                fragmentTransaction.addToBackStack(ActiveFragments.tagSearchCommFragment);
                 fragmentTransaction.commit();
             }
         });

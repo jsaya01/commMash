@@ -59,7 +59,7 @@ public class CommunityListAdapter extends RecyclerView.Adapter<CommunityListAdap
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.master_activity_fragment, communityFragment);
-            fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
+            fragmentTransaction.addToBackStack(ActiveFragments.tagCommunityFragment);
             fragmentTransaction.commit();
         });
     }

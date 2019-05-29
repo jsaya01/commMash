@@ -59,7 +59,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Adap
 
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.add(R.id.master_activity_fragment, chatFragment);
-            fragmentTransaction.addToBackStack(ActiveFragments.TAG_COMMUNITY_FRAGMENT);
+            fragmentTransaction.addToBackStack(ActiveFragments.tagCommunityFragment);
             fragmentTransaction.commit();
         });
     }
