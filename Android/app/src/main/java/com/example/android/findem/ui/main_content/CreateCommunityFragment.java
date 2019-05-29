@@ -19,11 +19,6 @@ import org.json.JSONObject;
 
 public class CreateCommunityFragment extends Fragment {
 
-    private Button createCommunityBtn;
-    private EditText communityName;
-    private EditText communityDesc;
-    private EditText tags;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,12 +26,12 @@ public class CreateCommunityFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.create_community, container, false);
 
-        createCommunityBtn = root.findViewById(R.id.create_community_button);
-        communityName = root.findViewById(R.id.community_name);
-        communityDesc = root.findViewById(R.id.community_description);
-        tags = root.findViewById(R.id.addTags);
+        Button createCommunityBtn = root.findViewById(R.id.create_community_button);
+        EditText communityName = root.findViewById(R.id.community_name);
+        EditText communityDesc = root.findViewById(R.id.community_description);
+        EditText tags = root.findViewById(R.id.addTags);
 
-        createCommunityBtn.setOnClickListener((v) -> {
+        createCommunityBtn.setOnClickListener(v -> {
 
             JSONObject data = new JSONObject();
             try {
@@ -48,11 +43,6 @@ public class CreateCommunityFragment extends Fragment {
             }
 
             new CreateCommunityAsync().execute(data);
-
-            System.out.println(communityName.getText().toString());
-            System.out.println(communityDesc.getText().toString());
-            System.out.println(tags.getText().toString());
-            System.out.println("clicked on button");
         });
 
         return root;

@@ -1,13 +1,18 @@
 package com.example.android.findem.ui;
 
 public class ActiveFragments {
-    public static String TAG_HOME_FRAGMENT = "tag-home-fragment";
-    public static String TAG_MESSAGES_FRAGMENT = "tag-messages-fragment";
-    public static String TAG_SETTINGS_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_SEARCH_COMM_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_CREATE_COMM_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_EDIT_PROFILE_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_COMMUNITY_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_FILTER_RESULTS_FRAGMENT = "tag-settings-fragment";
-    public static String TAG_MATCHING_FRAGMENT = "tag-settings-fragment";
+
+    private ActiveFragments() {
+        throw new IllegalStateException("Utility class");
+    }
+
+    public static String tagHomeFragment = "tag-home-fragment";
+    public static String tagMessagesFragment = "tag-messages-fragment";
+    public static String tagSettingsFragment = "tag-settings-fragment";
+    public static String tagSearchCommFragment = "tag-search-fragment";
+    public static String tagCreateCommFragment = "tag-create-fragment";
+    public static String tagEditProfileFragment = "tag-edit-fragment";
+    public static String tagCommunityFragment = "tag-community-fragment";
+    public static String tagFilterResultsFragment = "tag-filter-fragment";
+    public static String tagMatchingFragment = "tag-matching-fragment";
 }
