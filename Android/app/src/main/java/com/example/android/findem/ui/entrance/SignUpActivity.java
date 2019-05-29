@@ -22,7 +22,6 @@ import org.json.JSONObject;
 
 public class SignUpActivity extends AppCompatActivity {
     static String SIGNUP_ID = "SIGNUP";
-    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,20 +55,11 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         // Send POST
-        new SignupAsync().execute(data);
         new GetUserAsync(username, getApplicationContext()).execute(data);
     }
 
-    private static class SignupAsync extends AsyncTask<JSONObject, Void, Void> {
-        @Override
-        protected Void doInBackground(JSONObject... jsonObjects) {
-            Connection.postRequest("/user", jsonObjects[0]);
-            return null;
-        }
-    }
-
     @SuppressLint("StaticFieldLeak")
-    private class GetUserAsync extends AsyncTask<JSONObject, Void, Void> {
+    private class GetUserAsync extends AsyncTask<JSONObject, Void, User> {
         private String username;
         private Context context;
 
@@ -79,21 +69,20 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(JSONObject... jsonObjects) {
+        protected User doInBackground(JSONObject... jsonObjects) {
             // Get the uid for starting the home activity
-            user = UserLoader.getUserByUserName(username);
-            return null;
+            Connection.postRequest("/user", jsonObjects[0]);
+            return UserLoader.getUserByUserName(username);
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
+        protected void onPostExecute(User u) {
+            super.onPostExecute(u);
 
             // Transition to Home
             Intent intent = new Intent(context, MasterNavigator.class);
-            intent.putExtra("uid", user.getUid());
+            intent.putExtra(context.getResources().getString(R.string.bundle_uid), u.getUid());
             startActivity(intent);
         }
     }
-
 }
