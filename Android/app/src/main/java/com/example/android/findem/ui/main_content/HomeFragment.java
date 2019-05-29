@@ -23,11 +23,10 @@ import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class HomeFragment extends Fragment {
-    private RecyclerView trendingCommunitiesRv;
     CommunityListAdapter trendingCommunitiesAdapter;
-    private RecyclerView yourCommunitiesRv;
     CommunityListAdapter yourCommunitiesAdapter;
     private Button createCommunityBtn;
     private Button searchCommunityBtn;
@@ -39,6 +38,7 @@ public class HomeFragment extends Fragment {
     private static final String LOG_TAG = "HomeFragment";
 
     public HomeFragment() {
+        //Empty constructor
     }
 
     private void setTitle() {
@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
 
     private void setUpWorld(View root) {
         LinearLayoutManager linearManagerTrending = new LinearLayoutManager(getContext());
-        trendingCommunitiesRv = root.findViewById(R.id.home_trending_communities_rv);
+        RecyclerView trendingCommunitiesRv = root.findViewById(R.id.home_trending_communities_rv);
         trendingCommunitiesRv.setLayoutManager(linearManagerTrending);
         trendingCommunitiesRv.setHasFixedSize(true);
         trendingCommunitiesAdapter = new CommunityListAdapter();
@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment {
         trendingCommunitiesRv.setAdapter(trendingCommunitiesAdapter);
 
         LinearLayoutManager linearManagerYour = new LinearLayoutManager(getContext());
-        yourCommunitiesRv = root.findViewById(R.id.home_your_communities_rv);
+        RecyclerView yourCommunitiesRv = root.findViewById(R.id.home_your_communities_rv);
         yourCommunitiesRv.setLayoutManager(linearManagerYour);
         yourCommunitiesRv.setHasFixedSize(true);
         yourCommunitiesAdapter = new CommunityListAdapter();
@@ -135,7 +135,7 @@ public class HomeFragment extends Fragment {
         @Override
         protected ArrayList<ArrayList<Community>> doInBackground(Long... longs) {
             if (longs.length < 1 || longs[0] == null) {
-                return null;
+                return new ArrayList<>();
             }
 
             ArrayList<ArrayList<Community>> results = new ArrayList<>();
