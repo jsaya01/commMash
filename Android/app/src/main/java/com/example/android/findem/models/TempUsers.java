@@ -1,10 +1,12 @@
 package com.example.android.findem.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TempUsers {
-    public static ArrayList<User> getTempUsers(){
-        ArrayList<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
+
+    public TempUsers(){
         User john = new User("John", "Doe",
                 "username", "pass", "hello I am John.",
                 "https://github.com/jsaya01/commMash/blob/master/images/man_test.jpg");
@@ -15,7 +17,9 @@ public class TempUsers {
 
         users.add(john);
         users.add(jane);
-        return users;
     }
 
+    public List<User> getUsers(){
+        return users;
+    }
 }

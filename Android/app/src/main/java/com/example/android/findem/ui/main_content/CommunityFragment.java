@@ -23,23 +23,17 @@ import com.example.android.findem.R;
 import com.example.android.findem.models.Community;
 import com.example.android.findem.adapters.MatchListAdapter;
 import com.example.android.findem.models.Match;
-import com.example.android.findem.models.User;
 import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.MatchLoader;
-import com.example.android.findem.utils.UserLoader;
 
 import java.util.ArrayList;
 
 
 public class CommunityFragment extends Fragment {
-    private RecyclerView matchesOverviewRv;
     private MatchListAdapter yourMatchesAdapter;
     private TextView profileEditButton;
     private Group addMatchesButton;
-    private ImageView communityImage;
-    private TextView communityDescription;
-    private Bundle userBundle;
 
     private ArrayList<Match> yourMatches = new ArrayList<>();
 
@@ -52,7 +46,7 @@ public class CommunityFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        userBundle = this.getArguments();
+        Bundle userBundle = this.getArguments();
 
         uid = userBundle.getInt(getResources().getString(R.string.bundle_uid));
 
@@ -71,8 +65,7 @@ public class CommunityFragment extends Fragment {
     private void setUpWorld(View root) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
-        matchesOverviewRv = root.findViewById(R.id.community_matches_rv);
-        matchesOverviewRv = root.findViewById(R.id.home_your_communities_rv);
+        RecyclerView matchesOverviewRv = root.findViewById(R.id.community_matches_rv);
         matchesOverviewRv.setLayoutManager(linearLayoutManager);
         matchesOverviewRv.setHasFixedSize(true);
         yourMatchesAdapter = new MatchListAdapter();
@@ -82,8 +75,8 @@ public class CommunityFragment extends Fragment {
         profileEditButton = root.findViewById(R.id.community_my_profile_btn);
         addMatchesButton = root.findViewById(R.id.community_add_matches_grp);
 
-        communityImage = root.findViewById(R.id.community_image);
-        communityDescription = root.findViewById(R.id.community_description);
+        ImageView communityImage = root.findViewById(R.id.community_image);
+        TextView communityDescription = root.findViewById(R.id.community_description);
 
         Bundle bundle = this.getArguments();
         setOnClickListeners();
@@ -151,7 +144,7 @@ public class CommunityFragment extends Fragment {
         @Override
         protected ArrayList<Match> doInBackground(Integer... integers) {
             if (integers.length < 1 || integers[0] == null) {
-                return null;
+                return new ArrayList<Match>();
             }
 
             return MatchLoader.getMatchesOfUid(integers[0]);

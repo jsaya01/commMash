@@ -5,21 +5,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.android.findem.models.TempUsers;
-import com.example.android.findem.ui.ActiveFragments;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import com.example.android.findem.R;
 import com.example.android.findem.models.User;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MatchingFragmentCards extends Fragment {
 
@@ -30,11 +27,9 @@ public class MatchingFragmentCards extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.findem_card, container, false);
-
-
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.findem_card);
-        ArrayList<User> temps = TempUsers.getTempUsers();
+        
+        TempUsers users = new TempUsers();
+        List<User> temps = users.getUsers();
 
         mSwipeView = (SwipePlaceHolderView)root.findViewById(R.id.swipeView);
         mContext = getContext();
