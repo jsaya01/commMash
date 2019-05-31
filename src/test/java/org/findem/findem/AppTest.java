@@ -3,17 +3,18 @@ package org.findem.findem;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.findem.findem.saya_test.SayaTest;
 
 /**
- * Unit test for simple App.
+ * Unit SayaTest for simple App.
  */
 public class AppTest 
     extends TestCase
 {
     /**
-     * Create the test case
+     * Create the SayaTest case
      *
-     * @param testName name of the test case
+     * @param testName name of the SayaTest case
      */
     public AppTest( String testName )
     {
@@ -25,7 +26,7 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( AppTest.class, SayaTest.class);
     }
 
     /**
