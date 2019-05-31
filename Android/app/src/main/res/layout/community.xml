@@ -20,7 +20,7 @@
             android:clickable="false"
             android:cropToPadding="false"
             android:scaleType="fitStart"
-            android:src="@drawable/mountain_biking"
+            android:src="@drawable/landscape"
             android:tint="#88000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

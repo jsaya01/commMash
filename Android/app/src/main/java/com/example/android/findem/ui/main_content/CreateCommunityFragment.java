@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.android.findem.R;
+import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.Connection;
 
 import org.json.JSONException;
@@ -43,6 +45,14 @@ public class CreateCommunityFragment extends Fragment {
             }
 
             new CreateCommunityAsync().execute(data);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+
+            HomeFragment homeFragment = new HomeFragment();
+            homeFragment.setArguments(getArguments());
+
+            fragmentTransaction.replace(R.id.master_activity_fragment, homeFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.tagCreateCommFragment);
+            fragmentTransaction.commit();
         });
 
         return root;

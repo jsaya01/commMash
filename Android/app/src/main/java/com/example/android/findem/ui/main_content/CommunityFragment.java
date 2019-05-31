@@ -51,11 +51,11 @@ public class CommunityFragment extends Fragment {
         uid = userBundle.getInt(getResources().getString(R.string.bundle_uid));
 
         //TODO: comment out bottom line and replace community
-//        community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
-        community = new Community("swimmers",
+        community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
+        /*community = new Community("swimmers",
                 "https://github.com/jsaya01/commMash/blob/master/images/community_test.jpeg",
                 "we swim and we scared");
-
+        */
         View root = inflater.inflate(R.layout.community, container, false);
         setUpWorld(root);
 
@@ -75,7 +75,6 @@ public class CommunityFragment extends Fragment {
         profileEditButton = root.findViewById(R.id.community_my_profile_btn);
         addMatchesButton = root.findViewById(R.id.community_add_matches_grp);
 
-        ImageView communityImage = root.findViewById(R.id.community_image);
         TextView communityDescription = root.findViewById(R.id.community_description);
 
         Bundle bundle = this.getArguments();
@@ -85,8 +84,6 @@ public class CommunityFragment extends Fragment {
             // set the community's title, description, and image
             getActivity().setTitle(community.getName());
             communityDescription.setText(community.getDescription());
-
-            new CommunityFragment.ImageAsyncTask(communityImage).execute(community.getImagepath());
 
             // fetch all matches for the user and add them to the array list
             new CommunityFragment.CommunityASyncTask().execute(uid);
