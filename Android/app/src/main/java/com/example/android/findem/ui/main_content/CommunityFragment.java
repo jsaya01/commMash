@@ -28,6 +28,7 @@ import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.MatchLoader;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class CommunityFragment extends Fragment {
@@ -48,7 +49,7 @@ public class CommunityFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         Bundle userBundle = this.getArguments();
 
-        uid = userBundle.getLong(getResources().getString(R.string.bundle_uid));
+        uid = Objects.requireNonNull(userBundle).getLong(getResources().getString(R.string.bundle_uid));
 
         community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
 
@@ -78,7 +79,7 @@ public class CommunityFragment extends Fragment {
 
         if (bundle != null) {
             // set the community's title, description, and image
-            getActivity().setTitle(community.getName());
+            Objects.requireNonNull(getActivity()).setTitle(community.getName());
             communityDescription.setText(community.getDescription());
 
             // fetch all matches for the user and add them to the array list
@@ -93,15 +94,14 @@ public class CommunityFragment extends Fragment {
 
     private void setOnClickListeners() {
         profileEditButton.setOnClickListener(v -> {
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
             fragmentTransaction.replace(R.id.master_activity_fragment, new EditProfileFragment());
             fragmentTransaction.addToBackStack(ActiveFragments.TAG_EDIT_FRAGMENT);
             fragmentTransaction.commit();
         });
 
         addMatchesButton.setOnClickListener(v -> {
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//            fragmentTransaction.replace(R.id.master_activity_fragment, new MatchingFragment());
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
             fragmentTransaction.replace(R.id.master_activity_fragment, new MatchingFragmentCards());
 
             fragmentTransaction.addToBackStack(ActiveFragments.TAG_MATCHING_FRAGMENT);
