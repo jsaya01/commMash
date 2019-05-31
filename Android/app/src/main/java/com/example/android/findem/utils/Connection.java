@@ -18,9 +18,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public class Connection {
+
     private static final String LOG_TAG = "Connection";
+
+    private Connection() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void postRequest(String route, JSONObject data) {
         try {
@@ -33,13 +39,13 @@ public class Connection {
             conn.setDoInput(true);
             OutputStream out = new BufferedOutputStream(conn.getOutputStream());
 
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, StandardCharsets.UTF_8));
             writer.write(data.toString());
             writer.flush();
             writer.close();
             out.close();
 
-            System.out.println("RESPONSE CODE from postRequest " + conn.getResponseCode());
+            Log.d(LOG_TAG, "RESPONSE CODE from postRequest " + conn.getResponseCode());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,71 +53,41 @@ public class Connection {
     }
 
     protected static String getRequest(URL url) {
-        System.out.println("URL " + url.toString());
+        Log.d(LOG_TAG, "URL " + url.toString());
         try {
-            String jsonResponse = null;
-            InputStream inputStream = null;
-            HttpURLConnection urlConnection = null;
-            try {
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.connect();
-                System.out.println("RESPONSE CODE " + urlConnection.getResponseCode());
-                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    System.out.println("CONNECTION WORKED");
-                    inputStream = urlConnection.getInputStream();
-                    jsonResponse = readStream(inputStream);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
-            }
-            return jsonResponse;
+            return getRequestHelper(url);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    protected static String getRequest(URL url, Object body) {
-        System.out.println("URL " + url.toString());
+    protected static String getRequestHelper(URL url) throws java.io.IOException {
+        String jsonResponse = null;
+        InputStream inputStream = null;
+        HttpURLConnection urlConnection = null;
         try {
-            String jsonResponse = null;
-            InputStream inputStream = null;
-            HttpURLConnection urlConnection = null;
-            try {
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setRequestMethod("GET");
-                urlConnection.connect();
-                System.out.println("RESPONSE CODE " + urlConnection.getResponseCode());
-                if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                    System.out.println("CONNECTION WORKED");
-                    inputStream = urlConnection.getInputStream();
-                    jsonResponse = readStream(inputStream);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            } finally {
-                if (inputStream != null) {
-                    inputStream.close();
-                }
-                if (urlConnection != null) {
-                    urlConnection.disconnect();
-                }
+            urlConnection = (HttpURLConnection) url.openConnection();
+            urlConnection.setRequestMethod("GET");
+            urlConnection.connect();
+            Log.d(LOG_TAG, "RESPONSE CODE " + urlConnection.getResponseCode());
+            if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                Log.d(LOG_TAG, "CONNECTION WORKED");
+                inputStream = urlConnection.getInputStream();
+                jsonResponse = readStream(inputStream);
             }
-            return jsonResponse;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        } finally {
+            if (inputStream != null) {
+                inputStream.close();
+            }
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
         }
+        return jsonResponse;
     }
 
     private static String readStream(InputStream inputStream) {
