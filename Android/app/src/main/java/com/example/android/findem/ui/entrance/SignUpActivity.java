@@ -21,8 +21,6 @@ import org.json.JSONObject;
 
 
 public class SignUpActivity extends AppCompatActivity {
-    static String SIGNUP_ID = "SIGNUP";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

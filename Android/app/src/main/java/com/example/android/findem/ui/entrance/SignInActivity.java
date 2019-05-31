@@ -14,25 +14,14 @@ import android.widget.Toast;
 import com.example.android.findem.R;
 import com.example.android.findem.models.User;
 import com.example.android.findem.ui.MasterNavigator;
-import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.UserLoader;
 
-import org.json.JSONObject;
-
 public class SignInActivity extends AppCompatActivity {
-    static String SIGNIN_ID = "SIGNIN";
-    static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
-    }
-
-    public void enterApplication(View view) {
-        Intent intent = new Intent(this, MasterNavigator.class);
-        intent.putExtra(getResources().getString(R.string.bundle_uid), 3);
-        startActivity(intent);
     }
 
     public void signinClicked(View view) {

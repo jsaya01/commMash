@@ -21,7 +21,7 @@ public class MasterNavigator extends AppCompatActivity {
 
         long uid = Objects.requireNonNull(getIntent().getExtras()).getLong(getResources().getString(R.string.bundle_uid));
         Log.d("MASTER", String.valueOf(uid));
-        
+
         dataForFragments = new Bundle();
         dataForFragments.putLong(getResources().getString(R.string.bundle_uid), uid);
 
@@ -47,8 +47,9 @@ public class MasterNavigator extends AppCompatActivity {
                 case R.id.navigation_settings:
                     setUpSettingsFragment();
                     return true;
+                default:
+                    return false;
             }
-            return false;
         };
     }
 
