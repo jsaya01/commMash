@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Matches {
 
@@ -17,6 +19,7 @@ public class Matches {
     private long uid1;
     private long uid2;
     
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Timestamp tstamp;
     
     public Matches(long uid1, long uid2, Timestamp tstamp) {
