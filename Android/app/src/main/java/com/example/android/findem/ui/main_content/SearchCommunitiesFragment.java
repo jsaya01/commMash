@@ -42,7 +42,7 @@ public class SearchCommunitiesFragment extends Fragment {
         filterTv.setOnClickListener(v -> {
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.master_activity_fragment, new FilterResultsFragment());
-            fragmentTransaction.addToBackStack(ActiveFragments.tagFilterResultsFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_FILTER_FRAGMENT);
             fragmentTransaction.commit();
         });
 

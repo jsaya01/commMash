@@ -55,18 +55,18 @@ public class MasterNavigator extends AppCompatActivity {
     public void setUpHomeFragment() {
         HomeFragment home = new HomeFragment();
         home.setArguments(dataForFragments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, home, ActiveFragments.tagHomeFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, home, ActiveFragments.TAG_HOME_FRAGMENT).commit();
     }
 
     public void setUpMessagesFragment() {
         MessageOverviewFragment messages = new MessageOverviewFragment();
         messages.setArguments(dataForFragments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, messages, ActiveFragments.tagMessagesFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, messages, ActiveFragments.TAG_MESSAGES_FRAGMENT).commit();
     }
 
     public void setUpSettingsFragment() {
         EditProfileFragment editProfile = new EditProfileFragment();
         editProfile.setArguments(dataForFragments);
-        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, editProfile, ActiveFragments.tagSettingsFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.master_activity_fragment, editProfile, ActiveFragments.TAG_SETTINGS_FRAGMENT).commit();
     }
 }

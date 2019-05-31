@@ -51,7 +51,7 @@ public class CreateCommunityFragment extends Fragment {
             homeFragment.setArguments(getArguments());
 
             fragmentTransaction.replace(R.id.master_activity_fragment, homeFragment);
-            fragmentTransaction.addToBackStack(ActiveFragments.tagCreateCommFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_FRAGMENT);
             fragmentTransaction.commit();
         });
 

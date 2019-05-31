@@ -23,7 +23,6 @@ import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class HomeFragment extends Fragment {
     CommunityListAdapter trendingCommunitiesAdapter;
@@ -109,7 +108,7 @@ public class HomeFragment extends Fragment {
                 createCommunityFragment.setArguments(bundle);
 
                 fragmentTransaction.replace(R.id.master_activity_fragment, createCommunityFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.tagCreateCommFragment);
+                fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_FRAGMENT);
                 fragmentTransaction.commit();
             }
         });
@@ -123,7 +122,7 @@ public class HomeFragment extends Fragment {
                 searchCommunitiesFragment.setArguments(bundle);
 
                 fragmentTransaction.replace(R.id.master_activity_fragment, searchCommunitiesFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.tagSearchCommFragment);
+                fragmentTransaction.addToBackStack(ActiveFragments.TAG_SEARCH_FRAGMENT);
                 fragmentTransaction.commit();
             }
         });
