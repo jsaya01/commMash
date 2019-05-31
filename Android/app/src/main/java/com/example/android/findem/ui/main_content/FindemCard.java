@@ -20,7 +20,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
 @Layout(R.layout.findem_card_view)
 public class FindemCard {
-    private static final String LOG_TAG = "EVENT";
+    private static final String LOG_TAG = "FindemCardEvent";
 
     @View(R.id.profileImageView)
     public ImageView profileImageView;
@@ -50,7 +50,7 @@ public class FindemCard {
 
     @SwipeOut
     public void onSwipedOut(){
-        Log.d("EVENT", "onSwipedOut");
+        Log.d(LOG_TAG, "onSwipedOut");
         mSwipeView.addView(this);
     }
 

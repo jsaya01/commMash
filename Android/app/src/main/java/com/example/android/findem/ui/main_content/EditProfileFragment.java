@@ -14,8 +14,7 @@ public class EditProfileFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.edit_profile, container, false);
-
-        return root;
+        super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.edit_profile, container, false);
     }
 }

@@ -19,6 +19,8 @@ import com.example.android.findem.utils.Connection;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class CreateCommunityFragment extends Fragment {
 
     @Nullable
@@ -45,7 +47,7 @@ public class CreateCommunityFragment extends Fragment {
             }
 
             new CreateCommunityAsync().execute(data);
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
 
             HomeFragment homeFragment = new HomeFragment();
             homeFragment.setArguments(getArguments());

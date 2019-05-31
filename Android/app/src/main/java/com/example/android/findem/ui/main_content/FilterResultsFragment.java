@@ -15,9 +15,6 @@ public class FilterResultsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
-        View root = inflater.inflate(R.layout.filter_results, container, false);
-
-        return root;
+        return inflater.inflate(R.layout.filter_results, container, false);
     }
 }
