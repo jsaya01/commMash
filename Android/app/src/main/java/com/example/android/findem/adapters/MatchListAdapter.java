@@ -23,10 +23,10 @@ import java.util.ArrayList;
 public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.AdapterViewHolder> {
     private ArrayList<Match> matches;
     private Context context;
-    private int uid;
+    private long uid;
     private FragmentManager fragmentManager;
 
-    public void setState(ArrayList<Match> matches, Context context, int uid, FragmentManager fragmentManager) {
+    public void setState(ArrayList<Match> matches, Context context, long uid, FragmentManager fragmentManager) {
         this.matches = matches;
         this.context = context;
         this.uid = uid;
@@ -50,7 +50,7 @@ public class MatchListAdapter extends RecyclerView.Adapter<MatchListAdapter.Adap
 
         holder.viewHolder.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putInt(context.getResources().getString(R.string.bundle_uid), uid);
+            bundle.putLong(context.getResources().getString(R.string.bundle_uid), uid);
             bundle.putSerializable(context.getResources().getString(R.string.bundle_match),
                     matches.get(holder.getAdapterPosition()));
 

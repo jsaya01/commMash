@@ -37,7 +37,7 @@ public class CommunityFragment extends Fragment {
 
     private ArrayList<Match> yourMatches = new ArrayList<>();
 
-    private int uid;
+    private long uid;
     private Community community;
 
     private static final String LOG_TAG = "CommunityFragment";
@@ -48,14 +48,10 @@ public class CommunityFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         Bundle userBundle = this.getArguments();
 
-        uid = userBundle.getInt(getResources().getString(R.string.bundle_uid));
+        uid = userBundle.getLong(getResources().getString(R.string.bundle_uid));
 
-        //TODO: comment out bottom line and replace community
         community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
-        /*community = new Community("swimmers",
-                "https://github.com/jsaya01/commMash/blob/master/images/community_test.jpeg",
-                "we swim and we scared");
-        */
+
         View root = inflater.inflate(R.layout.community, container, false);
         setUpWorld(root);
 
@@ -136,15 +132,15 @@ public class CommunityFragment extends Fragment {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class CommunityASyncTask extends AsyncTask<Integer, Void, ArrayList<Match>> {
+    private class CommunityASyncTask extends AsyncTask<Long, Void, ArrayList<Match>> {
 
         @Override
-        protected ArrayList<Match> doInBackground(Integer... integers) {
-            if (integers.length < 1 || integers[0] == null) {
+        protected ArrayList<Match> doInBackground(Long... longs) {
+            if (longs.length < 1 || longs[0] == null) {
                 return new ArrayList<Match>();
             }
 
-            return MatchLoader.getMatchesOfUid(integers[0]);
+            return MatchLoader.getMatchesOfUid(longs[0]);
         }
 
         @Override
