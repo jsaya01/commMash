@@ -3,14 +3,12 @@ package com.example.android.findem.utils;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.android.findem.models.Community;
 import com.example.android.findem.models.Match;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -26,7 +24,7 @@ public class MatchLoader {
     private static final String GET_URL = "https://findem-back.herokuapp.com/matches";
     private static final String LOG_TAG = "MatchLoader";
 
-    public static ArrayList<Match> getMatchesOfUid(int id) {
+    public static ArrayList<Match> getMatchesOfUid(long id) {
         Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 
@@ -53,7 +51,7 @@ public class MatchLoader {
             ArrayList<Match> matches = new ArrayList<>();
             for (int x = 0; x < jsonArray.length(); x++) {
                 JSONObject object = jsonArray.getJSONObject(x);
-
+                
                 matches.add(
                         new Match(
                                 object.getString(MatchParsing.FIRST_NAME),
