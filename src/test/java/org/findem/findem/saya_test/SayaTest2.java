@@ -22,7 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest(classes = Application.class)
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class SayaTest extends TestCase{
+public class SayaTest2 extends TestCase{
 
     @Autowired
     private TestEntityManager testEntityManager;
