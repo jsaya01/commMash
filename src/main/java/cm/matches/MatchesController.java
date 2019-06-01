@@ -45,7 +45,7 @@ public class MatchesController {
         	HashMap<String, Object> match = new HashMap<>();
         	match.put("uid", users.get(x).getUid());
         	match.put("fname", users.get(x).getFname());
-        	match.put("dt", matchObs.get(x)[1]);
+        	match.put("dt", matchObs.get(x)[1].toString());
         	match.put("imagepath", users.get(x).getImagepath());
         	match.put("description", users.get(x).getDescription());
 

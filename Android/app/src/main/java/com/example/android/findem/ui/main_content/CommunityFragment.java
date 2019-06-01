@@ -148,6 +148,7 @@ public class CommunityFragment extends Fragment {
             super.onPostExecute(matches);
 
             Log.d(LOG_TAG, "Community size returning is " + matches.size());
+            yourMatches.clear();
             yourMatches.addAll(matches);
             yourMatchesAdapter.notifyDataSetChanged();
         }

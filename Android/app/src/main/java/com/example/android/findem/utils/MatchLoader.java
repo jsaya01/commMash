@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class MatchLoader {
     private static class MatchParsing {
+        public static final String UID = "uid";
         public static final String FIRST_NAME = "fname";
         public static final String DATE = "dt";
-        public static final String LAST_MSG = "lastMessage";
         public static final String IMAGE_PATH = "imagepath";
         public static final String DESCRIPTION = "description";
     }
@@ -51,11 +51,17 @@ public class MatchLoader {
             ArrayList<Match> matches = new ArrayList<>();
             for (int x = 0; x < jsonArray.length(); x++) {
                 JSONObject object = jsonArray.getJSONObject(x);
-                
+                Log.e(LOG_TAG, object.toString());
+
+                String newTime = object.getString(MatchParsing.DATE).substring(0,10) +
+                        " " + object.getString(MatchParsing.DATE).substring(11, 23);
+                Log.e(LOG_TAG, newTime);
+
                 matches.add(
                         new Match(
+                                object.getLong(MatchParsing.UID),
                                 object.getString(MatchParsing.FIRST_NAME),
-                                Timestamp.valueOf(object.getString(MatchParsing.DATE)),
+                                Timestamp.valueOf(newTime),
                                 object.getString(MatchParsing.IMAGE_PATH),
                                 object.getString(MatchParsing.DESCRIPTION)
                         )
