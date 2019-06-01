@@ -53,15 +53,11 @@ public class MatchLoader {
                 JSONObject object = jsonArray.getJSONObject(x);
                 Log.e(LOG_TAG, object.toString());
 
-                String newTime = object.getString(MatchParsing.DATE).substring(0,10) +
-                        " " + object.getString(MatchParsing.DATE).substring(11, 23);
-                Log.e(LOG_TAG, newTime);
-
                 matches.add(
                         new Match(
                                 object.getLong(MatchParsing.UID),
                                 object.getString(MatchParsing.FIRST_NAME),
-                                Timestamp.valueOf(newTime),
+                                Timestamp.valueOf(object.getString(MatchParsing.DATE)),
                                 object.getString(MatchParsing.IMAGE_PATH),
                                 object.getString(MatchParsing.DESCRIPTION)
                         )
