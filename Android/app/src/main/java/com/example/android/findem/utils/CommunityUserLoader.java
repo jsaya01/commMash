@@ -3,7 +3,6 @@ package com.example.android.findem.utils;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.android.findem.models.Community;
 import com.example.android.findem.models.User;
 
 import org.json.JSONArray;
@@ -11,8 +10,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommunityUserLoader {
+
+    private CommunityUserLoader() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static class UserParsing {
         public static final String FNAME = "fname";
         public static final String LNAME = "lname";
@@ -25,19 +30,19 @@ public class CommunityUserLoader {
     private static final String GET_USERS_URL = "https://findem-back.herokuapp.com/communityuserprofile/getusers";
     private static final String LOG_TAG = "CommunityUserLoader";
 
-    public static ArrayList<User> getAllUsers(long cid) {
+    public static List<User> getAllUsers(long cid) {
         Uri requesting = Uri.parse(GET_USERS_URL).buildUpon().appendQueryParameter("cid", String.valueOf(cid)).build();
         String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for users in community");
-            return null;
+            return new ArrayList<>();
         }
 
         ArrayList<User> users = parseUsers(response);
         if (users == null) {
             Log.e(LOG_TAG, "Error parsing communities");
-            return null;
+            return new ArrayList<>();
         }
 
         return users;
@@ -68,7 +73,7 @@ public class CommunityUserLoader {
             return users;
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error parsing users!");
-            return null;
+            return new ArrayList<>();
         }
     }
 }

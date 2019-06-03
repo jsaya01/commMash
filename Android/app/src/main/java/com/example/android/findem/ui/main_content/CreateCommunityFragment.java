@@ -33,7 +33,6 @@ public class CreateCommunityFragment extends Fragment {
         Button createCommunityBtn = root.findViewById(R.id.create_community_button);
         EditText communityName = root.findViewById(R.id.community_name);
         EditText communityDesc = root.findViewById(R.id.community_description);
-        EditText tags = root.findViewById(R.id.addTags);
 
         createCommunityBtn.setOnClickListener(v -> {
 

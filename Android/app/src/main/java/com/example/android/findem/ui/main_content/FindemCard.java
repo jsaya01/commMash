@@ -1,14 +1,19 @@
 package com.example.android.findem.ui.main_content;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.sql.Timestamp;
+
 import com.bumptech.glide.Glide;
 import com.example.android.findem.R;
-import com.example.android.findem.models.Match;
+import com.example.android.findem.models.Matches;
 import com.example.android.findem.models.User;
+import com.example.android.findem.utils.Connection;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -18,6 +23,9 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @Layout(R.layout.findem_card_view)
 public class FindemCard {
@@ -35,11 +43,13 @@ public class FindemCard {
     private User mProfile;
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
+    private long uid;
 
-    public FindemCard(Context context, User profile, SwipePlaceHolderView swipeView) {
-        mContext = context;
-        mProfile = profile;
-        mSwipeView = swipeView;
+    public FindemCard(Context context, User profile, SwipePlaceHolderView swipeView, long uid) {
+        this.mContext = context;
+        this.mProfile = profile;
+        this.mSwipeView = swipeView;
+        this.uid = uid;
     }
 
     @Resolve
@@ -52,32 +62,55 @@ public class FindemCard {
     @SwipeOut
     public void onSwipedOut(){
         Log.d(LOG_TAG, "onSwipedOut");
-        System.out.println("swipED OUT!!");
         mSwipeView.addView(this);
     }
 
     @SwipeCancelState
     public void onSwipeCancelState(){
         Log.d(LOG_TAG, "onSwipeCancelState");
-        System.out.println("swiping CANCEL!!");
     }
 
     @SwipeIn
     public void onSwipeIn(){
         Log.d(LOG_TAG, "onSwipedIn");
-        System.out.println("swipED IN!!");
+        // make a new Matches() object
+        Matches m = new Matches(uid, mProfile.getUid(), new Timestamp(System.currentTimeMillis()));
+        JSONObject data = new JSONObject();
+
+        try {
+            data.put("uid1", m.getUid1());
+            data.put("uid2", m.getUid2());
+            data.put("timestamp", m.getTstamp());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Send POST
+        new FindemCard.GetMatchesAsync().execute(data);
     }
 
     @SwipeInState
     public void onSwipeInState(){
         Log.d(LOG_TAG, "onSwipeInState");
-        System.out.println("swipe IN!!");
-
     }
 
     @SwipeOutState
     public void onSwipeOutState(){
         Log.d(LOG_TAG, "onSwipeOutState");
-        System.out.println("swipe OUT!!");
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    private class GetMatchesAsync extends AsyncTask<JSONObject, Void, Matches> {
+
+        public GetMatchesAsync() {
+            //This is empty cause it is
+        }
+
+        @Override
+        protected Matches doInBackground(JSONObject... jsonObjects) {
+            Connection.postRequest("/matches", jsonObjects[0]);
+            return null;
+        }
+
     }
 }
