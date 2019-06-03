@@ -28,10 +28,14 @@ public class LawsonTest2 {
 	private UserController user;
 	
 	@Test
-	public void testCommunityGet()  throws Exception {
-		mvc.perform(get("/user?username=KingNick")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+	public void testCommunityGet()  {
+		try {
+			mvc.perform(get("/user?username=KingNick")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

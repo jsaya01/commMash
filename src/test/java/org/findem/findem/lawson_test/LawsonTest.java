@@ -33,18 +33,25 @@ public class LawsonTest {
 	private CommunityController community;
 	
 	@Test
-	public void testCommunityGet()  throws Exception {
-		
-		mvc.perform(get("/community?name=Racing Club")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+	public void testCommunityGet() {
+
+		try {
+			mvc.perform(get("/community?name=Racing Club")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
-	public void testUserGet()  throws Exception {
-		
-		mvc.perform(get("/community?name=AI Club")
-				.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+	public void testUserGet() {
+		try {
+			mvc.perform(get("/community?name=AI Club")
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
