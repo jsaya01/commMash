@@ -54,7 +54,6 @@ public class FindemCard {
 
     @Resolve
     public void onResolved(){
-        Glide.with(mContext).load(mProfile.getImagepath()).into(profileImageView);
         nameTxt.setText(mProfile.getFname());
         descriptionTxt.setText(mProfile.getDescription());
     }
