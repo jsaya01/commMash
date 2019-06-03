@@ -54,7 +54,7 @@ public class Connection {
         try {
             return getRequestHelper(url);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, e.getMessage());
             return null;
         }
     }
@@ -74,7 +74,7 @@ public class Connection {
                 jsonResponse = readStream(inputStream);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, e.getMessage());
             return null;
         } finally {
             if (inputStream != null) {
@@ -100,7 +100,7 @@ public class Connection {
             return builder.toString();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(LOG_TAG, e.getMessage());
             return null;
         }
     }
@@ -109,7 +109,6 @@ public class Connection {
         try {
             return new URL(requesting.toString());
         } catch (MalformedURLException e) {
-            e.printStackTrace();
             Log.e("URL Failure", "URI: " + requesting.toString() +
                     " is not valid");
             return null;

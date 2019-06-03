@@ -24,7 +24,7 @@ public class UserLoader {
         static final String FNAME = "fname";
         static final String LNAME = "lname";
         static final String USERNAME = "username";
-        static final String PASSWORD = "password";
+        static final String PARSEWORD = "password";
         static final String DESCRIPTION = "description";
         static final String IMAGEPATH = "imagePath";
     }
@@ -58,7 +58,7 @@ public class UserLoader {
                     json.getString(UserParsing.FNAME),
                     json.getString(UserParsing.LNAME),
                     json.getString(UserParsing.USERNAME),
-                    json.getString(UserParsing.PASSWORD),
+                    json.getString(UserParsing.PARSEWORD),
                     json.getString(UserLoader.UserParsing.DESCRIPTION)
             );
             u.setUid(json.getLong(UserParsing.UID));
