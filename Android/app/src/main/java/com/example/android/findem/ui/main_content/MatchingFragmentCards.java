@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 
 
 import com.example.android.findem.models.Community;
-import com.example.android.findem.models.TempUsers;
 import com.example.android.findem.utils.CommunityUserLoader;
 
 import com.mindorks.placeholderview.SwipeDecor;
@@ -32,6 +31,7 @@ public class MatchingFragmentCards extends Fragment {
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
     private Community community;
+    private long uid;
 
 
     private List<User> allUsers = new ArrayList<>();
@@ -43,22 +43,15 @@ public class MatchingFragmentCards extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.findem_card, container, false);
-        Bundle userBundle = this.getArguments();
+        Bundle communityBundle = this.getArguments();
 
-        System.out.println(userBundle);
-        community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
-        System.out.println("community " + community);
+        System.out.println(communityBundle);
+        this.community = (Community)communityBundle.getSerializable(getResources().getString(R.string.bundle_community));
+        this.uid = (long)communityBundle.getSerializable(getResources().getString(R.string.bundle_uid));
 
-
-//        TempUsers users = new TempUsers();
-//        List<User> temps = users.getUsers();
-
-        setUpWorld(root, userBundle);
+        setUpWorld(root, communityBundle);
 
         setOnClickListeners(root);
-        for(User user : allUsers){
-            mSwipeView.addView(new FindemCard(mContext, user, mSwipeView));
-        }
 
         return root;
     }
@@ -82,19 +75,9 @@ public class MatchingFragmentCards extends Fragment {
 
 
     private void setOnClickListeners(View root) {
-        root.findViewById(R.id.rejectBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeView.doSwipe(false);
-            }
-        });
+        root.findViewById(R.id.rejectBtn).setOnClickListener(v -> mSwipeView.doSwipe(false));
 
-        root.findViewById(R.id.acceptBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mSwipeView.doSwipe(true);
-            }
-        });
+        root.findViewById(R.id.acceptBtn).setOnClickListener(v -> mSwipeView.doSwipe(true));
     }
 
 
@@ -104,7 +87,7 @@ public class MatchingFragmentCards extends Fragment {
         @Override
         protected ArrayList<User> doInBackground(Long... longs) {
             if (longs.length < 1 || longs[0] == null) {
-                return new ArrayList<User>();
+                return new ArrayList<>();
             }
 
             return CommunityUserLoader.getAllUsers(longs[0]);
@@ -114,8 +97,12 @@ public class MatchingFragmentCards extends Fragment {
         protected void onPostExecute(ArrayList<User> users) {
             super.onPostExecute(users);
 
-            Log.d(LOG_TAG, "Community size returning is " + users.size());
+            Log.d(LOG_TAG, "Users size returning is " + users.size());
             allUsers.addAll(users);
+
+            for(User user : allUsers){
+                mSwipeView.addView(new FindemCard(mContext, user, mSwipeView, uid));
+            }
         }
     }
 }

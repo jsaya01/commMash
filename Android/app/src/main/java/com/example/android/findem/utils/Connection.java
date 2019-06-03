@@ -1,7 +1,5 @@
 package com.example.android.findem.utils;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.util.Log;
 
@@ -117,21 +115,6 @@ public class Connection {
                     " is not valid");
             return null;
         }
-    }
-
-
-    // downloads the image from a specified URL
-    // if a failure has occurred, a log error message is printed with the url
-    public static Bitmap downloadImage(String url) {
-        Bitmap image = null;
-        try {
-            InputStream in = new java.net.URL(url).openStream();
-            image = BitmapFactory.decodeStream(in);
-        } catch (Exception e) {
-            Log.e("Error", "Could not access the specified URL: " + url);
-            e.printStackTrace();
-        }
-        return image;
     }
 
     public static String getStream(Uri requesting) {

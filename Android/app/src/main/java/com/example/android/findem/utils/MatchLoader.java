@@ -14,11 +14,11 @@ import java.util.ArrayList;
 
 public class MatchLoader {
     private static class MatchParsing {
-        public static final String UID = "uid";
-        public static final String FIRST_NAME = "fname";
-        public static final String DATE = "dt";
-        public static final String IMAGE_PATH = "imagepath";
-        public static final String DESCRIPTION = "description";
+        static final String UID = "uid";
+        static final String FIRST_NAME = "fname";
+        static final String DATE = "dt";
+        static final String IMAGE_PATH = "imagepath";
+        static final String DESCRIPTION = "description";
     }
 
     private static final String GET_URL = "https://findem-back.herokuapp.com/matches";

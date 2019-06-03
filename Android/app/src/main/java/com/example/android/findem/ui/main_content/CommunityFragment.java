@@ -1,10 +1,8 @@
 package com.example.android.findem.ui.main_content;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.Group;
@@ -17,7 +15,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +23,10 @@ import com.example.android.findem.models.Community;
 import com.example.android.findem.adapters.MatchListAdapter;
 import com.example.android.findem.models.Match;
 import com.example.android.findem.ui.ActiveFragments;
-import com.example.android.findem.utils.Connection;
 import com.example.android.findem.utils.MatchLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -38,10 +35,9 @@ public class CommunityFragment extends Fragment {
     private TextView profileEditButton;
     private Group addMatchesButton;
 
-    private Context context;
     private FragmentManager fragmentManager = getFragmentManager();
 
-    private ArrayList<Match> yourMatches = new ArrayList<>();
+    private List<Match> yourMatches = new ArrayList<>();
 
     private long uid;
     private Community community;
@@ -72,14 +68,13 @@ public class CommunityFragment extends Fragment {
         matchesOverviewRv.setLayoutManager(linearLayoutManager);
         matchesOverviewRv.setHasFixedSize(true);
         yourMatchesAdapter = new MatchListAdapter();
-        yourMatchesAdapter.setState(yourMatches, getContext(), uid, getFragmentManager());
+        yourMatchesAdapter.setState((ArrayList<Match>) yourMatches, getContext(), uid, getFragmentManager());
         matchesOverviewRv.setAdapter(yourMatchesAdapter);
 
         profileEditButton = root.findViewById(R.id.community_my_profile_btn);
         addMatchesButton = root.findViewById(R.id.community_add_matches_grp);
 
         TextView communityDescription = root.findViewById(R.id.community_description);
-        context = getContext();
 
         setOnClickListeners();
 
@@ -109,8 +104,8 @@ public class CommunityFragment extends Fragment {
         addMatchesButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putSerializable(getResources().getString(R.string.bundle_community), community);
+            bundle.putSerializable(getResources().getString(R.string.bundle_uid), uid);
 
-            System.out.println("bundle in communityFrag: " + bundle);
             MatchingFragmentCards matchingFragmentCards = new MatchingFragmentCards();
             matchingFragmentCards.setArguments(bundle);
 
@@ -121,35 +116,13 @@ public class CommunityFragment extends Fragment {
         });
     }
 
-
-    private static class ImageAsyncTask extends AsyncTask<String, Void, Bitmap> {
-        @SuppressLint("StaticFieldLeak")
-        ImageView image;
-
-        public ImageAsyncTask(ImageView bmImage) {
-            this.image = bmImage;
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... urls) {
-            return Connection.downloadImage(urls[0]);
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bmImage) {
-            image.setImageBitmap(bmImage);
-
-            Log.d(LOG_TAG, "Set community image.");
-        }
-    }
-
     @SuppressLint("StaticFieldLeak")
     private class CommunityASyncTask extends AsyncTask<Long, Void, ArrayList<Match>> {
 
         @Override
         protected ArrayList<Match> doInBackground(Long... longs) {
             if (longs.length < 1 || longs[0] == null) {
-                return new ArrayList<Match>();
+                return new ArrayList<>();
             }
 
             return MatchLoader.getMatchesOfUid(longs[0]);
