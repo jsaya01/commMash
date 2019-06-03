@@ -3,8 +3,12 @@ package org.findem.findem.saya_test;
 import cm.Application;
 import cm.community.Community;
 import cm.community.CommunityRepository;
+import cm.community_tags.CommunityTags;
+import cm.community_tags.CommunityTagsRepository;
 import cm.user.User;
 import cm.user.UserRepository;
+import cm.user_interest_tag.UserInterestTag;
+import cm.user_interest_tag.UserInterestTagRepository;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +18,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -28,59 +33,50 @@ public class SayaTest2 extends TestCase{
     private TestEntityManager testEntityManager;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserInterestTagRepository userInterestTagRepository;
 
     @Autowired
-    private CommunityRepository communityRepository;
+    private CommunityTagsRepository communityTagsRepository;
 
     @Test
-    public void testUser() throws ExecutionException, InterruptedException {
-        User user = new User("Jonah",
-                "Test",
-                "jsaya",
-                "username",
-                "testDesc",
-                null);
+    public void testUserInterestTag() throws ExecutionException, InterruptedException {
+        UserInterestTag userInterestTag = new UserInterestTag(1, "test");
 
-        testEntityManager.persist(user);
+        testEntityManager.persist(userInterestTag);
         testEntityManager.flush();
 
         // when
-        Future<User> foundFuture = userRepository.findUserByUsername(user.getUsername());
+        Optional<UserInterestTag> foundFuture = userInterestTagRepository.findById((long) 1);
 
 
-        if (!foundFuture.isDone()){
+        if (!foundFuture.isPresent()){
             assert(false);
         }
 
-        User found = foundFuture.get();
+        UserInterestTag found = foundFuture.get();
 
         // then
-        assertThat(found.getFname())
-                .isEqualTo(user.getFname());
+        assertThat(found.getTag())
+                .isEqualTo(userInterestTag.getTag());
     }
 
     @Test
-    public void testCommunity() throws ExecutionException, InterruptedException {
-        Community community = new Community(
-                "testCommunity",
-                null,
-                "this is a test community"
-        );
+    public void testCommunityTags() throws ExecutionException, InterruptedException {
+        CommunityTags community = new CommunityTags(1, "testComm");
 
         testEntityManager.persist(community);
         testEntityManager.flush();
 
-        Future<Community> foundFuture = communityRepository.findCommunityByName(community.getName());
+        Optional<CommunityTags> foundFuture = communityTagsRepository.findById((long)1);
 
-        if (!foundFuture.isDone()){
+        if (!foundFuture.isPresent()){
             assert(false);
         }
 
-        Community found = foundFuture.get();
+        CommunityTags found = foundFuture.get();
 
-        assertThat(found.getName())
-                .isEqualTo(community.getName());
+        assertThat(found.getTag())
+                .isEqualTo(community.getTag());
     }
 
 }

@@ -91,6 +91,7 @@ public class CommunityLoader {
 
                 communities.add(
                         new Community(
+                                object.getLong(CommunityParsing.CID),
                                 object.getString(CommunityParsing.NAME),
                                 object.getString(CommunityParsing.IMAGE_PATH),
                                 object.getString(CommunityParsing.DESCRIPTION)

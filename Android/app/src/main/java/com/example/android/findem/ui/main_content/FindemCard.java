@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.findem.R;
+import com.example.android.findem.models.Match;
 import com.example.android.findem.models.User;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -25,11 +26,11 @@ public class FindemCard {
     @View(R.id.profileImageView)
     public ImageView profileImageView;
 
-    @View(R.id.nameAgeTxt)
-    public TextView nameAgeTxt;
+    @View(R.id.nameTxt)
+    public TextView nameTxt;
 
-    @View(R.id.locationNameTxt)
-    public TextView locationNameTxt;
+    @View(R.id.descriptionTxt)
+    public TextView descriptionTxt;
 
     private User mProfile;
     private Context mContext;
@@ -44,33 +45,39 @@ public class FindemCard {
     @Resolve
     public void onResolved(){
         Glide.with(mContext).load(mProfile.getImagepath()).into(profileImageView);
-        nameAgeTxt.setText(mProfile.getFname());
-        locationNameTxt.setText(mProfile.getDescription());
+        nameTxt.setText(mProfile.getFname());
+        descriptionTxt.setText(mProfile.getDescription());
     }
 
     @SwipeOut
     public void onSwipedOut(){
         Log.d(LOG_TAG, "onSwipedOut");
+        System.out.println("swipED OUT!!");
         mSwipeView.addView(this);
     }
 
     @SwipeCancelState
     public void onSwipeCancelState(){
         Log.d(LOG_TAG, "onSwipeCancelState");
+        System.out.println("swiping CANCEL!!");
     }
 
     @SwipeIn
     public void onSwipeIn(){
         Log.d(LOG_TAG, "onSwipedIn");
+        System.out.println("swipED IN!!");
     }
 
     @SwipeInState
     public void onSwipeInState(){
         Log.d(LOG_TAG, "onSwipeInState");
+        System.out.println("swipe IN!!");
+
     }
 
     @SwipeOutState
     public void onSwipeOutState(){
         Log.d(LOG_TAG, "onSwipeOutState");
+        System.out.println("swipe OUT!!");
     }
 }

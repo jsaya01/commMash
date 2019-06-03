@@ -6,6 +6,7 @@
     <color name ="colorMatch">#FF6464</color>
 
     <color name="colorDarkGray">#2D2D2D</color>
+    <color name="colorBlack">#000000</color>
     <color name="colorLightGray">#C4C4C4</color>
 
     <color name="textBg">#2D2D2D</color>
