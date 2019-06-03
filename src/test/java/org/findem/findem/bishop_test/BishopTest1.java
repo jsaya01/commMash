@@ -1,8 +1,7 @@
-package bishop_test;
+package org.findem.findem.bishop_test;
 
 import cm.Application;
 import cm.community.Community;
-import cm.community.CommunityController;
 import cm.community.CommunityRepository;
 import cm.user.User;
 import cm.user.UserRepository;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
