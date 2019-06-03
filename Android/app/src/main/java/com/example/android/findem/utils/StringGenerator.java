@@ -1,6 +1,10 @@
 package com.example.android.findem.utils;
 
 public class StringGenerator {
+    private StringGenerator() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static String[] messages = {"Send your first message!",
             "Hello!",
             "What is up?",

@@ -12,6 +12,10 @@ import java.net.URL;
 
 public class UserLoader {
 
+    private UserLoader() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static final String USER_BASE_URL = "https://findem-back.herokuapp.com/user";
     private static final String LOG_TAG = "UserLoader";
 
@@ -28,7 +32,7 @@ public class UserLoader {
     public static User getUserByUserName(String username) {
         Uri requesting;
 
-        requesting = Uri.parse(USER_BASE_URL).buildUpon().appendQueryParameter("username", username).build();
+        requesting = Uri.parse(USER_BASE_URL).buildUpon().appendQueryParameter(UserParsing.USERNAME, username).build();
 
         Log.d(LOG_TAG, "Uri is " + requesting.toString());
         URL url = Connection.getURL(requesting);

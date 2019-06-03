@@ -92,7 +92,7 @@ public class Connection {
         StringBuilder builder = new StringBuilder();
         try {
             BufferedReader bufferedReader =
-                    new BufferedReader(new InputStreamReader(inputStream, Charset.forName("UTF-8")));
+                    new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String currentLine = bufferedReader.readLine();
             while (currentLine != null) {
                 builder.append(currentLine);

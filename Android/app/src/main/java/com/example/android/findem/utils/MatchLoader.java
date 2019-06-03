@@ -11,8 +11,13 @@ import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MatchLoader {
+    private MatchLoader() {
+        throw new IllegalStateException("Utility class");
+    }
+
     private static class MatchParsing {
         static final String UID = "uid";
         static final String FIRST_NAME = "fname";
@@ -24,19 +29,19 @@ public class MatchLoader {
     private static final String GET_URL = "https://findem-back.herokuapp.com/matches";
     private static final String LOG_TAG = "MatchLoader";
 
-    public static ArrayList<Match> getMatchesOfUid(long id) {
+    public static List<Match> getMatchesOfUid(long id) {
         Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 
         if (response == null) {
             Log.e(LOG_TAG, "Error retrieving response for matches");
-            return null;
+            return new ArrayList<>();
         }
 
         ArrayList<Match> matches = parseMatches(response);
         if (matches == null) {
             Log.e(LOG_TAG, "Error parsing matches");
-            return null;
+            return new ArrayList<>();
         }
 
         return matches;
@@ -67,7 +72,7 @@ public class MatchLoader {
             return matches;
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error parsing matches!");
-            return null;
+            return new ArrayList<>();
         }
     }
 }
