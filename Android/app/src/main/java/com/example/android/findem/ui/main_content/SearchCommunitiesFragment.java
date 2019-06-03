@@ -22,6 +22,7 @@ import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchCommunitiesFragment extends Fragment {
     CommunityListAdapter communityListAdapter;
@@ -63,15 +64,15 @@ public class SearchCommunitiesFragment extends Fragment {
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class SearchASyncTask extends AsyncTask<Void, Void, ArrayList<Community>> {
+    private class SearchASyncTask extends AsyncTask<Void, Void, List<Community>> {
 
         @Override
-        protected ArrayList<Community> doInBackground(Void... voids) {
+        protected List<Community> doInBackground(Void... voids) {
             return CommunityLoader.getAllCommunities();
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Community> community) {
+        protected void onPostExecute(List<Community> community) {
             super.onPostExecute(community);
 
             if (community == null) {

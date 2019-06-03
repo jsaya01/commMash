@@ -23,6 +23,8 @@ import com.example.android.findem.ui.ActiveFragments;
 import com.example.android.findem.utils.CommunityLoader;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
     CommunityListAdapter trendingCommunitiesAdapter;
@@ -99,45 +101,39 @@ public class HomeFragment extends Fragment {
         final Bundle bundle = new Bundle();
         bundle.putLong(getResources().getString(R.string.bundle_uid), uid);
 
-        createCommunityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        createCommunityBtn.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
 
-                CreateCommunityFragment createCommunityFragment = new CreateCommunityFragment();
-                createCommunityFragment.setArguments(bundle);
+            CreateCommunityFragment createCommunityFragment = new CreateCommunityFragment();
+            createCommunityFragment.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.master_activity_fragment, createCommunityFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_FRAGMENT);
-                fragmentTransaction.commit();
-            }
+            fragmentTransaction.replace(R.id.master_activity_fragment, createCommunityFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_CREATE_FRAGMENT);
+            fragmentTransaction.commit();
         });
 
-        searchCommunityBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        searchCommunityBtn.setOnClickListener(v -> {
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
 
-                SearchCommunitiesFragment searchCommunitiesFragment = new SearchCommunitiesFragment();
-                searchCommunitiesFragment.setArguments(bundle);
+            SearchCommunitiesFragment searchCommunitiesFragment = new SearchCommunitiesFragment();
+            searchCommunitiesFragment.setArguments(bundle);
 
-                fragmentTransaction.replace(R.id.master_activity_fragment, searchCommunitiesFragment);
-                fragmentTransaction.addToBackStack(ActiveFragments.TAG_SEARCH_FRAGMENT);
-                fragmentTransaction.commit();
-            }
+            fragmentTransaction.replace(R.id.master_activity_fragment, searchCommunitiesFragment);
+            fragmentTransaction.addToBackStack(ActiveFragments.TAG_SEARCH_FRAGMENT);
+            fragmentTransaction.commit();
         });
     }
 
     @SuppressLint("StaticFieldLeak")
-    private class HomeASyncTask extends AsyncTask<Long, Void, ArrayList<ArrayList<Community>>> {
+    private class HomeASyncTask extends AsyncTask<Long, Void, ArrayList<List<Community>>> {
 
         @Override
-        protected ArrayList<ArrayList<Community>> doInBackground(Long... longs) {
+        protected ArrayList<List<Community>> doInBackground(Long... longs) {
             if (longs.length < 1 || longs[0] == null) {
                 return new ArrayList<>();
             }
 
-            ArrayList<ArrayList<Community>> results = new ArrayList<>();
+            ArrayList<List<Community>> results = new ArrayList<>();
             results.add(CommunityLoader.getCommunitiesOfUid(longs[0]));
             results.add(CommunityLoader.getTrendingCommunities());
 
@@ -145,7 +141,7 @@ public class HomeFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<ArrayList<Community>> communities) {
+        protected void onPostExecute(ArrayList<List<Community>> communities) {
             super.onPostExecute(communities);
 
             if (communities == null) {

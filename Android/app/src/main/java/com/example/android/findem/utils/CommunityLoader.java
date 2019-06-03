@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommunityLoader {
 
@@ -29,7 +30,7 @@ public class CommunityLoader {
     private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
     private static final String LOG_TAG = "CommunityLoader";
 
-    public static ArrayList<Community> getAllCommunities() {
+    public static List<Community> getAllCommunities() {
         Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
         String response = Connection.getStream(requesting);
 
@@ -47,7 +48,7 @@ public class CommunityLoader {
         return communities;
     }
 
-    public static ArrayList<Community> getCommunitiesOfUid(long id) {
+    public static List<Community> getCommunitiesOfUid(long id) {
         Uri requesting = Uri.parse(GET_YOUR_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 
@@ -65,7 +66,7 @@ public class CommunityLoader {
         return communities;
     }
 
-    public static ArrayList<Community> getTrendingCommunities() {
+    public static List<Community> getTrendingCommunities() {
         Uri requesting = Uri.parse(GET_TRENDING_URL).buildUpon().appendQueryParameter("num", String.valueOf(3)).build();
         String response = Connection.getStream(requesting);
 
