@@ -7,9 +7,6 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.sql.Timestamp;
-
-import com.bumptech.glide.Glide;
 import com.example.android.findem.R;
 import com.example.android.findem.models.Matches;
 import com.example.android.findem.models.User;
@@ -54,6 +51,7 @@ public class FindemCard {
 
     @Resolve
     public void onResolved(){
+//        profileImageView.setImageDrawable(ImageGenerator.getRandomImage());
         nameTxt.setText(mProfile.getFname());
         descriptionTxt.setText(mProfile.getDescription());
     }
@@ -73,13 +71,12 @@ public class FindemCard {
     public void onSwipeIn(){
         Log.d(LOG_TAG, "onSwipedIn");
         // make a new Matches() object
-        Matches m = new Matches(uid, mProfile.getUid(), new Timestamp(System.currentTimeMillis()));
+        Matches m = new Matches(uid, mProfile.getUid());
         JSONObject data = new JSONObject();
 
         try {
             data.put("uid1", m.getUid1());
             data.put("uid2", m.getUid2());
-            data.put("timestamp", m.getTstamp());
         } catch (JSONException e) {
             e.printStackTrace();
         }

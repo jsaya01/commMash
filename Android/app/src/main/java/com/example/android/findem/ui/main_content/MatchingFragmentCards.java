@@ -58,7 +58,6 @@ public class MatchingFragmentCards extends Fragment {
     private void setUpWorld(View root, Bundle bundle){
         mSwipeView = root.findViewById(R.id.swipeView);
         mContext = getContext();
-
         mSwipeView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()

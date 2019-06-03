@@ -29,7 +29,18 @@ public class User {
 		this.description = description;
 		this.imagepath = imagepath;
 	}
-    
+
+	// need a test to check if cm.user name and password are unique
+	public User(long uid, String fname, String lname, String username, String password, String description, String imagepath) {
+		this.uid = uid;
+		this.fname = fname;
+		this.lname = lname;
+		this.username = username;
+		this.password = password;
+		this.description = description;
+		this.imagepath = imagepath;
+	}
+
     public User() {}
 
 	public void setUid(long uid) {

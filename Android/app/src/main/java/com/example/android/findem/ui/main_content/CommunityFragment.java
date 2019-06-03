@@ -61,6 +61,12 @@ public class CommunityFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        new CommunityFragment.CommunityASyncTask().execute(uid);
+    }
+
     private void setUpWorld(View root, Bundle bundle) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 

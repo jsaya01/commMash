@@ -18,6 +18,7 @@ public class CommunityUserLoader {
     }
 
     private static class UserParsing {
+        public static final String UID = "uid";
         public static final String FNAME = "fname";
         public static final String LNAME = "lname";
         public static final String USERNAME = "username";
@@ -59,6 +60,7 @@ public class CommunityUserLoader {
 
                 users.add(
                         new User(
+                                object.getLong(CommunityUserLoader.UserParsing.UID),
                                 object.getString(CommunityUserLoader.UserParsing.FNAME),
                                 object.getString(CommunityUserLoader.UserParsing.LNAME),
                                 object.getString(CommunityUserLoader.UserParsing.USERNAME),
