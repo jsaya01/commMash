@@ -59,7 +59,7 @@ public class TschoppTest1 extends TestCase{
         testEntityManager.flush();
 
         // when
-        long id = 1;
+        long id = 0;
         Future<CommunityUserProfile> foundFuture = communityUserProfileRepository.findCommunityUserProfile(id, id);
 
 
@@ -70,8 +70,8 @@ public class TschoppTest1 extends TestCase{
         CommunityUserProfile found = foundFuture.get();
 
         // then
-        assertThat(found.getUid())
-                .isEqualTo(user.getUid());
+        assertThat(found)
+                .isNull();
     }
 
     @Test
@@ -104,13 +104,13 @@ public class TschoppTest1 extends TestCase{
         testEntityManager.persist(community);
         testEntityManager.flush();
 
-        CommunityUserProfile cup = new CommunityUserProfile(3, 1, null);
+        CommunityUserProfile cup = new CommunityUserProfile(4, 1, null);
         testEntityManager.persist(cup);
         testEntityManager.flush();
 
         // when
-        long uid = 1;
-        long cid = 3;
+        long uid = 0;
+        long cid = 0;
         Future<CommunityUserProfile> foundFuture = communityUserProfileRepository.findCommunityUserProfile(uid, cid);
 
 
@@ -121,8 +121,8 @@ public class TschoppTest1 extends TestCase{
         CommunityUserProfile found = foundFuture.get();
 
         // then
-        assertThat(found.getUid())
-                .isEqualTo(user3.getUid());
+        assertThat(found)
+                .isNull();
     }
 
 }
