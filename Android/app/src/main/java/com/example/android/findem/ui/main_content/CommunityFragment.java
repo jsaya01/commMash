@@ -107,7 +107,7 @@ public class CommunityFragment extends Fragment {
 
         addMatchesButton.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
-            bundle.putSerializable(context.getResources().getString(R.string.bundle_community), community);
+            bundle.putSerializable(getResources().getString(R.string.bundle_community), community);
 
             System.out.println("bundle in communityFrag: " + bundle);
             MatchingFragmentCards matchingFragmentCards = new MatchingFragmentCards();

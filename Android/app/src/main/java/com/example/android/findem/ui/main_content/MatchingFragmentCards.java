@@ -75,8 +75,6 @@ public class MatchingFragmentCards extends Fragment {
                         .setSwipeInMsgLayoutId(R.layout.findem_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.findem_swipe_out_msg_view));
 
-
-
         if (bundle != null){
             new MatchingFragmentCards.MatchingASyncTask().execute(community.getCid());
         }
