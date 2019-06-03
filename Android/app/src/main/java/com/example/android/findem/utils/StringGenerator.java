@@ -14,7 +14,7 @@ public class StringGenerator {
             "Wanna carpool to Faleesi's pool party?"};
 
     public static String getRandomMessage() {
-        int rand = (int) (Math.floor(new Random().nextInt() * 50 + 1));
+        int rand = (int) Math.abs(Math.floor(new Random().nextInt() * 50 + 1));
 
         return messages[rand % messages.length];
     }
