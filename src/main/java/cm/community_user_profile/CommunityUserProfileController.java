@@ -84,13 +84,13 @@ public class CommunityUserProfileController {
     @ResponseBody
     public ResponseEntity getCommunityIds(@RequestParam long uid) {
         List<Long> communityIds = communityUserProfileRepository.findCommunityFromUser(uid);
-        if(communityIds == null || communityIds.size() == 0) {
+        if(communityIds == null || communityIds.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
         
         List<Community> comms = communityController.getCommunityProfiles(communityIds);
         
-        if(comms == null || comms.size() == 0) {
+        if(comms == null || comms.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
         

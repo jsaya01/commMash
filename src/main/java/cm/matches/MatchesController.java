@@ -34,13 +34,13 @@ public class MatchesController {
         matchObs.addAll(matchesRepository.findMatchesFromUid2(uid));
         List<Long> userids = new ArrayList<>();
         
-        for(Object o[] : matchObs) {
+        for(Object[] o : matchObs) {
         	userids.add((long)(o[0]));
         }
         
         List<User> users = userController.getUserProfiles(userids);
         
-        ArrayList<HashMap<String, Object>> customMatchObjs = new ArrayList<HashMap<String, Object>>();
+        ArrayList<HashMap<String, Object>> customMatchObjs = new ArrayList<>();
         for(int x = 0; x<users.size(); x++) {
         	HashMap<String, Object> match = new HashMap<>();
         	match.put("uid", users.get(x).getUid());
