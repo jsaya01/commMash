@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CommunityUserLoader {
 
@@ -30,7 +29,7 @@ public class CommunityUserLoader {
     private static final String GET_USERS_URL = "https://findem-back.herokuapp.com/communityuserprofile/getusers";
     private static final String LOG_TAG = "CommunityUserLoader";
 
-    public static List<User> getAllUsers(long cid) {
+    public static ArrayList<User> getAllUsers(long cid) {
         Uri requesting = Uri.parse(GET_USERS_URL).buildUpon().appendQueryParameter("cid", String.valueOf(cid)).build();
         String response = Connection.getStream(requesting);
 

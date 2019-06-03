@@ -10,7 +10,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CommunityLoader {
 
@@ -30,7 +29,7 @@ public class CommunityLoader {
     private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
     private static final String LOG_TAG = "CommunityLoader";
 
-    public static List<Community> getAllCommunities() {
+    public static ArrayList<Community> getAllCommunities() {
         Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
         String response = Connection.getStream(requesting);
 
@@ -39,7 +38,7 @@ public class CommunityLoader {
             return new ArrayList<>();
         }
 
-        List<Community> communities = parseCommunities(response);
+        ArrayList<Community> communities = parseCommunities(response);
         if (communities == null) {
             Log.e(LOG_TAG, "Error parsing communities");
             return new ArrayList<>();
@@ -48,7 +47,7 @@ public class CommunityLoader {
         return communities;
     }
 
-    public static List<Community> getCommunitiesOfUid(long id) {
+    public static ArrayList<Community> getCommunitiesOfUid(long id) {
         Uri requesting = Uri.parse(GET_YOUR_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 
@@ -57,7 +56,7 @@ public class CommunityLoader {
             return new ArrayList<>();
         }
 
-        List<Community> communities = parseCommunities(response);
+        ArrayList<Community> communities = parseCommunities(response);
         if (communities == null) {
             Log.e(LOG_TAG, "Error parsing communities in getCommunitiesofUID");
             return new ArrayList<>();
@@ -66,7 +65,7 @@ public class CommunityLoader {
         return communities;
     }
 
-    public static List<Community> getTrendingCommunities() {
+    public static ArrayList<Community> getTrendingCommunities() {
         Uri requesting = Uri.parse(GET_TRENDING_URL).buildUpon().appendQueryParameter("num", String.valueOf(3)).build();
         String response = Connection.getStream(requesting);
 
@@ -75,7 +74,7 @@ public class CommunityLoader {
             return new ArrayList<>();
         }
 
-        List<Community> communities = parseCommunities(response);
+        ArrayList<Community> communities = parseCommunities(response);
         if (communities == null) {
             Log.e(LOG_TAG, "Error parsing communities in trneding communities");
             return new ArrayList<>();
@@ -84,7 +83,7 @@ public class CommunityLoader {
         return communities;
     }
 
-    private static List<Community> parseCommunities(String response) {
+    private static ArrayList<Community> parseCommunities(String response) {
         JSONArray jsonArray;
 
         try {
