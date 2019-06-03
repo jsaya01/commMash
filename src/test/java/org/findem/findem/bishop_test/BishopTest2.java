@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -61,8 +62,13 @@ public class BishopTest2 extends TestCase{
     	
         List<Matches> foundFuture = matchesRepository.findAll();
         assert(foundFuture.size() == 0);
-        
-        Matches match = new Matches(1, 2, new Timestamp(0));
+
+        Matches match = null;
+        try {
+            match = new Matches(1, 2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         testEntityManager.persist(match);
 
 
