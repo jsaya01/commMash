@@ -1,12 +1,8 @@
 package org.findem.findem.saya_test;
 
 import cm.Application;
-import cm.community.Community;
-import cm.community.CommunityRepository;
 import cm.community_tags.CommunityTags;
 import cm.community_tags.CommunityTagsRepository;
-import cm.user.User;
-import cm.user.UserRepository;
 import cm.user_interest_tag.UserInterestTag;
 import cm.user_interest_tag.UserInterestTagRepository;
 import junit.framework.TestCase;
@@ -20,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

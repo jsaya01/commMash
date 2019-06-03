@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:layout_marginBottom="75dp"
-            android:src="@drawable/woman_test"
+            android:src="@drawable/landscape"
             android:scaleType="centerCrop" />
 
         <LinearLayout

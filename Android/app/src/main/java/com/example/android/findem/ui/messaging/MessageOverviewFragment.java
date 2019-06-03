@@ -14,8 +14,6 @@ public class MessageOverviewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.message_overview, container, false);
-
-        return root;
+        return inflater.inflate(R.layout.message_overview, container, false);
     }
 }
