@@ -31,6 +31,10 @@ public class User {
     
     public User() {}
     
+    public void setUid(long uid) {
+		this.uid = uid;
+	}
+    
     public String getDescription() {
 		return description;
 	}
