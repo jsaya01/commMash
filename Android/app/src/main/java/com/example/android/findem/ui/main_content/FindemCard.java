@@ -44,7 +44,6 @@ public class FindemCard {
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
     private long uid;
-    private Matches m;
 
     public FindemCard(Context context, User profile, SwipePlaceHolderView swipeView, long uid) {
         this.mContext = context;
@@ -75,7 +74,7 @@ public class FindemCard {
     public void onSwipeIn(){
         Log.d(LOG_TAG, "onSwipedIn");
         // make a new Matches() object
-        m = new Matches(uid, mProfile.getUid(), new Timestamp(System.currentTimeMillis()));
+        Matches m = new Matches(uid, mProfile.getUid(), new Timestamp(System.currentTimeMillis()));
         JSONObject data = new JSONObject();
 
         try {
@@ -104,6 +103,7 @@ public class FindemCard {
     private class GetMatchesAsync extends AsyncTask<JSONObject, Void, Matches> {
 
         public GetMatchesAsync() {
+            //This is empty cause it is
         }
 
         @Override
@@ -112,9 +112,5 @@ public class FindemCard {
             return null;
         }
 
-        @Override
-        protected void onPostExecute(Matches m) {
-            super.onPostExecute(m);
-        }
     }
 }

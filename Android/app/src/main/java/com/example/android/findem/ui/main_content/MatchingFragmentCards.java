@@ -45,7 +45,6 @@ public class MatchingFragmentCards extends Fragment {
         View root = inflater.inflate(R.layout.findem_card, container, false);
         Bundle communityBundle = this.getArguments();
 
-        System.out.println(communityBundle);
         this.community = (Community)communityBundle.getSerializable(getResources().getString(R.string.bundle_community));
         this.uid = (long)communityBundle.getSerializable(getResources().getString(R.string.bundle_uid));
 
