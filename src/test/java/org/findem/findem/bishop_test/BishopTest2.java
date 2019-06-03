@@ -1,12 +1,12 @@
 package org.findem.findem.bishop_test;
 
 import cm.Application;
-import cm.community_tags.CommunityTags;
+import cm.community.Community;
+import cm.community_user_profile.CommunityUserProfile;
 import cm.community_user_profile.CommunityUserProfileRepository;
 import cm.matches.Matches;
 import cm.matches.MatchesRepository;
 import cm.user.User;
-import cm.user.UserRepository;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,10 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(classes = Application.class)
 @RunWith(SpringRunner.class)
@@ -31,8 +28,6 @@ public class BishopTest2 extends TestCase{
     @Autowired
     private TestEntityManager testEntityManager;
     
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private MatchesRepository matchesRepository;
@@ -41,7 +36,7 @@ public class BishopTest2 extends TestCase{
     private CommunityUserProfileRepository communityUserProfileRepository;
 
     @Test
-    public void testUserInterestTag() throws ExecutionException, InterruptedException {
+    public void testMatch() throws ExecutionException, InterruptedException {
     	User user1 = new User(
         		"Tester Nicholas1",
                 "Test",
@@ -77,5 +72,30 @@ public class BishopTest2 extends TestCase{
         List<Object[]> ids = matchesRepository.findMatchesFromUid1((long) 1);
         assert(ids.size() == 1);
     }
-
+    
+    @Test
+    public void testCommunityUserProfile() {
+    	User user = new User(
+        		"Tester Nicholas1",
+                "Test",
+                "nbishop",
+                "faleesi",
+                "test_desc",
+                null
+            );
+    	
+    	Community community = new Community("ai", null, "Ai");
+    	
+    	 testEntityManager.persist(user);
+    	 testEntityManager.persist(community);
+         testEntityManager.flush();
+         
+         CommunityUserProfile profile = new CommunityUserProfile(user.getUid(), community.getCid(), "new AI description");
+         
+         communityUserProfileRepository.save(profile);
+         
+         assert(communityUserProfileRepository.count() == 1);
+         assert(communityUserProfileRepository.findAll().get(0).getCid() == community.getCid());
+         assert(communityUserProfileRepository.findAll().get(0).getUid() == user.getUid());
+    }
 }
