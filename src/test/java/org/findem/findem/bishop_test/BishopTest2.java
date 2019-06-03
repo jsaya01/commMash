@@ -37,7 +37,7 @@ public class BishopTest2 extends TestCase{
     private CommunityUserProfileRepository communityUserProfileRepository;
 
     @Test
-    public void testMatch() throws ExecutionException, InterruptedException {
+    public void testMatch() throws ExecutionException, InterruptedException  {
     	User user1 = new User(
         		"Tester Nicholas1",
                 "Test",
