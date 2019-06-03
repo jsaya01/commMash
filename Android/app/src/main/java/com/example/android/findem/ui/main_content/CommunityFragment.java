@@ -57,6 +57,7 @@ public class CommunityFragment extends Fragment {
         uid = Objects.requireNonNull(userBundle).getLong(getResources().getString(R.string.bundle_uid));
 
         community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
+        Log.e(LOG_TAG, String.valueOf(community.getCid()));
 
         View root = inflater.inflate(R.layout.community, container, false);
         setUpWorld(root, userBundle);

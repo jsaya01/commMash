@@ -9,6 +9,13 @@ public class Community implements Serializable {
     private String imagepath;
     private String description;
 
+    public Community(long cid, String name, String imagepath, String description) {
+        this.cid = cid;
+        this.name = name;
+        this.imagepath = imagepath;
+        this.description = description;
+    }
+
     public Community(String name, String imagepath, String description) {
         this.name = name;
         this.imagepath = imagepath;
