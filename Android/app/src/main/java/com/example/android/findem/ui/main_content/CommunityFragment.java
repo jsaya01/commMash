@@ -4,10 +4,12 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.Group;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +38,9 @@ public class CommunityFragment extends Fragment {
     private TextView profileEditButton;
     private Group addMatchesButton;
 
+    private Context context;
+    private FragmentManager fragmentManager = getFragmentManager();
+
     private ArrayList<Match> yourMatches = new ArrayList<>();
 
     private long uid;
@@ -54,12 +59,12 @@ public class CommunityFragment extends Fragment {
         community = (Community)userBundle.getSerializable(getResources().getString(R.string.bundle_community));
 
         View root = inflater.inflate(R.layout.community, container, false);
-        setUpWorld(root);
+        setUpWorld(root, userBundle);
 
         return root;
     }
 
-    private void setUpWorld(View root) {
+    private void setUpWorld(View root, Bundle bundle) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 
         RecyclerView matchesOverviewRv = root.findViewById(R.id.community_matches_rv);
@@ -73,8 +78,8 @@ public class CommunityFragment extends Fragment {
         addMatchesButton = root.findViewById(R.id.community_add_matches_grp);
 
         TextView communityDescription = root.findViewById(R.id.community_description);
+        context = getContext();
 
-        Bundle bundle = this.getArguments();
         setOnClickListeners();
 
         if (bundle != null) {
@@ -94,16 +99,22 @@ public class CommunityFragment extends Fragment {
 
     private void setOnClickListeners() {
         profileEditButton.setOnClickListener(v -> {
-            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(fragmentManager).beginTransaction();
             fragmentTransaction.replace(R.id.master_activity_fragment, new EditProfileFragment());
             fragmentTransaction.addToBackStack(ActiveFragments.TAG_EDIT_FRAGMENT);
             fragmentTransaction.commit();
         });
 
         addMatchesButton.setOnClickListener(v -> {
-            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
-            fragmentTransaction.replace(R.id.master_activity_fragment, new MatchingFragmentCards());
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(context.getResources().getString(R.string.bundle_community), community);
 
+            System.out.println("bundle in communityFrag: " + bundle);
+            MatchingFragmentCards matchingFragmentCards = new MatchingFragmentCards();
+            matchingFragmentCards.setArguments(bundle);
+
+            FragmentTransaction fragmentTransaction = Objects.requireNonNull(getFragmentManager()).beginTransaction();
+            fragmentTransaction.add(R.id.master_activity_fragment, matchingFragmentCards);
             fragmentTransaction.addToBackStack(ActiveFragments.TAG_MATCHING_FRAGMENT);
             fragmentTransaction.commit();
         });

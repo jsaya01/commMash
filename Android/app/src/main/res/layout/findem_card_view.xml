@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:layout_marginBottom="75dp"
+            android:src="@drawable/woman_test"
             android:scaleType="centerCrop" />
 
         <LinearLayout
@@ -31,7 +32,7 @@
             android:paddingLeft="20dp">
 
             <TextView
-                android:id="@+id/nameAgeTxt"
+                android:id="@+id/nameTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hello"
@@ -40,7 +41,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/locationNameTxt"
+                android:id="@+id/descriptionTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="test bio"
