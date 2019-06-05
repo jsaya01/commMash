@@ -24,8 +24,6 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 public class CreateCommunityFragment extends Fragment {
-    private long uid;
-
 
     @Nullable
     @Override
@@ -34,7 +32,7 @@ public class CreateCommunityFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.create_community, container, false);
         Bundle uidBundle = this.getArguments();
-        this.uid = (long)uidBundle.getSerializable(getResources().getString(R.string.bundle_uid));
+        long uid = (long)uidBundle.getSerializable(getResources().getString(R.string.bundle_uid));
 
 
         Button createCommunityBtn = root.findViewById(R.id.create_community_button);
@@ -55,7 +53,7 @@ public class CreateCommunityFragment extends Fragment {
 
             JSONObject data2 = new JSONObject();
             try {
-                data2.put("uid", this.uid);
+                data2.put("uid", uid);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
