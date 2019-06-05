@@ -26,13 +26,21 @@ public class LawsonTest2 {
 	
 	@MockBean
 	private UserController user;
+
+	private void preformMvcGet(String url){
+        try {
+            mvc.perform(get(url)
+                    .contentType(MediaType.APPLICATION_JSON))
+                    .andExpect(status().isOk());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	
 	@Test
 	public void testCommunityGet()  {
 		try {
-			mvc.perform(get("/user?username=KingNick")
-                    .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk());
+			preformMvcGet("/user?username=KingNick");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -41,9 +49,7 @@ public class LawsonTest2 {
 	@Test
 	public void testUserGet() {
 		try {
-			mvc.perform(get("/user?username=Speedy")
-                    .contentType(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk());
+			preformMvcGet("/user?username=Speedy");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
