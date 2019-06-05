@@ -28,7 +28,20 @@ public class CommunityLoader {
     private static final String GET_YOUR_URL = "https://findem-back.herokuapp.com/communityuserprofile/getcomms";
     private static final String GET_TRENDING_URL = "https://findem-back.herokuapp.com/communityuserprofile/trending";
     private static final String GET_ALL_URL = "https://findem-back.herokuapp.com/community/all";
+    private static final String GET_COMMUNITY = "https://findem-back.herokuapp.com/community";
     private static final String LOG_TAG = "CommunityLoader";
+
+    public static Community getCommunity(String name) {
+        List<Community> communities = getAllCommunities();
+
+        for (Community c : communities) {
+            if (c.getName().equals(name)) {
+                return c;
+            }
+        }
+
+        return null;
+    }
 
     public static List<Community> getAllCommunities() {
         Uri requesting = Uri.parse(GET_ALL_URL).buildUpon().build();
@@ -107,7 +120,7 @@ public class CommunityLoader {
             return communities;
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Error parsing communities!");
-            return null;
+            return new ArrayList<>();
         }
     }
 }

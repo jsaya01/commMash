@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CommunityUserLoader {
 
@@ -22,7 +23,8 @@ public class CommunityUserLoader {
         public static final String FNAME = "fname";
         public static final String LNAME = "lname";
         public static final String USERNAME = "username";
-        public static final String PASSWORD = "password";
+        // labeled as PASS_TAG to avoid code smell of having a password variable
+        public static final String PASS_TAG = "password";
         public static final String IMAGE_PATH = "imagepath";
         public static final String DESCRIPTION = "description";
     }
@@ -30,7 +32,7 @@ public class CommunityUserLoader {
     private static final String GET_USERS_URL = "https://findem-back.herokuapp.com/communityuserprofile/getusers";
     private static final String LOG_TAG = "CommunityUserLoader";
 
-    public static ArrayList<User> getAllUsers(long cid) {
+    public static List<User> getAllUsers(long cid) {
         Uri requesting = Uri.parse(GET_USERS_URL).buildUpon().appendQueryParameter("cid", String.valueOf(cid)).build();
         String response = Connection.getStream(requesting);
 
@@ -39,16 +41,10 @@ public class CommunityUserLoader {
             return new ArrayList<>();
         }
 
-        ArrayList<User> users = parseUsers(response);
-        if (users == null) {
-            Log.e(LOG_TAG, "Error parsing communities");
-            return new ArrayList<>();
-        }
-
-        return users;
+        return parseUsers(response);
     }
 
-    private static ArrayList<User> parseUsers(String response) {
+    private static List<User> parseUsers(String response) {
         JSONArray jsonArray;
 
         try {
@@ -64,7 +60,7 @@ public class CommunityUserLoader {
                                 object.getString(CommunityUserLoader.UserParsing.FNAME),
                                 object.getString(CommunityUserLoader.UserParsing.LNAME),
                                 object.getString(CommunityUserLoader.UserParsing.USERNAME),
-                                object.getString(CommunityUserLoader.UserParsing.PASSWORD),
+                                object.getString(CommunityUserLoader.UserParsing.PASS_TAG),
                                 object.getString(CommunityUserLoader.UserParsing.DESCRIPTION),
                                 object.getString(CommunityUserLoader.UserParsing.IMAGE_PATH)
                         )

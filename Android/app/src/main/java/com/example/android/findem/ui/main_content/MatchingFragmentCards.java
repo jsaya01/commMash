@@ -80,10 +80,10 @@ public class MatchingFragmentCards extends Fragment {
 
 
     @SuppressLint("StaticFieldLeak")
-    private class MatchingASyncTask extends AsyncTask<Long, Void, ArrayList<User>> {
+    private class MatchingASyncTask extends AsyncTask<Long, Void, List<User>> {
 
         @Override
-        protected ArrayList<User> doInBackground(Long... longs) {
+        protected List<User> doInBackground(Long... longs) {
             if (longs.length < 1 || longs[0] == null) {
                 return new ArrayList<>();
             }
@@ -92,7 +92,7 @@ public class MatchingFragmentCards extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(ArrayList<User> users) {
+        protected void onPostExecute(List<User> users) {
             super.onPostExecute(users);
 
             Log.d(LOG_TAG, "Users size returning is " + users.size());
