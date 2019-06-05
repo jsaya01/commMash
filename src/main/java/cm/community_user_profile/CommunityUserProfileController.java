@@ -48,13 +48,15 @@ public class CommunityUserProfileController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity getCommunityUserProfileUsername(@RequestParam String username, @RequestParam String commName) throws ExecutionException, InterruptedException {
+    public ResponseEntity getCommunityUserProfileUsername(@RequestParam String username, @RequestParam String commName)
+            throws ExecutionException, InterruptedException {
         Future<User> user = userRepository.findUserByUsername(username);
 
         Future<Community> community = communityRepository.findCommunityByName(commName);
 
-        Future<CommunityUserProfile> communityUserProfile = communityUserProfileRepository.findCommunityUserProfile(user.get().getUid(),
-                community.get().getCid());
+        Future<CommunityUserProfile> communityUserProfile = communityUserProfileRepository
+                .findCommunityUserProfile(user.get().getUid(),
+                    community.get().getCid());
 
         try{
             communityUserProfile.get().getDescription();

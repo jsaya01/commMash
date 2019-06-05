@@ -43,8 +43,8 @@ public class TschoppTest1 extends TestCase{
         User user = new User("Alex",
                 "Test",
                 "altschop",
-                "username",
-                "testDesc",
+                "usernam",
+                "testDes",
                 null);
 
         testEntityManager.persist(user);
@@ -79,23 +79,23 @@ public class TschoppTest1 extends TestCase{
         User user1 = new User("AlexT",
                 "Test",
                 "altschop",
-                "username",
-                "testDesc",
+                "userna",
+                "testDe",
                 null);
 
         testEntityManager.persist(user1);
         User user2 = new User("AlexTT",
                 "Test",
                 "altschopp",
-                "username",
-                "testDesc",
+                "usern",
+                "testD",
                 null);
         testEntityManager.persist(user2);
         User user3 = new User("AlexTTT",
                 "Test",
                 "altschoppp",
-                "username",
-                "testDesc",
+                "user",
+                "test",
                 null);
         testEntityManager.persist(user3);
         testEntityManager.flush();

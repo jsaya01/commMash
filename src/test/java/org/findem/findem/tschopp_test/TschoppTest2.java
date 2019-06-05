@@ -3,13 +3,9 @@ package org.findem.findem.tschopp_test;
 import cm.Application;
 import cm.community_post.CommunityPost;
 import cm.community_post.CommunityPostRepository;
-import cm.community_tags.CommunityTags;
-import cm.community_tags.CommunityTagsRepository;
 import cm.matches.Matches;
 import cm.matches.MatchesRepository;
 import cm.user.User;
-import cm.user_interest_tag.UserInterestTag;
-import cm.user_interest_tag.UserInterestTagRepository;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,11 +16,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Optional;
-import java.util.concurrent.ExecutionException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
