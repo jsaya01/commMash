@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MatchLoader {
     private MatchLoader() {
@@ -28,7 +29,7 @@ public class MatchLoader {
     private static final String GET_URL = "https://findem-back.herokuapp.com/matches";
     private static final String LOG_TAG = "MatchLoader";
 
-    public static ArrayList<Match> getMatchesOfUid(long id) {
+    public static List<Match> getMatchesOfUid(long id) {
         Uri requesting = Uri.parse(GET_URL).buildUpon().appendQueryParameter("uid", String.valueOf(id)).build();
         String response = Connection.getStream(requesting);
 

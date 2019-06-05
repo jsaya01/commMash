@@ -51,7 +51,6 @@ public class FindemCard {
 
     @Resolve
     public void onResolved(){
-//        profileImageView.setImageDrawable(ImageGenerator.getRandomImage());
         nameTxt.setText(mProfile.getFname());
         descriptionTxt.setText(mProfile.getDescription());
     }
@@ -87,7 +86,7 @@ public class FindemCard {
 
     @SwipeInState
     public void onSwipeInState(){
-        Log.d(LOG_TAG, "onSwipeInState");
+        Log.d(LOG_TAG, "onSwipeInState" + mContext.getPackageCodePath());
     }
 
     @SwipeOutState
