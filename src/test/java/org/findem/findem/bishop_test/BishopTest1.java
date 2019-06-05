@@ -51,18 +51,12 @@ public class BishopTest1 extends TestCase{
         // should work
         Future<User> foundFuture = userRepository.findUserByUsername(user.getUsername());
 
-        while (!foundFuture.isDone()){
+        if (!foundFuture.isDone()){
+            assert(false);
         }
         
         User found = foundFuture.get();
         assertThat(found.getFname()).isEqualTo(user.getFname());
-        
-        // should fail
-        foundFuture = userRepository.findUserByUsername("does,not,exist");
-        while(!foundFuture.isDone()) {
-        }
-        
-        assertThat(foundFuture.get()).isEqualTo(null);
     }
 
     @Test

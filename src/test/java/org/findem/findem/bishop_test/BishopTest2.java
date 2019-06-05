@@ -16,7 +16,6 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -40,19 +39,19 @@ public class BishopTest2 extends TestCase{
     public void testMatch() throws ExecutionException, InterruptedException  {
     	User user1 = new User(
         		"Tester Nicholas1",
-                "Test",
-                "nbishop",
-                "faleesi",
-                "test_desc",
+                "Tes",
+                "nbisho",
+                "falees",
+                "test_des",
                 null
             );
     	
     	User user2 = new User(
         		"Tester Nicholas2",
-                "Test",
-                "nbishop",
-                "faleesi",
-                "test_desc",
+                "Te",
+                "nbish",
+                "falee",
+                "test_de",
                 null
             );
     	
@@ -61,7 +60,7 @@ public class BishopTest2 extends TestCase{
         testEntityManager.flush();
     	
         List<Matches> foundFuture = matchesRepository.findAll();
-        assert(foundFuture.size() == 0);
+        assert(foundFuture.isEmpty());
 
         Matches match = null;
         try {
@@ -83,10 +82,10 @@ public class BishopTest2 extends TestCase{
     public void testCommunityUserProfile() {
     	User user = new User(
         		"Tester Nicholas1",
-                "Test",
-                "nbishop",
-                "faleesi",
-                "test_desc",
+                "T",
+                "nbis",
+                "fale",
+                "test_d",
                 null
             );
     	
