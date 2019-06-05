@@ -1,13 +1,11 @@
 package com.example.android.findem.ui.main_content;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,8 +24,6 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 public class CreateCommunityFragment extends Fragment {
-    private static final String GET_COMMUNITY = "https://findem-back.herokuapp.com/community";
-    private static final String LOG_TAG = "CreateCommunityFragment";
     private long uid;
 
 
@@ -90,27 +86,29 @@ public class CreateCommunityFragment extends Fragment {
             try {
                 Community c = CommunityLoader.getCommunity((String)jsonObjects[0].get("name"));
                 long uid = (Long)jsonObjects[1].get("uid");
-
-                // make a new CommunityUserProfile jsonObject
-                if (c != null) {
-                    JSONObject data = new JSONObject();
-                    try {
-                        data.put("uid", uid);
-                        data.put("cid", c.getCid());
-                        data.put("description", null);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    // connection.postRequest of the communityUserProfile
-                    Connection.postRequest("/communityuserprofile", data);
-                }
+                postUserProfile(c, uid);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-
             return null;
+        }
+
+        static void postUserProfile(Community c, long uid) {
+            // make a new CommunityUserProfile jsonObject
+            if (c != null) {
+                JSONObject data = new JSONObject();
+                try {
+                    data.put("uid", uid);
+                    data.put("cid", c.getCid());
+                    data.put("description", null);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // connection.postRequest of the communityUserProfile
+                Connection.postRequest("/communityuserprofile", data);
+            }
         }
     }
 }
